@@ -1,0 +1,63 @@
+{
+    "nom" : "La mise en veille",
+    "auteur" : "Clémence",
+    "start": "start",
+    "background" : "laptop",
+    "audio" : "above",
+    "dialogues" : {
+        "start" : {
+            "dialogue" : [
+                    {
+                        "background" : "laptop_plugin",
+                        "personne" : "equipe_nr1",
+                        "text" : "Il est 12h ! Vous êtes installé à votre bureau, en pleine rédaction, lorsque votre collègue du bureau voisin vient vous proposer de venir déjeuner au restaurant administratif. Vous acceptez et reprendrez la rédaction après votre pause."
+                    },
+                    {
+                        "background" : "laptop_plugin",
+                        "text" : "D'accord, je vais jeter un œil. Merci de me l'avoir signalé."
+                    },
+                    {
+                        "personne" : "Anne",
+                        "text" : "(regardant par-dessus votre épaule) mais vous pouriez pas juste me le changer ?"
+                    },
+                    {
+                        "type" : "quizz",
+                        "title" : "Que répondriez vous ?",
+                        "réponse" : [
+                            {
+                                "text" : "Oui, on a encore un pc en stock"
+                            },
+                            {
+                                "text" : "On va d'abord faire un diagnostique ?Un agent vient car la batterie de son ordinateur ne charge plus.",
+                                "réponse" : true,
+                                "value" : 5
+                            }
+                        ]
+                    }
+                ],
+                "next" : ["expertise" ]
+            },
+        "expertise" : {
+            "background" : "laptop_no_battery",
+            "dialogue" : [
+                    {
+                        
+                        "text" : " il s'avère que juste la batterie nécessite un remplacemente"
+                    },
+                    {
+                        "type" : "quizz",
+                        "réponse" : [
+                            {
+                                "text" : "Oui, on a encore un pc en stock"
+                            },
+                            {
+                                "text" : "On va d'abord faire un diagnostique ?Un agent vient car la batterie de son ordinateur ne charge plus.",
+                                "réponse" : true,
+                                "value" : 5
+                            }
+                        ]
+                    }
+                ]
+        }
+    }
+}
