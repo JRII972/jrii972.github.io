@@ -1,0 +1,14 @@
+[
+    {
+        "nom" : "Spécial service informatique",
+        "auteurs" : ["Baptiste"],
+        "file" : "./public/scénario/service informatique.json",
+        "description" : "Mollit pariatur do aliqua esse eiusmod nisi excepteur culpa nisi amet nulla. Dolore est dolore enim culpa nisi duis occaecat nulla ea veniam excepteur cupidatat ullamco non. Ad sunt id adipisicing laboris fugiat excepteur amet proident ex id. Lorem sint sint anim adipisicing ea nisi cupidatat eiusmod ex."
+    },
+    {
+        "nom" : "La mise en veille",
+        "auteurs" : ["Clémence"],
+        "file" : "./public/scénario/la mise en veille.json",
+        "description" : "Mollit pariatur do aliqua esse eiusmod nisi excepteur culpa nisi amet nulla. Dolore est dolore enim culpa nisi duis occaecat nulla ea veniam excepteur cupidatat ullamco non. Ad sunt id adipisicing laboris fugiat excepteur amet proident ex id. Lorem sint sint anim adipisicing ea nisi cupidatat eiusmod ex."
+    }
+]

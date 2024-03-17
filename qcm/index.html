@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./public/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./public/main.css">
+    
+    <title>Sprite Sheet Demo</title>
+  </head>
+  <body>
+    <div style="height: 100%; width: 100%;" class="ctgs"></div>
+    <div id="quizz_container" class="modal">
+      <div class="quiz-base container " >
+        <div class="quiz-header">
+          <div>NumEnv Quiz</div>
+          <div class="quizz-score-holder"><div id="score"></div>🌿</div>
+        </div>
+        <div class="quiz-body">
+          <ol class="c-stepper">
+          </ol>
+          <div class="quiz-question">
+            <em id="quiz-type">Chargement...</em>
+            <div id="quiz-question"></div>
+          </div>
+          <div class="quiz-image"></div>
+          <div class="quizz-content">
+            Module encours de Chargement
+          </div>
+          <div class="quiz-anwser" id="quiz-anwser">
+          </div>
+          <div class="quizz-question-id"></div>
+      </div>
+    </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script defer src='./src/main.js'></script>
+  </body>
+</html>

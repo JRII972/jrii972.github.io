@@ -1,21 +1,59 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./public/vite.svg" />
-    <link rel="stylesheet" href="./public/css/main.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sprite Sheet Demo</title>
-  </head>
-  <body>
-    <canvas id="game-canvas" width="1250" height="820" style="display: none;"></canvas>
-    <div id="game-splash">
-      <div class="game-background">
-      </div>
-      <div class="game-holder">
-      </div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Défi CMFI - Numérique Responsable</title>
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #007BFF;
+        }
+        a {
+            display: inline-block;
+            margin: 10px 0;
+            color: #007BFF;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenue au Défi CMFI - Numérique Responsable</h1>
+        <p>Participez à nos mini-jeux éducatifs et relevez le défi du numérique responsable !</p>
+        
+        <h2>Jeux disponibles :</h2>
+        <ul>
+            <li><a href="./printer/index.html">Mise en situation</a></li>
+            <li><a href="./quizz-game-epicode-main/index.html">Quizz | Les défis du numérique responsable</a></li>
+            <!-- Ajoutez d'autres jeux ici -->
+        </ul>
+        <p>Amusez-vous tout en apprenant comment vos actions quotidiennes peuvent contribuer à un avenir numérique plus durable.</p>
+        <h2>PROTO :</h2>
+        <ul>
+            <li><a href="./qcm/index.html">Eco-Quiz - simple</a></li>
+            <li><a href="./Qui veux gagner des papillons/index.html">Qui veux gagner des papillons </a></li>
+            <li><a href="./canvas engine/index.html">Début zelda </a></li>
+            <!-- Ajoutez d'autres jeux ici -->
+        </ul>
+
     </div>
-  </body>
-  <script type="module" src="./src/helpers/gifler.min.js"></script>
-  <script type="module" src="./main.js"></script>
+</body>
 </html>

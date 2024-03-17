@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quizz App - Epicode</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <div id="logo">
+          <img src="assets/imgs/epicode_logo.png" alt="epicode-logo" />
+        </div>
+      </header>
+
+      <main>
+        <div class="text-center">
+          <!-- Stelle -->
+          <h1 id="testTesto1">Tell us how it's going</h1>
+          <h2 id="testTesto2">
+            From 0 to 10, how likely are you to recommend EPICODE to a friend or
+            a colleague?
+          </h2>
+
+          <ul class="star">
+            <li class="starIcon" valutazione="10"></li>
+            <li class="starIcon" valutazione="9"></li>
+            <li class="starIcon" valutazione="8"></li>
+            <li class="starIcon" valutazione="7"></li>
+            <li class="starIcon" valutazione="6"></li>
+            <li class="starIcon" valutazione="5"></li>
+            <li class="starIcon" valutazione="4"></li>
+            <li class="starIcon" valutazione="3"></li>
+            <li class="starIcon" valutazione="2"></li>
+            <li class="starIcon" valutazione="1"></li>
+          </ul>
+
+          <!-- Stelle finali  -->
+          <div class="titoletto">
+            <p>Leave us an open feedback about your experience so far</p>
+          </div>
+          <input
+            type="text"
+            id="input-comment"
+            placeholder="Write your comment and press Enter"
+          />
+          <a class="info-btn fakebutton">MORE INFO</a>
+        </div>
+      </main>
+    </div>
+    <div id="popup" class="hide"></div>
+    <script src="/assets/js/feedback.js"></script>
+  </body>
+</html>

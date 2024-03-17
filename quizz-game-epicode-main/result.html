@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quizz App - Epicode</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <div id="logo">
+          <img src="assets/imgs/logo_num_responsable.png" alt="epicode-logo" />
+        </div>
+      </header>
+
+      <main>
+        <div class="text-center">
+          <h1>Résultats</h1>
+          <p class="bigger">Le résumé de vos réponses:</p>
+          <div class="row">
+            <div class="text-left">
+              <h2>
+                Bon<br />
+                <span id="correct-result" class="bold"></span>
+              </h2>
+              <p id="correct-questions-num">
+                <!-- 4/6 questions -->
+              </p>
+            </div>
+            <div class="auguri">
+              <div id="end-game" class="pie"></div>
+              <!-- <p class="bold zIndex1">
+                Toutes nos félicitations <br />
+                <span class="light-blue zIndex1"></span>
+              </p>
+              <p id="end-specifics" class="small zIndex1">
+                Nous vous enverrons le certificat en quelques minutes.Vérifiez votre e-mail
+                (y compris le dossier promotions / spam)
+              </p> -->
+            </div>
+            <div class="text-right">
+              <h2>Faux <br /><span id="wrong-result" class="bold"></span></h2>
+              <p id="wrong-questions-num">
+                <!-- 2/6 questions -->
+              </p>
+            </div>
+          </div>
+
+          <a href="feedback.html" id="reset-storage" class="fakebutton"
+            >RATE US</a
+          >
+
+          <div class="result-table">
+            <table>
+              <caption>
+                Classement trimestre 1
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col" class="table-pseudo">Pseudo</th>
+                  <th scope="col" class="table-administration">Administration</th>
+                  <th scope="col" class="table-point">Point</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Chris</th>
+                  <td>TRACFIN</td>
+                  <td>130</td>
+                </tr>
+                <tr>
+                  <th scope="row">Dennis</th>
+                  <td>DGFiP</td>
+                  <td>124</td>
+                </tr>
+                <tr>
+                  <th scope="row">Sarah</th>
+                  <td>DG Trésor</td>
+                  <td>123</td>
+                </tr>
+                <tr>
+                  <th scope="row">Jef</th>
+                  <td>Douane</td>
+                  <td>110</td>
+                </tr>
+                <tr>
+                  <th scope="row" colspan="3" class="table-sep table-score">
+                    <hr>
+                  </th>
+                </tr>
+                <tr>
+                  <th scope="row">Karen</th>
+                  <td>DGCCRF</td>
+                  <td>80</td>
+                </tr>
+                <tr>
+                  <th scope="row" colspan="3" class="table-sep">
+                    <hr>
+                  </th>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th scope="row" colspan="2">Score moyen</th>
+                  <td>78</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="assets/js/result.js"></script>
+  </body>
+</html>

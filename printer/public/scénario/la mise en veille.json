@@ -1,0 +1,66 @@
+{
+    "nom" : "La mise en veille",
+    "auteur" : "Clémence",
+    "start": "start",
+    "background" : "laptop",
+    "audio" : "above",
+    "dialogues" : {
+        "start" : {
+            "dialogue" : [
+                    {
+                        "background" : "veille_collegue_entre_bureau",
+                        "personne" : "equipe_nr1",
+                        "title" : "Collègue",
+                        "text" : "(entrant dans le bureau) Hey, il est midi ! Ça te dit de descendre manger au resto admin ?"
+                    },
+                    {
+                        "background" : "laptop_plugin",
+                        "text" : "(regardant votre montre) Ah oui, déjà ! Attend-moi j'arrive."
+                    },
+                    {
+                        "personne" : "Anne",
+                        "text" : "(regardant par-dessus votre épaule) mais vous pouriez pas juste me le changer ?"
+                    },
+                    {
+                        "type" : "quizz",
+                        "title" : "Que répondriez vous ?",
+                        "text" : "En quittant leur poste, les agents ont le choix de verrouiller leur écran, de mettre leur ordinateur en veille, ou d'éteindre l'écran. C'est un petit geste pour la sécurité et l'économie d'énergie. Quelle action choisiriez-vous ?",
+                        "réponse" : [
+                            {
+                                "text" : "Vous verrouillez votre session pour pouvoir rapidement reprendre votre rédaction."
+                            },
+                            {
+                                "text" : "Vous mettez en veille votre ordinateur et éteignez l’écran.",
+                                "réponse" : true
+                            },
+                            {
+                                "text" : "Vous éteignez votre ordinateur ainsi que l’écran.",
+                                "réponse" : true,
+                                "value" : 5,
+                                "next" : "bonne"
+                            }
+                        ]
+                    }
+                ],
+                "next" : ["fausse" ]
+            },
+        "fausse" : {
+            "background" : "bénéfice_veille",
+            "dialogue" : [
+                    {
+                        
+                        "text" : " Nope"
+                    }
+                ]
+        },
+        "bonne" : {
+            "background" : "bénéfice_veille",
+            "dialogue" : [
+                    {
+                        
+                        "text" : " good"
+                    }
+                ]
+        }
+    }
+}

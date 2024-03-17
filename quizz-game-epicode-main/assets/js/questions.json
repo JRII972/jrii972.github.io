@@ -1,0 +1,214 @@
+[
+    {
+        "category": "Pratiques numériques responsables",
+        "difficulty": "easy",
+        "question": "Quelle action peut réduire votre empreinte carbone numérique ?",
+        "correct_answer": "Se désabonner des e-mails inutiles",
+        "incorrect_answers": [
+            "Augmenter la luminosité de l'écran",
+            "Laisser les appareils en veille toute la nuit",
+            "Utiliser des modes informatiques haute performance"
+        ]
+    },
+    {
+        "category": "Numérique Responsable",
+        "difficulty": "easy",
+        "question": "Quelle mesure simple permet de réduire l'empreinte énergétique lors de l'utilisation de votre ordinateur ?",
+        "correct_answer": "Diminuer la luminosité de l'écran",
+        "incorrect_answers": [
+            "Augmenter le contraste de l'écran",
+            "Utiliser un fond d'écran animé"
+        ]
+    },
+    {
+        "category": "Économie d'Énergie",
+        "difficulty": "medium",
+        "question": "Quel mode de gestion de l'alimentation est recommandé pour économiser l'énergie sur un ordinateur portable ?",
+        "correct_answer": "Le mode économie d'énergie",
+        "incorrect_answers": [
+            "Le mode performance maximale",
+            "Le mode veille prolongée"
+        ]
+    },
+    {
+        "category": "Réduction de l'Impression Papier",
+        "difficulty": "easy",
+        "question": "Quelle fonctionnalité d'impression est préférable pour économiser le papier ?",
+        "correct_answer": "Impression recto verso",
+        "incorrect_answers": [
+            "Impression en couleur systématique",
+            "Utilisation de papier brillant"
+        ]
+    },
+    {
+        "category": "Coût Énergétique des Appareils",
+        "difficulty": "hard",
+        "question": "Les émissions du numérique sont…",
+        "correct_answer": "moins importantes que celles de l’aviation civile",
+        "incorrect_answers": [
+            "égales à celles de l’aviation civile",
+            "plus importantes que celles de l’aviation civile"
+        ]
+    },
+    {
+        "category": "Consommation Énergétique",
+        "difficulty": "medium",
+        "question": "Quelle habitude contribue à réduire la consommation énergétique au bureau ?",
+        "correct_answer": "Éteindre les appareils en fin de journée",
+        "incorrect_answers": [
+            "Laisser les ordinateurs en mode veille",
+            "Utiliser plusieurs moniteurs pour chaque poste de travail"
+        ]
+    },
+    {
+        "category": "Réduction de l'Impression Papier",
+        "difficulty": "medium",
+        "question": "Quelle initiative peut réduire l'utilisation du papier au bureau ?",
+        "correct_answer": "La politique zéro papier",
+        "incorrect_answers": [
+            "L'impression en masse en début de semaine",
+            "L'utilisation de papier recyclé uniquement pour les documents importants"
+        ]
+    },
+    {
+        "category": "Coût Énergétique des Appareils",
+        "difficulty": "easy",
+        "question": "Quel type d'ampoule est le plus énergétiquement efficace ?",
+        "correct_answer": "LED",
+        "incorrect_answers": [
+            "Incandescente",
+            "Halogène"
+        ]
+    },
+    {
+        "category": "Consommation Énergétique",
+        "difficulty": "medium",
+        "question": "Quel geste quotidien permet de réduire la consommation d'électricité à la maison ?",
+        "correct_answer": "Débrancher les chargeurs lorsqu'ils ne sont pas utilisés",
+        "incorrect_answers": [
+            "Laisser les appareils en mode veille",
+            "Utiliser le chauffage électrique plutôt que le gaz"
+        ]
+    },
+    {
+        "category": "Numérique Responsable",
+        "difficulty": "easy",
+        "question": "Pour économiser l'énergie, il est préférable de...",
+        "correct_answer": "mettre l'ordinateur en mode veille plutôt que de le laisser allumé.",
+        "incorrect_answers": [
+            "laisser l'écran allumé même lorsqu'il n'est pas utilisé.",
+            "augmenter la luminosité de l'écran."
+        ]
+    },
+    {
+        "category": "Numérique Responsable",
+        "difficulty": "easy",
+        "question": "Pour réduire l'impact écologique des e-mails, il faut",
+        "correct_answer": "nettoyer régulièrement sa boîte de réception.",
+        "incorrect_answers": [
+            "envoyer des pièces jointes de grande taille.",
+            "augmenter la fréquence de récupération des mails."
+        ]
+    },
+    {
+        "category": "Économie d'Énergie",
+        "difficulty": "medium",
+        "question": "L'utilisation de multiprises avec interrupteurs",
+        "correct_answer": "permet de couper facilement l'alimentation de plusieurs appareils.",
+        "incorrect_answers": [
+            "est utile uniquement pour brancher plus de dispositifs.",
+            "augmente la consommation d'énergie globale."
+        ]
+    },
+    {
+        "category": "Réduction de l'Impression Papier",
+        "difficulty": "medium",
+        "question": "Pour minimiser l'utilisation de papier au bureau, on peut",
+        "correct_answer": "favoriser la consultation des documents en format numérique.",
+        "incorrect_answers": [
+            "imprimer tous les courriels importants pour archivage.",
+            "utiliser du papier non recyclé pour les impressions internes."
+        ]
+    },
+    {
+        "category": "Coût Énergétique des Appareils",
+        "difficulty": "hard",
+        "question": "Les appareils certifiés Energy Star",
+        "correct_answer": "sont conçus pour être plus économes en énergie.",
+        "incorrect_answers": [
+            "ont une meilleure performance informatique.",
+            "utilisent plus d'énergie pour une meilleure durabilité."
+        ]
+    },
+    {
+        "category": "Consommation Énergétique",
+        "difficulty": "easy",
+        "question": "Éteindre les lumières en quittant une pièce",
+        "correct_answer": "est un moyen simple de réduire la consommation d'énergie.",
+        "incorrect_answers": [
+            "a un effet négligeable sur la facture d'électricité.",
+            "peut augmenter l'usure des ampoules à incandescence."
+        ]
+    },
+    {
+        "category": "Numérique Responsable",
+        "difficulty": "easy",
+        "question": "Utiliser des serveurs cloud alimentés par des énergies renouvelables",
+        "correct_answer": "contribue à diminuer l'empreinte carbone du stockage de données.",
+        "incorrect_answers": [
+            "est plus coûteux que les centres de données traditionnels.",
+            "réduit la vitesse d'accès aux données stockées."
+        ]
+    },
+    {
+        "category": "Économie d'Énergie",
+        "difficulty": "medium",
+        "question": "Le mode 'économie d'énergie' sur les appareils électroniques",
+        "correct_answer": "réduit leur consommation énergétique sans sacrifier la performance.",
+        "incorrect_answers": [
+            "est recommandé uniquement pour les appareils en charge.",
+            "peut causer une usure plus rapide de l'appareil."
+        ]
+    },
+    {
+        "category": "Réduction de l'Impression Papier",
+        "difficulty": "hard",
+        "question": "Implémenter une politique d'impression responsable en entreprise",
+        "correct_answer": "peut sensiblement réduire les déchets de papier.",
+        "incorrect_answers": [
+            "n'affecte pas la quantité de papier utilisée.",
+            "est une tâche complexe et coûteuse."
+        ]
+    },
+    {
+        "category": "Coût Énergétique des Appareils",
+        "difficulty": "medium",
+        "question": "Les chargeurs de téléphone débranchés",
+        "correct_answer": "continuent de consommer une petite quantité d'énergie.",
+        "incorrect_answers": [
+            "ne consomment pas d'énergie.",
+            "consomment autant que lorsqu'ils sont branchés au téléphone."
+        ]
+    },
+    {
+        "category": "Numérique Responsable",
+        "difficulty": "easy",
+        "question": "Pour prolonger la durée de vie de vos appareils électroniques, il est conseillé de",
+        "correct_answer": "les débrancher après utilisation.",
+        "incorrect_answers": [
+            "les laisser en charge toute la nuit.",
+            "les exposer directement au soleil."
+        ]
+    },
+    {
+        "category": "Économie d'Énergie",
+        "difficulty": "medium",
+        "question": "Pour contribuer à l'économie d'énergie globale, vous pouvez",
+        "correct_answer": "baisser le chauffage d'un degré.",
+        "incorrect_answers": [
+            "augmenter la température de votre réfrigérateur.",
+            "utiliser le mode éco de votre lave-vaisselle à chaque lavage."
+        ]
+    }
+]
+  
