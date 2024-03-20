@@ -42,7 +42,7 @@
                         ]
                     }
                 ],
-                "next" : ["fausse" ]
+                "next" : ["fausse", "bonne"]
             },
         "fausse" : {
             "background" : "bénéfice_veille",

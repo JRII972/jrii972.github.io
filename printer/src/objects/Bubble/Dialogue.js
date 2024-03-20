@@ -158,7 +158,7 @@ export class Dialogue extends Clickable {
     nextTalk() {
         if ( this.data.dialogues[this.actualDialogue].dialogue.length <= this.diagStep + 1 ){
             if ( this.data.dialogues[this.actualDialogue].next ) {
-                this.actualDialogue = this.data.dialogues[this.actualDialogue].next
+                this.actualDialogue = this.data.dialogues[this.actualDialogue].next.random()
                 this.updateDialogue()
             }
         } else {

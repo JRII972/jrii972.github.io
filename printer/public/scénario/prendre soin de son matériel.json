@@ -1,0 +1,45 @@
+{
+    "nom" : "Prendre soin de son matériel (Pauline) ",
+    "auteur" : "Pauline",
+    "start": "start",
+    "background" : "laptop",
+    "audio" : "above",
+    "dialogues" : {
+        "start" : {
+            "dialogue" : [
+                    {
+                        "background" : "veille_collegue_entre_bureau",
+                        "personne" : "narrateur",
+                        "title" : "Contexte",
+                        "text" : "Pour prendre soin de mon matériel au quotidien, je peux"
+                    },
+                    {
+                        "type" : "quizz",
+                        "title" : "Que répondriez vous ?",
+                        "réponse" : [
+                            {
+                                "text" : "Le protéger à l’aide d’une housse",
+                            },
+                            {
+                                "text" : "Eviter les sources de chaleur",
+                                "réponse" : true,
+                                "value" : 5
+                            },
+                            {
+                                "text" : "Le dépoussiérer régulièrement",
+                                "réponse" : true,
+                                "value" : 5
+                            }
+                        ]
+                    },
+                    {
+                        "background" : "bénéfice_veille",
+                        "personne" : "narrateur",
+                        "title" : "Contexte",
+                        "text" : "Pour prendre soin de mon matériel au quotidien, je peux"
+                    }
+                ]
+            }
+        
+    }
+}

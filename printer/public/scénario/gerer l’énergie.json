@@ -1,0 +1,124 @@
+{
+    "nom" : "Gérer l’énergie (ménager les batteries)",
+    "auteur" : "Laura",
+    "start": "start",
+    "background" : "laptop",
+    "audio" : "above",
+    "dialogues" : {
+        "start" : {
+            "dialogue" : [
+                    {
+                        "background" : "veille_collegue_entre_bureau",
+                        "personne" : "narrateur",
+                        "title" : "Contexte",
+                        "text" : "Il est 08h30, vous arrivez à votre bureau et vous allumez votre ordinateur portable. La matinée se déroule et votre écran se met en “économie d’énergie”. Cette indication signifie qu’il vous reste 10% de batterie. Afin d’éviter qu’il s’éteigne, l’agent branche l’ordinateur sur secteur et continue ses missions.  "
+                    },
+                    {
+                        "background" : "veille_collegue_entre_bureau",
+                        "personne" : "narrateur",
+                        "title" : "La journée se déroule",
+                        "text" : " et la batterie se recharge",
+                        "réponse" : [
+                            {
+                                "text" : "Débrancher avant la charge complète",
+                                "next" : ["sc1_charge_partielle" ],
+                                "réponse" : true,
+                                "value" : 5
+                            },
+                            {
+                                "text" : "Charger complètement puis débrancher",
+                                "next" : ["sc2_charge_complète" ]
+                            },
+                            {
+                                "text" : "Laisser brancher",
+                                "next" : ["sc1_charge_partielle" ]
+                            }
+                        ]
+                    }
+                ]
+            },
+        "sc1_charge_partielle" : {
+            "background" : "laptop_no_battery",
+            "dialogue" : [
+                {
+                    "background" : "veille_collegue_entre_bureau",
+                    "personne" : "",
+                    "title" : "Agent",
+                    "text" : " (après avoir vérifié le niveau de la batterie) Ah, 80% chargé. Il est temps de débrancher ça."
+                },
+                {
+                    "background" : "veille_collegue_entre_bureau",
+                    "personne" : "narrateur",
+                    "title" : "Collègue",
+                    "text" : "Mais pourquoi tu attends pas qu'il soit chargé ?"
+                },
+                {
+                    "background" : "veille_collegue_entre_bureau",
+                    "personne" : "",
+                    "title" : "Agent",
+                    "text" : "Cela aide à prolonger la durée de vie de ta batterie et c'est mieux pour l'environnement."
+                },
+                {
+                    "background" : "veille_collegue_entre_bureau",
+                    "personne" : "",
+                    "title" : "Agent",
+                    "text" : "Et je me suis renseigné : charger l'ordinateur de 30% à 80% et éviter de le laisser au soleil ou dans un endroit trop froid. Ça semble être les meilleures pratiques."
+                }
+                ],
+                "next" : ["bilan" ]
+        },
+        "sc2_charge_complète" : {
+            "background" : "laptop_no_battery",
+            "dialogue" : [
+                    {
+                        "background" : "veille_collegue_entre_bureau",
+                        "personne" : "",
+                        "title" : "Agent",
+                        "text" : "(pensant à voix haute) Hmm, je crois que je n'ai même pas regardé le niveau de la batterie aujourd'hui. Ça devrait aller, non ? De toute façon, je veux être sûr de ne pas manquer de batterie si je dois me déplacer."
+                    },
+                    {
+                        "background" : "veille_collegue_entre_bureau",
+                        "personne" : "narrateur",
+                        "title" : "Collègue",
+                        "text" : "(passant par là) Tu ne débranches pas ton chargeur ?"
+                    },
+                    {
+                        "background" : "veille_collegue_entre_bureau",
+                        "personne" : "",
+                        "title" : "Agent",
+                        "text" : "Ah, je me disais que ça n'avait pas vraiment d'importance. Et puis, ça m'évite des mauvaises surprises si je dois aller travailler ailleurs"
+                    },
+                    {
+                        "background" : "veille_collegue_entre_bureau",
+                        "personne" : "narrateur",
+                        "title" : "Collègue",
+                        "text" : "Je vois ton point de vue, mais tu sais, ça peut avoir un impact sur la durée de vie de ta batterie et ça consomme de l'électricité inutilement."
+                    },
+                    {
+                        "background" : "veille_collegue_entre_bureau",
+                        "personne" : "",
+                        "title" : "Agent",
+                        "text" : "Vraiment ? J'imaginais que ça ne changeait pas grand-chose."
+                    },
+                    {
+                        "background" : "veille_collegue_entre_bureau",
+                        "personne" : "",
+                        "title" : "Collègue",
+                        "text" : "C'est un détail qui peut faire la différence sur le long terme, pour l'environnement et pour ton matériel."
+                    }
+                ],
+            "next" : ["bilan" ]
+        },
+        "bilan" : {
+            "background" : "laptop_no_battery",
+            "dialogue" : [
+                    {
+                        "text" : "L’agent doit recharger l’ordinateur portable à partir de 30 % de batterie et le débrancher dès lors qu’il soit à 80%. Cette habitude permet à l’utilisateur de pérenniser et de conserver une bonne qualité / performance de l’ordinateur et de la batterie. "
+                    },
+                    {
+                        "text" :  "L’agent ne doit jamais laisser la batterie en charge inutilement. Lors du chargement, la batterie et l'ordinateur portable ne doivent pas être situés dans un endroit ou lieu, face au soleil ou dans une pièce très froide. La différence de température peut avoir des effets néfastes.  "
+                    }
+                ]
+        }
+    }
+}

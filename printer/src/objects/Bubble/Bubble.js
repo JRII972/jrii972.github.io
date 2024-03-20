@@ -376,7 +376,7 @@ export class Bubble extends GameObject{
         for (const _anwser of this.question.réponse) {
             if (anwser.surlignage && (anwser.id == _anwser.id)) {
                 if ( _anwser.next ) {
-                    this.dialogue.updateDialogue(_anwser.next)
+                    this.dialogue.updateDialogue(_anwser.next.random())
                 }
                 return _anwser
             }

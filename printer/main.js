@@ -16,6 +16,11 @@ import { GameRender } from "./src/GameRender.js";
 import { Bubble } from "./src/objects/Bubble/Bubble.js";
 import { Dialogue } from "./src/objects/Bubble/Dialogue.js";
 
+Array.prototype.random = function () {
+  return this[Math.floor((Math.random()*this.length))];
+}
+
+
 // Grabbing the canvas to draw to
 const splash = document.getElementById('game-splash');
 const canvas = document.querySelector("#game-canvas");

@@ -7,37 +7,56 @@
     "dialogues" : {
         "start" : {
             "dialogue" : [
-                {
-                    "background" : "laptop_plugin",
-                    "personne" : "Anne",
-                        "text" : "Bonjour, j'ai un souci avec mon ordinateur. Il ne charge plus du tout."
+                    {
+                        "background" : "veille_collegue_entre_bureau",
+                        "personne" : "narrateur",
+                        "title" : "Contexte",
+                        "text" : "Dans le bureau de la CID, vous recevez un formulaire d’un agent qui vous annonce que son pc ne charge plus."
                     },
                     {
-                        "background" : "laptop_plugin",
-                        "text" : "D'accord, je vais jeter un œil. Merci de me l'avoir signalé."
-                    },
-                    {
-                        "personne" : "Anne",
-                        "text" : "(regardant par-dessus votre épaule) mais vous pouriez pas juste me le changer ?"
+                        "background" : "veille_collegue_entre_bureau",
+                        "personne" : "narrateur",
+                        "title" : "Contexte",
+                        "text" : "Un collègue, qui regarde par dessus votre épaule, vous dit : “Propose lui de remplacer son poste” "
                     },
                     {
                         "type" : "quizz",
                         "title" : "Que répondriez vous ?",
                         "réponse" : [
                             {
-                                "text" : "Oui, on a encore un pc en stock"
+                                "text" : "Oui, on a encore un pc en stock",
+                                "next" : "sc1_batterie"
                             },
                             {
-                                "text" : "On va d'abord faire un diagnostique ?Un agent vient car la batterie de son ordinateur ne charge plus.",
+                                "text" : "On va d’abord faire un diagnostique ?Un agent vient car la batterie de son ordinateur ne charge plus.",
                                 "réponse" : true,
                                 "value" : 5
                             }
                         ]
                     }
                 ],
-                "next" : ["expertise" ]
+                "next" : ["sc1_batterie" ]
             },
-        "expertise" : {
+        "sc1_batterie" : {
+            "background" : "laptop_no_battery",
+            "dialogue" : [
+                    {
+                        "type" : "quizz",
+                        "text" : "Après expertise, il s’avère que juste la batterie nécessite un remplacement.",
+                        "réponse" : [
+                            {
+                                "text" : "Vous lui proposez de changer la batterie.",
+                                "réponse" : true,
+                                "value" : 5
+                            },
+                            {
+                                "text" : "Vous lui proposez de changer de PC "
+                            }
+                        ]
+                    }
+                ]
+        },
+        "sc2" : {
             "background" : "laptop_no_battery",
             "dialogue" : [
                     {
