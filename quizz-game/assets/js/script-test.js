@@ -1,23 +1,48 @@
+function size_dict(d){c=0; for (i in d) ++c; return c}
+
 fetch('./assets/js/questions.json', { 
   method: 'GET'
 })
 .then(function(response) { return response.json(); })
 .then(function(_questions) {
   
-  var questions = []
-  while (questions.length != 5 ) {
-    id = Math.floor(Math.random() * _questions.length)
-    questions.push( _questions[id])
-    _questions.splice(id, 1)
+  let data = JSON.parse(localStorage.getItem('quizz_data')) || { 
+    date : Date.now(),
+    questions : [],
+    actualKey : 0,
+    ended : false
+  }
+  
+  if ( data.date <= Date.now() ){ //  
+    let questions = []
+    while (questions.length != 5 ) {
+      id = Math.floor(Math.random() * _questions.length)
+      questions.push( _questions[id])
+      _questions.splice(id, 1)
+    }
+
+    data.questions = questions
+
+    data.date = new Date().setHours(24,0,0,0)
+    localStorage.setItem('quizz_data', JSON.stringify(data));
+
+  } else {
+    // for (const id in data.questions) {
+    //   questions.push(data.questions[id])
+    // }
+  }
+
+  if ( data.ended ) {
+    location.href = "result.html";
   }
 
   //Je crée des variables globales
   let questionCat = document.getElementById("categorie");
   let questionTitle = document.getElementById("question");
-  let questionINDX = 0;
-  let singleQuestion = questions[questionINDX];
-  document.getElementById("total_steps").innerHTML = " / " + questions.length;
-  localStorage.total_steps = questions.length
+  let questionINDX = data.actualKey || 0;
+  
+  document.getElementById("total_steps").innerHTML = " / " + (data.questions.length - questionINDX);
+  localStorage.total_steps = data.questions.length - questionINDX;
   // let myTimer = document.getElementById("countdown");
   let correct = 0;
   let wrong;
@@ -31,7 +56,7 @@ fetch('./assets/js/questions.json', {
 
   //Je crée le tableau de REA total pour chaque OBJ en questions
   function concatAnswers() {
-    questions.forEach((quest) => {
+    data.questions.forEach((quest) => {
       quest.totAnswer = quest.incorrect_answers.concat(quest.correct_answer);
     });
   }
@@ -58,14 +83,14 @@ fetch('./assets/js/questions.json', {
 
   // Je décompose le tableau des réponses tot
   function sliceAnswers(array) {
-    for (let i = 0; i < questions[questionINDX].totAnswer.length; i++) {
-      array.push(questions[questionINDX].totAnswer.slice(i, i + 1));
+    for (let i = 0; i < data.questions[questionINDX].totAnswer.length; i++) {
+      array.push(data.questions[questionINDX].totAnswer.slice(i, i + 1));
     }
   }
 
   //l'écran moule les valeurs de l'objet
   function printQuestion() {
-    switch (questions[questionINDX].difficulty) {
+    switch (data.questions[questionINDX].difficulty) {
       case 'easy':
         countDown(20);
         break;
@@ -80,32 +105,35 @@ fetch('./assets/js/questions.json', {
         countDown(30);
         break;
     }
-    questionTitle.innerText = questions[questionINDX].question;
-    questionCat.innerText = questions[questionINDX].category;
-    questions[questionINDX].totAnswer = shuffle(questions[questionINDX].totAnswer);
+    questionTitle.innerText = data.questions[questionINDX].question;
+    questionCat.innerText = data.questions[questionINDX].category;
+    data.questions[questionINDX].totAnswer = shuffle(data.questions[questionINDX].totAnswer);
     const answerContainer = document.querySelector("#answers");
     answerContainer.innerHTML = ""; // ------PrintQuestion imprime les 4 réponses et s'ajoute toujours à celles suivantes, donc elle vide les boutons des questions précédentes
     //boutons de création
-    questions[questionINDX].totAnswer.forEach((answer) => {
+    data.questions[questionINDX].totAnswer.forEach((answer) => {
       const btnAnswer = document.createElement("button");
       btnAnswer.classList.add("btn-answer");
       //accesso diretto alle risposte possibili
       btnAnswer.innerHTML = answer;
-      btnAnswer.onclick = () => clicked(btnAnswer); //funzione che collega il progredire delle domande
+      btnAnswer.onclick = () => clicked(btnAnswer); //fonction qui relie la progression des questions
       answerContainer.appendChild(btnAnswer);
     });
   }
 
   function clicked(btn) {
     //** Lorsque je clique sur la réponse sélectionnée
-    if (btn.innerText === questions[questionINDX].correct_answer) {
+    if (btn.innerText === data.questions[questionINDX].correct_answer) {
       correct += 1;
-      wrong = questions.length - correct;
-    } else {
+      wrong = data.questions.length - correct;
+      data.questions[questionINDX].state = "correct"
+    } else {      
+      data.questions[questionINDX].state = "wrong"
       console.log("wrong");
     }
     localStorage.setItem("correct", correct);
-    localStorage.setItem("wrong", wrong);
+    localStorage.setItem("wrong", wrong);    
+    localStorage.setItem('quizz_data', JSON.stringify(data));
     ProgressiveQuestion();
   }
 
@@ -113,11 +141,15 @@ fetch('./assets/js/questions.json', {
   function ProgressiveQuestion() {
     let stepsEl = document.getElementById("steps");
     let steps = parseInt(stepsEl.innerHTML);
-    if (steps !== questions.length) {
+    questionINDX++;
+    if (questionINDX < data.questions.length) {
       stepsEl.innerHTML = ++steps;
-      questionINDX++;
       printQuestion();
+      data.actualKey = questionINDX;
+      localStorage.setItem('quizz_data', JSON.stringify(data));
     } else {
+      data.ended = true;
+      localStorage.setItem('quizz_data', JSON.stringify(data));
       location.href = "result.html"; //Modification de la page
     }
   }
@@ -139,6 +171,8 @@ fetch('./assets/js/questions.json', {
       myTimer.innerHTML = countdown;
       circle.style.display = "block";
       if (countdown == 0) {
+        data.questions[questionINDX].state = "skipped"        
+        localStorage.setItem('quizz_data', JSON.stringify(data));
         ProgressiveQuestion();
       }
     }, 1000);

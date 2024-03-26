@@ -1,4 +1,4 @@
-// prendo i miei elementi dall'html
+// Je prends mes éléments de html
 let endGame = document.getElementById("end-game");
 let correctResults = document.getElementById("correct-result");
 let wrongResults = document.getElementById("wrong-result");
@@ -12,12 +12,12 @@ let correctQuestionNum = document.getElementById("correct-questions-num");
 let correct = localStorage.getItem("correct");
 let wrong = localStorage.getItem("wrong");
 
-// ricompongo il risultato totale e calcolo la percentuale
+// Je remonte le résultat total et calcule le pourcentage
 let total = Number(correct) + Number(wrong);
 const correctPercentage = (correct / total) * 100;
 const incorrectPercentage = (wrong / total) * 100;
 
-//****verifico se i miei dati arrivano correttamente!!
+//****Je vérifie si mes données arrivent correctement !!
 console.log(correct, "correct");
 console.log(wrong, "correct");
 
@@ -31,7 +31,7 @@ function init() {
   } else {
     correctResults.innerHTML = `${correctPercentage}%`;
     wrongResults.innerHTML = `${incorrectPercentage}%`;
-    // con l'operatore ternario setto i valori da popolare SE l'utente ha vinto o meno
+    // Avec l'opérateur ternaire set sur les valeurs pour être populaires, que l'utilisateur ait gagné ou non
     endGame.innerHTML =
       correctPercentage >= incorrectPercentage
         ? `<div class='zIndex1'>
@@ -57,9 +57,9 @@ function init() {
     background = `background: conic-gradient(#d20094 ${incorrectPercentage}%, #00ffff 0deg)`;
     pie.setAttribute("style", background);
 
-    // svuoto il local storage quando l'utente esce dalla pagina
-    clearStorageBtn.onclick = () => {
-      localStorage.clear();
-    };
+    // Videz le stockage local lorsque l'utilisateur sort de la page
+    // clearStorageBtn.onclick = () => {
+    //   localStorage.clear();
+    // };
   }
 }

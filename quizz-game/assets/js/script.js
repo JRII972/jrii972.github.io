@@ -1,6 +1,13 @@
 const myInput = document.querySelector("#start-checkbox");
+let data = JSON.parse(localStorage.getItem('quizz_data'))  
 
-proceedToTest();
+
+if ( data ) {
+  location.href = "test.html"; //Modification de la page
+} else {
+  proceedToTest();
+}
+
 
 function proceedToTest() {
   const btnProceed = document.querySelector("#btn-proceed");
@@ -12,3 +19,5 @@ function proceedToTest() {
     location.href = "test.html";
   };
 }
+
+

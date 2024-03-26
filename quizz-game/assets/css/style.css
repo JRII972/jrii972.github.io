@@ -555,3 +555,27 @@ svg circle {
   color: #00ffff;
   padding: 1em;
 }
+
+.anwser-btn {
+  display: flex;
+
+  a {
+    width: 9em;
+  }
+}
+
+#réponse.titoletto {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.statistique {
+  font-style: italic;
+  justify-content: center;
+
+  .source::before {
+    content: "-";
+    padding-left: .5em;
+    padding-right: .5em;
+  }
+}
