@@ -17,47 +17,38 @@
 
       <main>
         <div class="text-center">
-          <h1>Résultats</h1>
-          <p class="bigger">Le résumé de vos réponses:</p>
-          <p class="">#415 / 12548</p>
-          <div class="row">
-            <div class="text-left">
-              <h2>
-                Bon<br />
-                <span id="correct-result" class="bold"></span>
-              </h2>
-              <p id="correct-questions-num">
-                <!-- 4/6 questions -->
-              </p>
-            </div>
-            <div class="auguri">
-              <div id="end-game" class="pie"></div>
-              <!-- <p class="bold zIndex1">
-                Toutes nos félicitations <br />
-                <span class="light-blue zIndex1"></span>
-              </p>
-              <p id="end-specifics" class="small zIndex1">
-                Nous vous enverrons le certificat en quelques minutes.Vérifiez votre e-mail
-                (y compris le dossier promotions / spam)
-              </p> -->
-            </div>
-            <div class="text-right">
-              <h2>Faux <br /><span id="wrong-result" class="bold"></span></h2>
-              <p id="wrong-questions-num">
-                <!-- 2/6 questions -->
-              </p>
-            </div>
+          <h1>Classement</h1>
+          <p class="bigger">Classement trimestre 1</p>
+          
+          <div id="administration-table" class="result-table classement">
+            <table>
+              <caption>
+                Par administration
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col" class="table-tendance"></th>
+                  <th scope="col" class="table-pseudo"></th>
+                  <th scope="col" class="table-administration">Administration</th>
+                  <th scope="col" class="table-point">Points</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- <tr>
+                  <td scope="row" colspan="3" class="table-sep table-score">
+                    <hr>
+                  </td>
+                </tr> -->
+              </tbody>
+              <!-- <tfoot>
+                <tr>
+                  <th scope="row" colspan="2">Score moyen</th>
+                  <td>78</td>
+                </tr>
+              </tfoot> -->
+            </table>
           </div>
-
-          <div class="result-btn">
-            <a href="anwser.html" class="fakebutton">En apprendre plus</a >
-          </div>
-          <div class="link">
-            <a href="classement.html" class="fakebutton">Classement</a >
-            <a href="feedback.html"  class="fakebutton btn-red">Voter pour nous !</a >
-          </div>
-
-          <!-- <div class="result-table">
+          <div id="people-table" class="result-table classement">
             <table>
               <caption>
                 Classement trimestre 1
@@ -113,10 +104,16 @@
                 </tr>
               </tfoot>
             </table>
-          </div> -->
+          </div>
+
+          <div class="result-btn">
+            <a href="index.html" class="fakebutton">Participer</a >
+
+            <a href="feedback.html"  class="fakebutton btn-red">Voter pour nous !</a >
+          </div>
         </div>
       </main>
     </div>
-    <script src="assets/js/result.js"></script>
+    <script src="assets/js/classement.js"></script>
   </body>
 </html>
