@@ -52,7 +52,8 @@ header {
   justify-content: space-between;
 }
 #logo {
-  width: 150px;
+  width: 8em;
+  max-width: 150px;
   display: inline-block;
 }
 
@@ -94,8 +95,12 @@ header {
   }
 
   #question {
-    font-size: 2.5em;
+    font-size: 1.8em;
     width: 100%!important;
+  }
+
+  .categorie {
+    font-size: 1.3em;
   }
 
   .row {
@@ -105,6 +110,20 @@ header {
       margin-bottom: 10px;
       text-align: center;
     }
+  }
+
+  .result-btn {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .text-center {
+    margin: auto!important;
+    margin-bottom: 50px!important;
+  }
+
+  .btn-answer {
+    width: auto!important;
   }
 }
 

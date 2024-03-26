@@ -28,7 +28,7 @@ function printAwnser() {
 
 document.getElementById("prec-btn").onclick = function () {
   actualKey--
-  if (actualKey > 0) {
+  if (actualKey >= 0) {
     printAwnser();
     data.actualAwnser = actualKey;
     localStorage.setItem('quizz_data', JSON.stringify(data));
