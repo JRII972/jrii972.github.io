@@ -20,6 +20,7 @@ Array.prototype.random = function () {
   return this[Math.floor((Math.random()*this.length))];
 }
 
+screen.orientation.lock('landscape');
 
 // Grabbing the canvas to draw to
 const splash = document.getElementById('game-splash');
