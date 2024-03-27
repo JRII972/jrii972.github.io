@@ -70,6 +70,9 @@ canvas.onclick = function(e) {
   })
 };
 
+window.addEventListener("resize", (event) => {
+  events.emitOnResize({})
+});
 
 const d = new Dialogue({
   dialogueJson: './public/scénario/service informatique.json',
@@ -101,7 +104,7 @@ const draw = () => {
   // ctx.restore();
   
   // Draw anything above the game world
-  gameRender.draw(ctx, 0, 0)
+  // gameRender.draw(ctx, 0, 0)
 
   // // const ctx = canvas.getContext("2d");
   // ctx.fillStyle = "rgb(200 0 0)";

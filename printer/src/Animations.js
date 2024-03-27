@@ -34,7 +34,7 @@ export class Animations {
     if ( (!this.timestampStart) & (!this.ended) ){
       let _a = new Date();
       this.timestampStart = _a.getTime();
-      this.ended = false
+      
     }
   }
 
@@ -55,5 +55,6 @@ export class Animations {
   reset(){
     this.timestampStart = undefined
     this.actualStep = 0
+    this.ended = false
   }
 }

@@ -29,7 +29,7 @@ if ( data ) {
         },
         {
             rank : 4,
-            administration : "Douane",
+            administration : "DGDDI",
             points : "950",
             tendance : "down"
         },

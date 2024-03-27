@@ -8,6 +8,10 @@ class Events {
   callbacks = [];
   nextId = 0;
 
+  constructor() {
+    
+  }
+
   // emit event
   emit(eventName, value) {
     this.callbacks.forEach(stored => {
@@ -67,6 +71,9 @@ class Events {
   onClick( caller, callback ){
     this.on(ON_CLIC, caller, callback)
   }
+  onResize( caller, callback ){
+    this.on(SCREENRESIZE, caller, callback)
+  }
   
   emitOnHover(value) {
     this.callbacks.forEach(stored => {
@@ -79,6 +86,13 @@ class Events {
     this.callbacks.forEach(stored => {
       if (stored.eventName === ON_CLIC) {
         stored.caller[stored.callback.name](value)
+      }
+    })
+  }
+  emitOnResize() {
+    this.callbacks.forEach(stored => {
+      if (stored.eventName === SCREENRESIZE) {
+        stored.caller[stored.callback.name]()
       }
     })
   }

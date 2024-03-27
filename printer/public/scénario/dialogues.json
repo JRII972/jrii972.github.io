@@ -10,5 +10,17 @@
         "auteurs" : ["Clémence"],
         "file" : "./public/scénario/la mise en veille.json",
         "description" : "Mollit pariatur do aliqua esse eiusmod nisi excepteur culpa nisi amet nulla. Dolore est dolore enim culpa nisi duis occaecat nulla ea veniam excepteur cupidatat ullamco non. Ad sunt id adipisicing laboris fugiat excepteur amet proident ex id. Lorem sint sint anim adipisicing ea nisi cupidatat eiusmod ex."
+    },
+    {
+        "nom" : "Gérer l’énergie (ménager les batteries)",
+        "auteurs" : ["Laura"],
+        "file" : "./public/scénario/gerer l’énergie.json",
+        "description" : "Mollit pariatur do aliqua esse eiusmod nisi excepteur culpa nisi amet nulla. Dolore est dolore enim culpa nisi duis occaecat nulla ea veniam excepteur cupidatat ullamco non. Ad sunt id adipisicing laboris fugiat excepteur amet proident ex id. Lorem sint sint anim adipisicing ea nisi cupidatat eiusmod ex."
+    },
+    {
+        "nom" : "Prendre soin de son matériel",
+        "auteurs" : ["Pauline"],
+        "file" : "./public/scénario/prendre soin de son matériel.json",
+        "description" : "Mollit pariatur do aliqua esse eiusmod nisi excepteur culpa nisi amet nulla. Dolore est dolore enim culpa nisi duis occaecat nulla ea veniam excepteur cupidatat ullamco non. Ad sunt id adipisicing laboris fugiat excepteur amet proident ex id. Lorem sint sint anim adipisicing ea nisi cupidatat eiusmod ex."
     }
 ]

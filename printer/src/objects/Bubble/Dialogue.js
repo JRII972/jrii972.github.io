@@ -44,6 +44,12 @@ export class Dialogue extends Clickable {
         this.height = this.canvas.height
 
         // events.on(SCREENRESIZE, )
+        events.onResize(this, this.resize)
+    }
+
+    resize() {
+        this.updateBackgroundRatio()
+        this.bubble.update({reset: true})
     }
 
     async getjson() {
@@ -131,19 +137,33 @@ export class Dialogue extends Clickable {
 
     updateBackground(name) {
         if ( name ){
-            this.background = BACKGROUND.get(name)
+            this.backgroundRessource = BACKGROUND.get(name)
         } else if ( this.data.dialogues[this.actualDialogue].dialogue[this.diagStep].background ){
-            this.background = BACKGROUND.get(this.data.dialogues[this.actualDialogue].dialogue[this.diagStep].background)
+            this.backgroundRessource = BACKGROUND.get(this.data.dialogues[this.actualDialogue].dialogue[this.diagStep].background)
         } else if ( this.data.dialogues[this.actualDialogue].background ){
-            this.background = BACKGROUND.get(this.data.dialogues[this.actualDialogue].background)
+            this.backgroundRessource = BACKGROUND.get(this.data.dialogues[this.actualDialogue].background)
         } else if ( this.data.background ){
-            this.background = BACKGROUND.get(this.data.background)
+            this.backgroundRessource = BACKGROUND.get(this.data.background)
         }
+        this.updateBackgroundRatio()
+    }
 
-        this.background = new Sprite({
-            resource: this.background,
-            size: new Vector2(this.canvas.width, this.canvas.height)
-        })
+    updateBackgroundRatio() {
+        let ratio = this.backgroundRessource.frameSize.x / this.backgroundRessource.frameSize.y 
+
+        if ( this.canvas.width / this.canvas.height < ratio){
+            this.background = new Sprite({
+                resource: this.backgroundRessource,
+                size: new Vector2(this.canvas.height * ratio, this.canvas.height),
+                position : new Vector2((this.canvas.width - (this.canvas.height * ratio)) / 2 , 0)
+            })
+        } else {
+            this.background = new Sprite({
+                resource: this.backgroundRessource,
+                size: new Vector2(this.canvas.width, this.canvas.width / ratio),
+                position : new Vector2(0, (this.canvas.height - (this.canvas.width / ratio)) / 2 )
+            })
+        }
     }
 
     draw(ctx, x, y) {

@@ -27,6 +27,7 @@ export class TextObject extends Clickable {
         this.surlignageStyle = surlignageStyle
         this.animation = animation
         this._text = this.text
+        this.animationNewStep = 0;
 
         if ( lineHeight == undefined) {
           if ( this.font.includes("px") ) {
@@ -47,7 +48,11 @@ export class TextObject extends Clickable {
 
       if ( this.animation ) {
         this.animation.step()
-        this.text = this._text.substr(0, Math.round(this._text.length * this.animation.actualStep / this.animation.nbStep) )
+        this.text = this._text.substr(0, this.animationNewStep + Math.round(this._text.length * this.animation.actualStep / this.animation.nbStep) )
+
+        if ( this.animation.actualStep / this.animation.nbStep < 1 ) {
+          this.stopNextSection = false
+        }
       }
 
       if ( this.text == "" ) {
@@ -81,8 +86,8 @@ export class TextObject extends Clickable {
                   if ( this.surlignage ){ this.surlignageText(ctx, this.drawPosX, this.drawPosY, line) }
                   this.drawText(ctx, line, this.drawPosX, this.drawPosY);
                   this.drawPosY += this.lineHeight;
-                  actualLine += 1
                 }
+                actualLine += 1
                 line = words[n] + ' ';
               }
               else {
@@ -94,6 +99,8 @@ export class TextObject extends Clickable {
                 this.drawText(ctx, "...", this.drawPosX, this.drawPosY);
                 this.drawPosX = x + this.position.x;
                 this.drawPosY = y + this.position.y;
+                this.animationNewStep = words.slice(0, n).join(' ').length;
+                this.animation.ended = true
                 return
                 }
               }
@@ -232,8 +239,17 @@ export class TextObject extends Clickable {
     }
 
     nextSection() {
+      if ( this.animation ) {
+        if ( !this.animation.ended ) {
+          this.animation.actualStep = this.animation.nbStep
+          this.stopNextSection = false
+          return true
+        }
+      }
       if ( !this.stopNextSection) {
         this.startLine += this.maxLine 
+        this.animation.reset() //TODO: animation not working with multiple step
+        this.animation.start()
         return true
       }
       return false
