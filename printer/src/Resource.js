@@ -149,10 +149,6 @@ export const BACKGROUND = new Personnage({
     src: "./public/asset/background/laptop_no_battery.png",
     frameSize: new Vector2(1792,1024),
   },
-  bénéfice_veille: {
-    src: "./public/asset/background/bénéfice_veille.png",
-    frameSize: new Vector2(2442,1406),
-  },
   veille_collegue_entre_bureau: {
     src: "./public/asset/background/veille_collegue_entre_bureau.png",
     frameSize: new Vector2(1792,1024),
@@ -160,6 +156,34 @@ export const BACKGROUND = new Personnage({
   bénéfice_veille: {
     src: "./public/asset/background/bénéfice_veille.png",
     frameSize: new Vector2(2442,1406),
+  },
+  hight_laptop_no_battery: {
+    src: "./public/asset/background/hight_laptop_no_battery.webp",
+    frameSize: new Vector2(1796,1024),
+  },
+  choix_charge_laptop: {
+    src: "./public/asset/background/choix_charge_laptop.jpg",
+    frameSize: new Vector2(681,564),
+  },
+  poeple_talking_v1: {
+    src: "./public/asset/background/poeple_talking_v1.webp",
+    frameSize: new Vector2(1792,1024),
+  },
+  poeple_talking_v2: {
+    src: "./public/asset/background/poeple_talking_v2.webp",
+    frameSize: new Vector2(1792,1024),
+  },
+  bonne_pratique_recharge_batterie: {
+    src: "./public/asset/background/bonne_pratique_recharge_batterie.jpg",
+    frameSize: new Vector2(764,400),
+  },
+  thumbs_up: {
+    src: "./public/asset/background/thumbs_up.webp",
+    frameSize: new Vector2(1792,1024),
+  },
+  not_happy: {
+    src: "./public/asset/background/not_happy.webp",
+    frameSize: new Vector2(1792,1024),
   },
 })
 

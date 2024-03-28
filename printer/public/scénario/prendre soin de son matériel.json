@@ -8,14 +8,16 @@
         "start" : {
             "dialogue" : [
                     {
-                        "background" : "veille_collegue_entre_bureau",
+                        "background" : "laptop",
                         "personne" : "narrateur",
                         "title" : "Contexte",
                         "text" : "Pour prendre soin de mon matériel au quotidien, je peux"
                     },
                     {
                         "type" : "quizz",
+                        "background" : "not_happy",
                         "title" : "Que répondriez vous ?",
+                        "text" : "Que répondriez vous ?",
                         "réponse" : [
                             {
                                 "text" : "Le protéger à l’aide d’une housse"
@@ -31,12 +33,6 @@
                                 "value" : 5
                             }
                         ]
-                    },
-                    {
-                        "background" : "bénéfice_veille",
-                        "personne" : "narrateur",
-                        "title" : "Contexte",
-                        "text" : "Pour prendre soin de mon matériel au quotidien, je peux"
                     }
                 ]
             }

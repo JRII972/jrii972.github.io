@@ -2,19 +2,17 @@
     "nom" : "Spécial service informatique (Baptiste) ",
     "auteur" : "Baptiste",
     "start": "start",
-    "background" : "laptop",
+    "background" : "poeple_talking_v2",
     "audio" : "above",
     "dialogues" : {
         "start" : {
             "dialogue" : [
                     {
-                        "background" : "veille_collegue_entre_bureau",
                         "personne" : "narrateur",
                         "title" : "Contexte",
                         "text" : "Dans le bureau de la CID, vous recevez un formulaire d’un agent qui vous annonce que son pc ne charge plus."
                     },
                     {
-                        "background" : "veille_collegue_entre_bureau",
                         "personne" : "narrateur",
                         "title" : "Contexte",
                         "text" : "Un collègue, qui regarde par dessus votre épaule, vous dit : “Propose lui de remplacer son poste” "
@@ -57,7 +55,7 @@
                 ]
         },
         "sc2" : {
-            "background" : "laptop_no_battery",
+            "background" : "laptop",
             "dialogue" : [
                     {
                         

@@ -150,18 +150,20 @@ export class Dialogue extends Clickable {
 
     updateBackgroundRatio() {
         let ratio = this.backgroundRessource.frameSize.x / this.backgroundRessource.frameSize.y 
-
-        if ( this.canvas.width / this.canvas.height < ratio){
+        let display_width = this.canvas.width 
+        let display_height = this.canvas.height - this.bubble.height
+        
+        if ( display_width / display_height < ratio){
             this.background = new Sprite({
                 resource: this.backgroundRessource,
-                size: new Vector2(this.canvas.height * ratio, this.canvas.height),
-                position : new Vector2((this.canvas.width - (this.canvas.height * ratio)) / 2 , 0)
+                size: new Vector2(display_height * ratio, display_height),
+                position : new Vector2((display_width - (display_height * ratio)) / 2 , 0)
             })
         } else {
             this.background = new Sprite({
                 resource: this.backgroundRessource,
-                size: new Vector2(this.canvas.width, this.canvas.width / ratio),
-                position : new Vector2(0, (this.canvas.height - (this.canvas.width / ratio)) / 2 )
+                size: new Vector2(display_width, display_width / ratio),
+                position : new Vector2(0, (display_height - (display_width / ratio)) / 2 )
             })
         }
     }
