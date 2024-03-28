@@ -20,6 +20,7 @@
                     {
                         "type" : "quizz",
                         "title" : "Que répondriez vous ?",
+                        "personne" : "narrateur",
                         "text" : "En quittant leur poste, les agents ont le choix de verrouiller leur écran, de mettre leur ordinateur en veille, ou d'éteindre l'écran. C'est un petit geste pour la sécurité et l'économie d'énergie. Quelle action choisiriez-vous ?",
                         "réponse" : [
                             {

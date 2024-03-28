@@ -10,10 +10,15 @@ if ( data ) {
   if ( data.goToClassement) {
     location.href = "classement.html"; 
   }
-  location.href = "test.html"; 
-} else {
-  proceedToTest();
-}
+  if ( data.date > Date.now() ){ 
+    location.href = "test.html"; 
+  } else {
+    pseudo.value = localStorage.getItem('pseudo')
+    administration.value = localStorage.getItem('administration')
+  }
+} 
+
+proceedToTest();
 
 function checkInput() {
   if (myInput.checked){

@@ -15,9 +15,9 @@
                     },
                     {
                         "type" : "quizz",
+                        "personne" : "narrateur",
                         "background" : "not_happy",
                         "title" : "Que répondriez vous ?",
-                        "text" : "Que répondriez vous ?",
                         "réponse" : [
                             {
                                 "text" : "Le protéger à l’aide d’une housse"

@@ -19,6 +19,7 @@
                     },
                     {
                         "type" : "quizz",
+                        "personne" : "narrateur",
                         "title" : "Que répondriez vous ?",
                         "réponse" : [
                             {
@@ -40,6 +41,7 @@
             "dialogue" : [
                     {
                         "type" : "quizz",
+                        "personne" : "narrateur",
                         "text" : "Après expertise, il s’avère que juste la batterie nécessite un remplacement.",
                         "réponse" : [
                             {
