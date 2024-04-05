@@ -137,6 +137,16 @@ export const BACKGROUND = new Personnage({
     frameSize: new Vector2(2048,1024),
     offset : new Vector2()
   },
+  printer_background: {
+    src: "./picture/printer_background.png",
+    frameSize: new Vector2(2048,1024),
+    offset : new Vector2()
+  },
+  manage_staffing: {
+    src: "./picture/manage_staffing.png",
+    frameSize: new Vector2(2048,1024),
+    offset : new Vector2()
+  },
   laptop: {
     src: "./public/asset/background/laptop.png",
     frameSize: new Vector2(1792,1024),

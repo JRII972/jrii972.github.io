@@ -1,0 +1,39 @@
+{
+    "nom" : "Organiser son environnement de travail",
+    "auteur" : "Clémence",
+    "start": "start",
+    "background" : "printer_background",
+    "audio" : "above",
+    "dialogues" : {
+        "start" : {
+            "dialogue" : [
+                
+                    {
+                        "background" : "manage_staffing",
+                        "personne" : "anne",
+                        
+                        "title" : "Anne",
+                        "text" : "Savez-vous ce que dit une imprimante qui prend l’eau ? J’ai PAPIER…Un peu d’humour est toujours la bienvenue, qu’en pensez-vous ? Surtout lorsque vous venez de terminer l’audition d’un opérateur et que vous vous rendez compte que le procès-verbal fait une quarantaine de pages… Il est temps de l’imprimer pour relecture et signature. "
+                    },
+                    {
+                        "type" : "quizz",
+                        "title" : "Que répondriez vous ?",
+                        "personne" : "narrateur",
+                        "text" : "Vous avez besoin d'imprimer un document qui vous sera utile en version papier. Que faites-vous ?",
+                        "réponse" : [
+                            {
+                                "text" : "Je lance l'impression, sans vérifier les réglages"
+                            },
+                            {
+                                "text" : "Je préfère l'imprimer en couleur et en recto, car c'est plus lisible"
+                            },
+                            {
+                                "text" : "Je vais dans les réglages pour imprimer, de préférence en noir et blanc, en mode brouillon et en recto verso si cela n'a pas d'impact sur la lisibilité du document (graphiques, code couleur…). Je pense à mettre ces réglages par défaut !s",
+                                "réponse" : true
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+}

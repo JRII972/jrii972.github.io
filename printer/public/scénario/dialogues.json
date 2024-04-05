@@ -6,6 +6,12 @@
         "description" : "Dans le scénario, vous êtes au bureau de la CID où un agent rapporte que son PC ne se charge plus. Puis vous effecturer un diagnostic"
     },
     {
+        "nom" : "Organiser son environnement de travai",
+        "auteurs" : [""],
+        "file" : "./public/scénario/Organiser son environnement de travail.json",
+        "description" : "Parlons photocopies et impressions ! "
+    },
+    {
         "nom" : "Gérer l’énergie (ménager les batteries)",
         "auteurs" : ["Laura"],
         "file" : "./public/scénario/gerer l’énergie.json",

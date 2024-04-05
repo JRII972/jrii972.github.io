@@ -480,6 +480,24 @@
             "source": "Food Safety Authority"
           }
         ]
+    },
+    {
+        "id" : 21,
+        "category": "Organiser son environnement de travail",
+        "difficulty": "medium",
+        "question": "Parlons photocopies et impressions ! Diriez-vous que vous imprimez :",
+        "correct_answer": "Que les documents que je juge nécessaires pour effectuer mon travail",
+        "incorrect_answers": [
+            "Les documents nécessaires ainsi que les documents que je garde sur un coin de mon bureau, car ils me seront utiles à un instant bien précis ",
+            "Les documents nécessaires, les « pour plus tard », et pour être honnête, des documents que je ne regarderai probablement jamais"
+        ],
+        "answer": "...",
+        "statistics": [
+          {
+            "data": "Réduire la température de chauffage d'un degré peut économiser jusqu'à 7% d'énergie de chauffage.",
+            "source": "Agence de l'Environnement et de la Maîtrise de l'Énergie (ADEME)"
+          }
+        ]
     }
 ]
   
