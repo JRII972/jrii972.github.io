@@ -20,5 +20,5 @@ if (score_description) {
 document.getElementById('score-point').innerText = localStorage.getItem('score') ?? 0
 document.getElementById('pseudo').innerText = localStorage.getItem('pseudo') ?? ""
 
-// localStorage.setItem('last_score_movement', 0)
-// localStorage.setItem('score_description', "")
+localStorage.setItem('last_score_movement', 0)
+localStorage.setItem('score_description', "")
