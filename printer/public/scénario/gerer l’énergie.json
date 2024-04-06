@@ -23,8 +23,7 @@
                             {
                                 "text" : "Débrancher avant la charge complète",
                                 "next" : ["sc1_charge_partielle" ],
-                                "réponse" : true,
-                                "value" : 5
+                                "réponse" : true
                             },
                             {
                                 "text" : "Charger complètement puis débrancher",

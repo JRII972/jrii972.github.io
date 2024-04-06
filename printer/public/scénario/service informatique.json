@@ -28,8 +28,7 @@
                             },
                             {
                                 "text" : "On va d’abord faire un diagnostique ?Un agent vient car la batterie de son ordinateur ne charge plus.",
-                                "réponse" : true,
-                                "value" : 5
+                                "réponse" : true
                             }
                         ]
                     }
@@ -46,8 +45,7 @@
                         "réponse" : [
                             {
                                 "text" : "Vous lui proposez de changer la batterie.",
-                                "réponse" : true,
-                                "value" : 5
+                                "réponse" : true
                             },
                             {
                                 "text" : "Vous lui proposez de changer de PC "
@@ -71,8 +69,7 @@
                             },
                             {
                                 "text" : "On va d'abord faire un diagnostique ?Un agent vient car la batterie de son ordinateur ne charge plus.",
-                                "réponse" : true,
-                                "value" : 5
+                                "réponse" : true
                             }
                         ]
                     }

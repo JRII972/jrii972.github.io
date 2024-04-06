@@ -404,35 +404,39 @@ export class Bubble extends GameObject{
 
   valideQuizz() {
     if ( this.state == "quizz" ) {
-       let  _anwser = this.checkAnwser()
+        localStorage.setItem('follow', (localStorage.getItem('follow') ?? '') + "a")
+        let  _anwser = this.checkAnwser()
         switch (_anwser.réponse) {
             case true:
                 localStorage.setItem('score', parseInt((localStorage.getItem('score') ?? 0)) + _anwser.value)
                 localStorage.setItem('last_score_movement', parseInt((localStorage.getItem('last_score_movement') ?? 0) ) + _anwser.value)
-                this.state = "anwser"
-                if ( this.question.content ) {
-                    this.updateText(this.question.contentt)
-                } else {
-                    this.dialogue.nextTalk()
-                }
-                this.children = []
+                this.quizzNext(_anwser)
+                break;
+
             case false:
                 localStorage.setItem('score', parseInt((localStorage.getItem('score') ?? 0)) - _anwser.value)
                 localStorage.setItem('last_score_movement', parseInt((localStorage.getItem('last_score_movement') ?? 0) ) -_anwser.value)
-                this.state = "anwser"
-                if ( this.question.conten ) {
-                    this.updateText(this.question.content)
-                } else {
-                    this.dialogue.nextTalk()
-                }
-                this.children = []
+                this.quizzNext(_anwser)
                 break;
         
             default:
                 console.log("pas de réponse");
                 break;
         }
+        
     }
+  }
+
+  quizzNext(_anwser) {    
+    this.state = "anwser"
+    if ( this.question.content ) {
+        this.updateText(this.question.content)
+    } else if ( _anwser.next ) {
+        this.dialogue.updateDialogue(_anwser.next.random())
+    } else {
+        this.dialogue.nextTalk()
+    }
+    this.children = []
   }
 
   checkClick(){

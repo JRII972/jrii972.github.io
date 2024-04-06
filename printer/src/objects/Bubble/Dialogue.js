@@ -184,7 +184,7 @@ export class Dialogue extends Clickable {
                 this.updateDialogue()
             } else {
                 
-                localStorage.setItem('score_description', this.data.score_description ?? "Merci d'avoir essayer notre jeu ! :3")
+                localStorage.setItem('score_description', this.data.score_description ?? "Merci d'avoir essayé notre jeu ! :3")
                 location.href = '/score.html'
             }
         } else {

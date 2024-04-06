@@ -24,13 +24,11 @@
                             },
                             {
                                 "text" : "Eviter les sources de chaleur",
-                                "réponse" : true,
-                                "value" : 5
+                                "réponse" : true
                             },
                             {
                                 "text" : "Le dépoussiérer régulièrement",
-                                "réponse" : true,
-                                "value" : 5
+                                "réponse" : true
                             }
                         ]
                     }

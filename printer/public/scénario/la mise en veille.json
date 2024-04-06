@@ -34,7 +34,6 @@
                             {
                                 "text" : "Vous éteignez votre ordinateur ainsi que l’écran.",
                                 "réponse" : true,
-                                "value" : 5,
                                 "next" : ["bonne"]
                             }
                         ]
