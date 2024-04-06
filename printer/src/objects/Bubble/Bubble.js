@@ -398,10 +398,11 @@ export class Bubble extends GameObject{
 
   valideQuizz() {
     if ( this.state == "quizz" ) {
-        switch (this.checkAnwser().good) {
+       let  _anwser = this.checkAnwser()
+        switch (_anwser.réponse) {
             case true:
-                localStorage.setItem('score', (localStorage.getItem('score') ?? 0) + (this.question.réponse[this.question.bonneRéponseID].value ?? 1))
-                localStorage.setItem('last_score_movement', (localStorage.getItem('last_score_movement') ?? 0) + (this.question.réponse[this.question.bonneRéponseID].value ?? 1))
+                localStorage.setItem('score', (localStorage.getItem('score') ?? 0) + _anwser.value)
+                localStorage.setItem('last_score_movement', (localStorage.getItem('last_score_movement') ?? 0) + _anwser.value)
                 this.state = "anwser"
                 if ( this.question.conten ) {
                     this.updateText(this.question.content)
@@ -412,8 +413,8 @@ export class Bubble extends GameObject{
                 }
                 this.children = []
             case false:
-                localStorage.setItem('score', (localStorage.getItem('score') ?? 0) - (this.question.réponse[this.question.bonneRéponseID].value ?? 1))
-                localStorage.setItem('last_score_movement', (localStorage.getItem('last_score_movement') ?? 0) -(this.question.réponse[this.question.bonneRéponseID].value ?? 1))
+                localStorage.setItem('score', (localStorage.getItem('score') ?? 0) - _anwser.value)
+                localStorage.setItem('last_score_movement', (localStorage.getItem('last_score_movement') ?? 0) -_anwser.value)
                 this.state = "anwser"
                 if ( this.question.conten ) {
                     this.updateText(this.question.content)

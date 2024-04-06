@@ -1,8 +1,8 @@
 class Réponse {
     constructor({text, réponse, value, id, next}){
         this.text = text
-        this.réponse = réponse
-        this.value = value
+        this.réponse = réponse ?? false
+        this.value = value ?? 1
         this.id = id
         this.next = next
 
