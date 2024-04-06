@@ -182,6 +182,10 @@ export class Dialogue extends Clickable {
             if ( this.data.dialogues[this.actualDialogue].next ) {
                 this.actualDialogue = this.data.dialogues[this.actualDialogue].next.random()
                 this.updateDialogue()
+            } else {
+                
+                localStorage.setItem('score_description', this.data.score_description ?? "Merci d'avoir essayer notre jeu ! :3")
+                location.href = '/score.html'
             }
         } else {
             this.updateBubble(this.diagStep + 1)

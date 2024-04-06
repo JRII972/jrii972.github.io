@@ -400,7 +400,20 @@ export class Bubble extends GameObject{
     if ( this.state == "quizz" ) {
         switch (this.checkAnwser().good) {
             case true:
+                localStorage.setItem('score', (localStorage.getItem('score') ?? 0) + (this.question.réponse[this.question.bonneRéponseID].value ?? 1))
+                localStorage.setItem('last_score_movement', (localStorage.getItem('last_score_movement') ?? 0) + (this.question.réponse[this.question.bonneRéponseID].value ?? 1))
+                this.state = "anwser"
+                if ( this.question.conten ) {
+                    this.updateText(this.question.content)
+                } else if (this.checkAnwser().next) {
+                    //
+                } else {
+                    this.dialogue.nextTalk()
+                }
+                this.children = []
             case false:
+                localStorage.setItem('score', (localStorage.getItem('score') ?? 0) - (this.question.réponse[this.question.bonneRéponseID].value ?? 1))
+                localStorage.setItem('last_score_movement', (localStorage.getItem('last_score_movement') ?? 0) -(this.question.réponse[this.question.bonneRéponseID].value ?? 1))
                 this.state = "anwser"
                 if ( this.question.conten ) {
                     this.updateText(this.question.content)

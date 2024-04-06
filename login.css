@@ -1,0 +1,95 @@
+
+body {
+    font-family: Arial, sans-serif;
+    color: #112222;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(to bottom, #d8ded1, #233841);
+    height: 100vh;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    background-color: #556b6b;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+h1 {
+    color: #d8ded1;
+}
+a {
+    display: inline-block;
+    margin: 10px 0;
+    color: #dabb8f;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+.image {
+    
+    width: 80%;
+    overflow: hidden; 
+    background-image: url('printer/picture/manage_staffing.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.login {
+    
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+
+.input-group {
+    padding-top: 2em;
+    padding-bottom: 2em;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5%;
+
+    * {      
+      height: 2em;
+      box-shadow: inset 0 1px 3px #ddd;
+      border-radius: .8em;
+      border: #556b6b;
+      margin-top: 15px;
+      padding: 5px;
+      background-color: #d8ded1;
+      color: #112222;
+    }
+
+    option {
+      /* color: #ddd; */
+      background-color: var(--darkest-blue);
+    }
+}
+
+.input-wrapper {
+    padding: 5px;
+}
+
+#btn-proceed {
+    text-align: center;
+    width: 50%;
+    margin: auto;
+    padding: .8em;
+    border-radius: 1em;
+    background-color: #112222;
+}
+
+#btn-proceed:hover {
+    color: #112222;
+    background-color: #dabb8f;
+}
