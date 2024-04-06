@@ -20,6 +20,25 @@ body {
     overflow: hidden;
 }
 
+@media screen and (max-width: 700px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .image {
+        height: 20vh;
+        width: 100%!important;
+    }
+
+    * {
+        text-align: center;
+    }
+
+    .score {
+        justify-content: center;
+    }
+}
+
 h1, h3 {
     color: #e7e8aa;    
     text-align: center;
@@ -51,6 +70,7 @@ a:hover {
     justify-content: space-between;
 
 }
+
 
 
 .input-group {

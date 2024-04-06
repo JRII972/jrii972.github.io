@@ -216,6 +216,37 @@ export class Bubble extends GameObject{
         events.unsubscribe(anwser)
     })
     this.anwser = []
+
+    
+
+    var BTNContinuer = new FillText({
+        text: "Continuer",
+        textAlign: "end", fillStyle: "#1B4079",
+        font: this.canvas.height * 0.035 + "px Aptos",
+        surlignageStyle: "#1B4079",
+        position: new Vector2(
+            this.width - this.marginText, this.height - this.marginText
+        )
+    })
+    BTNContinuer.onHover = function() { 
+        this.surlignage = true
+        this.fillStyle = "#B4E1FF"
+    };
+    BTNContinuer.loseHover = function() { 
+        this.surlignage = false
+        this.fillStyle = "#1B4079"
+    };
+    BTNContinuer.onClick = function() { 
+        if ( this.parent ){
+            this.parent.valideQuizz()
+        }
+        this.surlignage = ! this.surlignage
+    };
+    events.unsubscribeFromEvent(this, ON_CLIC)
+    this.initOnClick()
+
+    BTNContinuer.initOnClick()
+    BTNContinuer.initOnHover()
     
     this.question.réponse.forEach((réponse, i) => {
         let text = réponse.text
@@ -252,34 +283,6 @@ export class Bubble extends GameObject{
         // child.initOnHover()
     });
 
-    var BTNContinuer = new FillText({
-        text: "Continuer",
-        textAlign: "end", fillStyle: "#1B4079",
-        font: this.canvas.height * 0.035 + "px Aptos",
-        surlignageStyle: "#1B4079",
-        position: new Vector2(
-            this.width - this.marginText, this.height - this.marginText
-        )
-    })
-    BTNContinuer.onHover = function() { 
-        this.surlignage = true
-        this.fillStyle = "#B4E1FF"
-    };
-    BTNContinuer.loseHover = function() { 
-        this.surlignage = false
-        this.fillStyle = "#1B4079"
-    };
-    BTNContinuer.onClick = function() { 
-        if ( this.parent ){
-            this.parent.valideQuizz()
-        }
-        this.surlignage = ! this.surlignage
-    };
-    events.unsubscribeFromEvent(this, ON_CLIC)
-    this.initOnClick()
-
-    BTNContinuer.initOnClick()
-    BTNContinuer.initOnHover()
     this.addChild(BTNContinuer)
 
   }
@@ -373,8 +376,11 @@ export class Bubble extends GameObject{
     let a = null
 
     for (const anwser of this.anwser) {
+        if (!anwser.surlignage){
+            continue
+        }
         for (const _anwser of this.question.réponse) {
-            if (anwser.surlignage && (anwser.id == _anwser.id)) {
+            if (anwser.id == _anwser.id) {
                 if ( _anwser.next ) {
                     this.dialogue.updateDialogue(_anwser.next.random())
                 }
@@ -401,25 +407,21 @@ export class Bubble extends GameObject{
        let  _anwser = this.checkAnwser()
         switch (_anwser.réponse) {
             case true:
-                localStorage.setItem('score', (localStorage.getItem('score') ?? 0) + _anwser.value)
-                localStorage.setItem('last_score_movement', (localStorage.getItem('last_score_movement') ?? 0) + _anwser.value)
+                localStorage.setItem('score', parseInt((localStorage.getItem('score') ?? 0)) + _anwser.value)
+                localStorage.setItem('last_score_movement', parseInt((localStorage.getItem('last_score_movement') ?? 0) ) + _anwser.value)
                 this.state = "anwser"
-                if ( this.question.conten ) {
-                    this.updateText(this.question.content)
-                } else if (this.checkAnwser().next) {
-                    //
+                if ( this.question.content ) {
+                    this.updateText(this.question.contentt)
                 } else {
                     this.dialogue.nextTalk()
                 }
                 this.children = []
             case false:
-                localStorage.setItem('score', (localStorage.getItem('score') ?? 0) - _anwser.value)
-                localStorage.setItem('last_score_movement', (localStorage.getItem('last_score_movement') ?? 0) -_anwser.value)
+                localStorage.setItem('score', parseInt((localStorage.getItem('score') ?? 0)) - _anwser.value)
+                localStorage.setItem('last_score_movement', parseInt((localStorage.getItem('last_score_movement') ?? 0) ) -_anwser.value)
                 this.state = "anwser"
                 if ( this.question.conten ) {
                     this.updateText(this.question.content)
-                } else if (this.checkAnwser().next) {
-                    //
                 } else {
                     this.dialogue.nextTalk()
                 }
