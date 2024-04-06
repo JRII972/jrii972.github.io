@@ -7,7 +7,7 @@ score_description = localStorage.getItem('score_description') ?? null
 
 if (last_score_movement) {
   if (last_score_movement > 0 ){
-    document.getElementById('score-movement').innerHTML = "<p>" + localStorage.getItem('pseudo') + " vous avez gagner " + last_score_movement + " point(s) !</p>"
+    document.getElementById('score-movement').innerHTML = "<p>" + localStorage.getItem('pseudo') + " vous avez gagné " + last_score_movement + " point(s) !</p>"
   } else {
     document.getElementById('score-movement').innerHTML = "<p>" + localStorage.getItem('pseudo') + " vous avez perdu " + last_score_movement + " point(s) !</p>"
   }
