@@ -32,13 +32,10 @@ function proceedToTest() {
     checkInput();
   });
   btnProceed.onclick = () => {    
-    if (myInput.checked){
-      if ( (pseudo.value != '') ) {
-        localStorage.setItem('pseudo', pseudo.value)
-        localStorage.setItem('administration', administration.value)
-        location.href = "/";
-      }
-    }
+    
+    localStorage.setItem('pseudo', pseudo.value)
+    localStorage.setItem('administration', administration.value)
+    location.href = "/";
     
   };
 }
