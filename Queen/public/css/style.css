@@ -1,0 +1,216 @@
+@font-face {
+    font-family: 'Dungeon Drop Case';
+    src: url('/Queen/public/fonts/Dungeon Drop Case/Dungeon Drop Case.otf');
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Mr Eaves Small Caps';
+    src: url('/Queen/public/fonts/Mr Eaves/Mr Eaves Small Caps.otf');
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Bookinsanity';
+    src: url('/Queen/public/fonts/Bookinsanity/Bookinsanity.otf');
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Bookinsanity';
+    src: url('/Queen/public/fonts/Bookinsanity/Bookinsanity Italic.otf');
+    font-style:italic;
+}
+@font-face {
+    font-family: 'Bookinsanity';
+    src: url('/Queen/public/fonts/Bookinsanity/Bookinsanity Bold.otf');
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'Bookinsanity';
+    src: url('/Queen/public/fonts/Bookinsanity/Bookinsanity Bold Italic.otf');
+    font-style: italic;
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'Nodesto Caps Condensed';
+    src: url('/Queen/public/fonts/Nodesto Caps Condensed/Nodesto Caps Condensed.otf');
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Nodesto Caps Condensed';
+    src: url('/Queen/public/fonts/Nodesto Caps Condensed/NodestoCapsCondensed-Italic.otf');
+    font-style:italic;
+}
+@font-face {
+    font-family: 'Nodesto Caps Condensed';
+    src: url('/Queen/public/fonts/Nodesto Caps Condensed/NodestoCapsCondensed-Bold.otf');
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'Nodesto Caps Condensed';
+    src: url('/Queen/public/fonts/Nodesto Caps Condensed/NodestoCapsCondensed-Bold Italic.otf');
+    font-style: italic;
+    font-weight: 700;
+}
+
+body {
+    font-family: 'Bookinsanity', Arial, sans-serif;
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+.data-box {
+    background: linear-gradient(to bottom, #164C21, #2a2a2a 90px);
+    border: 2px solid #444;
+    border-radius: 10px;
+    width: 300px;
+    margin: 50px auto;
+    box-shadow: 0 0 10px #000;
+}
+
+.data-box > div {            
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.data-box .data-header {
+    padding-bottom: 5px;
+}
+
+.data-box h1 {
+    color: #00BE3A;
+    font-size: 18px;
+    font-family: 'Bookinsanity';
+    font-weight: 100;
+    margin-bottom: 10px;
+}
+.damage, .weapon-enchantment, .proficiency, .description, .warning, .type {
+    margin-bottom: 10px;
+}
+.damage span, .proficiency span, .description span, .warning span, .type span {
+    display: block;
+    margin-top: 5px;
+}
+.damage img, .proficiency img, .type img {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.damage span, .weapon-enchantment span, .proficiency span, .description span, .warning span {
+    font-size: 14px;
+}
+.warning {
+    color: #ffa500;
+}
+.cost {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cost img {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.weapon-enchantment {
+    background-color: #322C27;
+    padding-top: 13px;
+    padding-bottom: 13px!important;
+    border: 1px solid #4A443E;
+    border-left: 0;
+    border-right: 0;
+    span {
+        vertical-align: middle;
+    }
+}
+
+.damage {
+    display: flex;
+    flex-direction: column;
+
+    .sub-info {
+        font-style: italic;
+    }
+}
+
+.cost {
+    background: linear-gradient(to bottom, #231B21, #331F3E 80%);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-top: 8px;
+    padding-bottom: 8px!important;
+    font-size: .9em;
+    span {
+        margin-left: 5px;
+    }
+}
+
+.data-header {
+    display: flex;
+    flex-direction: row;
+    padding-right: 0!important;
+}
+
+.data-info {
+    width: 40%;
+}
+.data-img {
+    max-height: 100px;
+    width: 60%;
+    display: inline-flex;
+    justify-content: end;
+}
+
+.data-img > img {
+    width: 150px;
+    object-fit: cover;
+}
+
+.description {
+    font-style: italic;
+    color: #b3b3b3;
+}
+
+.proficiency {
+    color: bisque;
+}
+.proficiency-icon {
+    margin: 8px;
+    border: 2px solid #4A443E;
+    background-color: rgba(129, 67, 163, 0.64);
+}
+
+.more-info {
+    display: none;
+}
+
+.diagram {
+    display: flex;
+}
+
+.diagram.row {
+    justify-content: center;
+    flex-direction: row;
+}  
+
+.diagram.column {
+    flex-direction: column;
+    justify-content: center;
+}
+
+.diagram.spacer {
+    margin: 100px;
+}
+
+.data-box {
+    margin: 50px;
+}
+
+.line {
+    position: absolute;
+}
+
+#jsplumb  {
+    /* overflow: hidden;
+    height: 100vh; */
+}
+#jsplumb.column {
+    flex-direction: column;
+}

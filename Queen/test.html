@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./public/css/style.css" rel="stylesheet">
+<script src="node_modules/@jsplumb/browser-ui/js/jsplumb.browser-ui.umd.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/jsplumb@2.15.6/css/jsplumbtoolkit-defaults.min.css" rel="stylesheet">
+<!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.13.3/jquery-ui.min.js" integrity="sha256-sw0iNNXmOJbQhYFuC9OF2kOlD5KQKe1y5lfBn4C9Sjg=" crossorigin="anonymous"></script> -->
+
+</head>
+<body>
+    <div id="jsplumb" class="diagram column">
+        <div class="diagram row">
+            <div class="data-box" id="container0">
+                <div class="data-header">
+                    <div class="data-info">
+                        <h1>Twins</h1>
+                        <div class="damage">
+                            <div>
+                                <!-- <img src="./.png" alt="Damage Icon" width="20"> -->
+                                + 25 % Déguat
+                            </div>
+                            <span class="sub-info">Survie</span>
+                        </div>
+                    </div>
+                    <div class="data-img">
+                        <img src="./public/img/twins.png" alt="Data Icon">
+                    </div>
+                </div>
+                <div class="weapon-enchantment more-info">
+                    <span>Collaboratiion</span>
+                </div>
+                <div class="proficiency more-info">
+                    <span>25 % déguat supplémentaire si attaque la même cible durant le même tour</span>
+                    <img src="./public/img/icon/bonus-deg.png" alt="Proficiency Icon" width="35" class="proficiency-icon">
+                </div>
+                <div class="description more-info">
+                    <span>bonus de dégât si attaque la même personne que son jumeau spirituelle</span>
+                </div>
+                <div class="warning more-info">
+                    <span>⚠️ deux joueur <d style="color: bisque;">doivent</d> prendre la compétence en même temps, et s'associé </b> L'amitier, c'est pour la vie </span>
+                </div>
+                <!-- <div class="type">
+                    <img src="mace_icon.png" alt="Mace Icon" width="20">
+                    Mace
+                </div> -->
+                <div class="cost">
+                    <span>9 ⚖️</span>
+                    <span>2⚡</span>
+                </div>
+            </div>
+        
+            <div class="data-box" id="container1">
+                <div class="data-header">
+                    <div class="data-info">
+                        <h1>Twins</h1>
+                        <div class="damage">
+                            <div>
+                                <!-- <img src="./.png" alt="Damage Icon" width="20"> -->
+                                + 25 % Déguat
+                            </div>
+                            <span class="sub-info">Survie</span>
+                        </div>
+                    </div>
+                    <div class="data-img">
+                        <img src="./public/img/twins.png" alt="Data Icon">
+                    </div>
+                </div>
+                <div class="weapon-enchantment more-info">
+                    <span>Collaboratiion</span>
+                </div>
+                <div class="proficiency more-info">
+                    <span>25 % déguat supplémentaire si attaque la même cible durant le même tour</span>
+                    <img src="./public/img/icon/bonus-deg.png" alt="Proficiency Icon" width="35" class="proficiency-icon">
+                </div>
+                <div class="description more-info">
+                    <span>bonus de dégât si attaque la même personne que son jumeau spirituelle</span>
+                </div>
+                <div class="warning more-info">
+                    <span>⚠️ deux joueur <d style="color: bisque;">doivent</d> prendre la compétence en même temps, et s'associé </b> L'amitier, c'est pour la vie </span>
+                </div>
+                <!-- <div class="type">
+                    <img src="mace_icon.png" alt="Mace Icon" width="20">
+                    Mace
+                </div> -->
+                <div class="cost">
+                    <span>9 ⚖️</span>
+                    <span>2⚡</span>
+                </div>
+            </div>
+            
+            
+        </div>
+        <div class="diagram row">
+            <div class="data-box" id="container2">
+                <div class="data-header">
+                    <div class="data-info">
+                        <h1>Twins</h1>
+                        <div class="damage">
+                            <div>
+                                <!-- <img src="./.png" alt="Damage Icon" width="20"> -->
+                                + 25 % Déguat
+                            </div>
+                            <span class="sub-info">Survie</span>
+                        </div>
+                    </div>
+                    <div class="data-img">
+                        <img src="./public/img/twins.png" alt="Data Icon">
+                    </div>
+                </div>
+                <div class="weapon-enchantment more-info">
+                    <span>Collaboratiion</span>
+                </div>
+                <div class="proficiency more-info">
+                    <span>25 % déguat supplémentaire si attaque la même cible durant le même tour</span>
+                    <img src="./public/img/icon/bonus-deg.png" alt="Proficiency Icon" width="35" class="proficiency-icon">
+                </div>
+                <div class="description more-info">
+                    <span>bonus de dégât si attaque la même personne que son jumeau spirituelle</span>
+                </div>
+                <div class="warning more-info">
+                    <span>⚠️ deux joueur <d style="color: bisque;">doivent</d> prendre la compétence en même temps, et s'associé </b> L'amitier, c'est pour la vie </span>
+                </div>
+                <!-- <div class="type">
+                    <img src="mace_icon.png" alt="Mace Icon" width="20">
+                    Mace
+                </div> -->
+                <div class="cost">
+                    <span>9 ⚖️</span>
+                    <span>2⚡</span>
+                </div>
+            </div>
+            <div class="diagram spacer"></div>
+            <div class="data-box" id="container3">
+                <div class="data-header">
+                    <div class="data-info">
+                        <h1>Twins</h1>
+                        <div class="damage">
+                            <div>
+                                <!-- <img src="./.png" alt="Damage Icon" width="20"> -->
+                                + 25 % Déguat
+                            </div>
+                            <span class="sub-info">Survie</span>
+                        </div>
+                    </div>
+                    <div class="data-img">
+                        <img src="./public/img/twins.png" alt="Data Icon">
+                    </div>
+                </div>
+                <div class="weapon-enchantment more-info">
+                    <span>Collaboratiion</span>
+                </div>
+                <div class="proficiency more-info">
+                    <span>25 % déguat supplémentaire si attaque la même cible durant le même tour</span>
+                    <img src="./public/img/icon/bonus-deg.png" alt="Proficiency Icon" width="35" class="proficiency-icon">
+                </div>
+                <div class="description more-info">
+                    <span>bonus de dégât si attaque la même personne que son jumeau spirituelle</span>
+                </div>
+                <div class="warning more-info">
+                    <span>⚠️ deux joueur <d style="color: bisque;">doivent</d> prendre la compétence en même temps, et s'associé </b> L'amitier, c'est pour la vie </span>
+                </div>
+                <!-- <div class="type">
+                    <img src="mace_icon.png" alt="Mace Icon" width="20">
+                    Mace
+                </div> -->
+                <div class="cost">
+                    <span>9 ⚖️</span>
+                    <span>2⚡</span>
+                </div>
+            </div>
+        </div>  
+        
+        <div class="diagram row">
+            <div class="data-box" id="container4">
+                <div class="data-header">
+                    <div class="data-info">
+                        <h1>Twins</h1>
+                        <div class="damage">
+                            <div>
+                                <!-- <img src="./.png" alt="Damage Icon" width="20"> -->
+                                + 25 % Déguat
+                            </div>
+                            <span class="sub-info">Survie</span>
+                        </div>
+                    </div>
+                    <div class="data-img">
+                        <img src="./public/img/twins.png" alt="Data Icon">
+                    </div>
+                </div>
+                <div class="weapon-enchantment more-info">
+                    <span>Collaboratiion</span>
+                </div>
+                <div class="proficiency more-info">
+                    <span>25 % déguat supplémentaire si attaque la même cible durant le même tour</span>
+                    <img src="./public/img/icon/bonus-deg.png" alt="Proficiency Icon" width="35" class="proficiency-icon">
+                </div>
+                <div class="description more-info">
+                    <span>bonus de dégât si attaque la même personne que son jumeau spirituelle</span>
+                </div>
+                <div class="warning more-info">
+                    <span>⚠️ deux joueur <d style="color: bisque;">doivent</d> prendre la compétence en même temps, et s'associé </b> L'amitier, c'est pour la vie </span>
+                </div>
+                <!-- <div class="type">
+                    <img src="mace_icon.png" alt="Mace Icon" width="20">
+                    Mace
+                </div> -->
+                <div class="cost">
+                    <span>9 ⚖️</span>
+                    <span>2⚡</span>
+                </div>
+            </div>
+            
+            <div class="data-box" id="container5">
+                <div class="data-header">
+                    <div class="data-info">
+                        <h1>Twins</h1>
+                        <div class="damage">
+                            <div>
+                                <!-- <img src="./.png" alt="Damage Icon" width="20"> -->
+                                + 25 % Déguat
+                            </div>
+                            <span class="sub-info">Survie</span>
+                        </div>
+                    </div>
+                    <div class="data-img">
+                        <img src="./public/img/twins.png" alt="Data Icon">
+                    </div>
+                </div>
+                <div class="weapon-enchantment more-info">
+                    <span>Collaboratiion</span>
+                </div>
+                <div class="proficiency more-info">
+                    <span>25 % déguat supplémentaire si attaque la même cible durant le même tour</span>
+                    <img src="./public/img/icon/bonus-deg.png" alt="Proficiency Icon" width="35" class="proficiency-icon">
+                </div>
+                <div class="description more-info">
+                    <span>bonus de dégât si attaque la même personne que son jumeau spirituelle</span>
+                </div>
+                <div class="warning more-info">
+                    <span>⚠️ deux joueur <d style="color: bisque;">doivent</d> prendre la compétence en même temps, et s'associé </b> L'amitier, c'est pour la vie </span>
+                </div>
+                <!-- <div class="type">
+                    <img src="mace_icon.png" alt="Mace Icon" width="20">
+                    Mace
+                </div> -->
+                <div class="cost">
+                    <span>9 ⚖️</span>
+                    <span>2⚡</span>
+                </div>
+            </div>
+            
+            <div class="data-box" id="container6">
+                <div class="data-header">
+                    <div class="data-info">
+                        <h1>Twins</h1>
+                        <div class="damage">
+                            <div>
+                                <!-- <img src="./.png" alt="Damage Icon" width="20"> -->
+                                + 25 % Déguat
+                            </div>
+                            <span class="sub-info">Survie</span>
+                        </div>
+                    </div>
+                    <div class="data-img">
+                        <img src="./public/img/twins.png" alt="Data Icon">
+                    </div>
+                </div>
+                <div class="weapon-enchantment more-info">
+                    <span>Collaboratiion</span>
+                </div>
+                <div class="proficiency more-info">
+                    <span>25 % déguat supplémentaire si attaque la même cible durant le même tour</span>
+                    <img src="./public/img/icon/bonus-deg.png" alt="Proficiency Icon" width="35" class="proficiency-icon">
+                </div>
+                <div class="description more-info">
+                    <span>bonus de dégât si attaque la même personne que son jumeau spirituelle</span>
+                </div>
+                <div class="warning more-info">
+                    <span>⚠️ deux joueur <d style="color: bisque;">doivent</d> prendre la compétence en même temps, et s'associé </b> L'amitier, c'est pour la vie </span>
+                </div>
+                <!-- <div class="type">
+                    <img src="mace_icon.png" alt="Mace Icon" width="20">
+                    Mace
+                </div> -->
+                <div class="cost">
+                    <span>9 ⚖️</span>
+                    <span>2⚡</span>
+                </div>
+            </div>
+        </div>
+    
+        
+        <div class="diagram row">
+            <div class="data-box" id="container7">
+                <div class="data-header">
+                    <div class="data-info">
+                        <h1>Twins</h1>
+                        <div class="damage">
+                            <div>
+                                <!-- <img src="./.png" alt="Damage Icon" width="20"> -->
+                                + 25 % Déguat
+                            </div>
+                            <span class="sub-info">Survie</span>
+                        </div>
+                    </div>
+                    <div class="data-img">
+                        <img src="./public/img/twins.png" alt="Data Icon">
+                    </div>
+                </div>
+                <div class="weapon-enchantment more-info">
+                    <span>Collaboratiion</span>
+                </div>
+                <div class="proficiency more-info">
+                    <span>25 % déguat supplémentaire si attaque la même cible durant le même tour</span>
+                    <img src="./public/img/icon/bonus-deg.png" alt="Proficiency Icon" width="35" class="proficiency-icon">
+                </div>
+                <div class="description more-info">
+                    <span>bonus de dégât si attaque la même personne que son jumeau spirituelle</span>
+                </div>
+                <div class="warning more-info">
+                    <span>⚠️ deux joueur <d style="color: bisque;">doivent</d> prendre la compétence en même temps, et s'associé </b> L'amitier, c'est pour la vie </span>
+                </div>
+                <!-- <div class="type">
+                    <img src="mace_icon.png" alt="Mace Icon" width="20">
+                    Mace
+                </div> -->
+                <div class="cost">
+                    <span>9 ⚖️</span>
+                    <span>2⚡</span>
+                </div>
+            </div>
+            <div class="diagram spacer"></div>        
+            <div class="data-box" id="container8">
+                <div class="data-header">
+                    <div class="data-info">
+                        <h1>Twins</h1>
+                        <div class="damage">
+                            <div>
+                                <!-- <img src="./.png" alt="Damage Icon" width="20"> -->
+                                + 25 % Déguat
+                            </div>
+                            <span class="sub-info">Survie</span>
+                        </div>
+                    </div>
+                    <div class="data-img">
+                        <img src="./public/img/twins.png" alt="Data Icon">
+                    </div>
+                </div>
+                <div class="weapon-enchantment more-info">
+                    <span>Collaboratiion</span>
+                </div>
+                <div class="proficiency more-info">
+                    <span>25 % déguat supplémentaire si attaque la même cible durant le même tour</span>
+                    <img src="./public/img/icon/bonus-deg.png" alt="Proficiency Icon" width="35" class="proficiency-icon">
+                </div>
+                <div class="description more-info">
+                    <span>bonus de dégât si attaque la même personne que son jumeau spirituelle</span>
+                </div>
+                <div class="warning more-info">
+                    <span>⚠️ deux joueur <d style="color: bisque;">doivent</d> prendre la compétence en même temps, et s'associé </b> L'amitier, c'est pour la vie </span>
+                </div>
+                <!-- <div class="type">
+                    <img src="mace_icon.png" alt="Mace Icon" width="20">
+                    Mace
+                </div> -->
+                <div class="cost">
+                    <span>9 ⚖️</span>
+                    <span>2⚡</span>
+                </div>
+            </div>
+        </div>
+    
+        
+        <div class="diagram row">    
+            <div class="data-box" id="container9">
+                <div class="data-header">
+                    <div class="data-info">
+                        <h1>Twins</h1>
+                        <div class="damage">
+                            <div>
+                                <!-- <img src="./.png" alt="Damage Icon" width="20"> -->
+                                + 25 % Déguat
+                            </div>
+                            <span class="sub-info">Survie</span>
+                        </div>
+                    </div>
+                    <div class="data-img">
+                        <img src="./public/img/twins.png" alt="Data Icon">
+                    </div>
+                </div>
+                <div class="weapon-enchantment more-info">
+                    <span>Collaboratiion</span>
+                </div>
+                <div class="proficiency more-info">
+                    <span>25 % déguat supplémentaire si attaque la même cible durant le même tour</span>
+                    <img src="./public/img/icon/bonus-deg.png" alt="Proficiency Icon" width="35" class="proficiency-icon">
+                </div>
+                <div class="description more-info">
+                    <span>bonus de dégât si attaque la même personne que son jumeau spirituelle</span>
+                </div>
+                <div class="warning more-info">
+                    <span>⚠️ deux joueur <d style="color: bisque;">doivent</d> prendre la compétence en même temps, et s'associé </b> L'amitier, c'est pour la vie </span>
+                </div>
+                <!-- <div class="type">
+                    <img src="mace_icon.png" alt="Mace Icon" width="20">
+                    Mace
+                </div> -->
+                <div class="cost">
+                    <span>9 ⚖️</span>
+                    <span>2⚡</span>
+                </div>
+            </div>
+            <div class="data-box" id="container10">
+                <div class="data-header">
+                    <div class="data-info">
+                        <h1>Twins</h1>
+                        <div class="damage">
+                            <div>
+                                <!-- <img src="./.png" alt="Damage Icon" width="20"> -->
+                                + 25 % Déguat
+                            </div>
+                            <span class="sub-info">Survie</span>
+                        </div>
+                    </div>
+                    <div class="data-img">
+                        <img src="./public/img/twins.png" alt="Data Icon">
+                    </div>
+                </div>
+                <div class="weapon-enchantment more-info">
+                    <span>Collaboratiion</span>
+                </div>
+                <div class="proficiency more-info">
+                    <span>25 % déguat supplémentaire si attaque la même cible durant le même tour</span>
+                    <img src="./public/img/icon/bonus-deg.png" alt="Proficiency Icon" width="35" class="proficiency-icon">
+                </div>
+                <div class="description more-info">
+                    <span>bonus de dégât si attaque la même personne que son jumeau spirituelle</span>
+                </div>
+                <div class="warning more-info">
+                    <span>⚠️ deux joueur <d style="color: bisque;">doivent</d> prendre la compétence en même temps, et s'associé </b> L'amitier, c'est pour la vie </span>
+                </div>
+                <!-- <div class="type">
+                    <img src="mace_icon.png" alt="Mace Icon" width="20">
+                    Mace
+                </div> -->
+                <div class="cost">
+                    <span>9 ⚖️</span>
+                    <span>2⚡</span>
+                </div>
+            </div>
+            <div class="data-box" id="container11">
+                <div class="data-header">
+                    <div class="data-info">
+                        <h1>Twins</h1>
+                        <div class="damage">
+                            <div>
+                                <!-- <img src="./.png" alt="Damage Icon" width="20"> -->
+                                + 25 % Déguat
+                            </div>
+                            <span class="sub-info">Survie</span>
+                        </div>
+                    </div>
+                    <div class="data-img">
+                        <img src="./public/img/twins.png" alt="Data Icon">
+                    </div>
+                </div>
+                <div class="weapon-enchantment more-info">
+                    <span>Collaboratiion</span>
+                </div>
+                <div class="proficiency more-info">
+                    <span>25 % déguat supplémentaire si attaque la même cible durant le même tour</span>
+                    <img src="./public/img/icon/bonus-deg.png" alt="Proficiency Icon" width="35" class="proficiency-icon">
+                </div>
+                <div class="description more-info">
+                    <span>bonus de dégât si attaque la même personne que son jumeau spirituelle</span>
+                </div>
+                <div class="warning more-info">
+                    <span>⚠️ deux joueur <d style="color: bisque;">doivent</d> prendre la compétence en même temps, et s'associé </b> L'amitier, c'est pour la vie </span>
+                </div>
+                <!-- <div class="type">
+                    <img src="mace_icon.png" alt="Mace Icon" width="20">
+                    Mace
+                </div> -->
+                <div class="cost">
+                    <span>9 ⚖️</span>
+                    <span>2⚡</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+<script>
+    var anchors_side = ["Bottom", "Top" ]
+</script>
+<script src="./public/js/test.js" ></script>
+</body>
+</html>
