@@ -129,6 +129,10 @@
         .damage {
             display: flex;
             flex-direction: column;
+
+            .sub-info {
+                font-style: italic;
+            }
         }
 
         .cost {
@@ -170,10 +174,17 @@
             color: #b3b3b3;
         }
 
+        .proficiency {
+            color: bisque;
+        }
         .proficiency-icon {
             margin: 8px;
             border: 2px solid #4A443E;
             background-color: rgba(129, 67, 163, 0.64);
+        }
+
+        .more-info {
+            display: none;
         }
     </style>
 </head>
@@ -186,27 +197,27 @@
             <div class="damage">
                 <div>
                     <!-- <img src="./.png" alt="Damage Icon" width="20"> -->
-                    1~6 Damage
+                    + 25 % Déguat
                 </div>
-                <span>1d6 Bludgeoning</span>
+                <span class="sub-info">Survie</span>
             </div>
         </div>
         <div class="data-img">
             <img src="./public/img/twins.png" alt="Data Icon">
         </div>
     </div>
-    <div class="weapon-enchantment">
+    <div class="weapon-enchantment more-info">
         <span>Collaboratiion</span>
     </div>
-    <div class="proficiency">
-        <span>bonus de dégât si attaque la même personne que son jumeau spirituelle </span>
-        <img src="./public/img/icon/bonus-deg.png" alt="Proficiency Icon" width="40" class="proficiency-icon">
+    <div class="proficiency more-info">
+        <span>25 % déguat supplémentaire si attaque la même cible durant le même tour</span>
+        <img src="./public/img/icon/bonus-deg.png" alt="Proficiency Icon" width="35" class="proficiency-icon">
     </div>
-    <div class="description">
+    <div class="description more-info">
         <span>bonus de dégât si attaque la même personne que son jumeau spirituelle</span>
     </div>
-    <div class="warning">
-        <span>⚠️ deux joueur <d style="color: wheat;">doivent</d> prendre la compétence en même temps</span>
+    <div class="warning more-info">
+        <span>⚠️ deux joueur <d style="color: bisque;">doivent</d> prendre la compétence en même temps, et s'associé </b> L'amitier, c'est pour la vie </span>
     </div>
     <!-- <div class="type">
         <img src="mace_icon.png" alt="Mace Icon" width="20">
@@ -218,5 +229,13 @@
     </div>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script >
+    $(document).ready(function(){
+        $('.data-header').click(function () {
+            $('.more-info').toggle();
+        } );;
+    });
+</script>
 </body>
 </html>
