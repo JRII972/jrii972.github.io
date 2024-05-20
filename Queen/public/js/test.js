@@ -1,8 +1,15 @@
 
 $(document).ready(function(){
     $('.data-box').click(function () {
-        $('.more-info').toggle();
-    } );;
+        if ( $(this).find('.more-info').is(":hidden")) {
+            $('.more-info').hide()
+            $(this).find('.more-info').toggle();
+        } else {
+            $('.more-info').hide()
+        }
+        
+        document.instance.repaint(document.getElementById("jsplumb"));
+    } );
 });
 
 jQuery.fn.extend({
@@ -36,6 +43,10 @@ jsPlumb.ready(function () {
     });
   
     addEventListener("resize", (event) => { instance.repaint(document.getElementById("jsplumb")); });
+    // $('.data-box').on( "click", function() {
+    //     setTimeout( function() { instance.repaint(document.getElementById("jsplumb"));}, 10);
+    // });
+    
     // suspend drawing and initialise.
     instance.batch(function () {
         //overlay
