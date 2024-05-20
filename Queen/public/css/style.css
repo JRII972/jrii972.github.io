@@ -65,6 +65,7 @@ body {
     box-shadow: 0 0 10px #000;
 }
 
+
 .data-box > div {            
     padding-left: 20px;
     padding-right: 20px;
@@ -81,6 +82,55 @@ body {
     font-weight: 100;
     margin-bottom: 10px;
 }
+
+.data-box.assassin {    
+    background: linear-gradient(to bottom, #163b4c, #2a2a2a 90px);
+}
+
+.data-box.assassin h1 {
+    color: #0095be;
+}
+
+.data-box.force {    
+    background: linear-gradient(to bottom, #4c4616, #2a2a2a 90px);
+}
+
+.data-box.force h1 {
+    color: #be9b00;
+}
+
+.data-box.social {    
+    background: linear-gradient(to bottom, #32164c, #2a2a2a 90px);
+}
+
+.data-box.social h1 {
+    color: #9500be;
+}
+
+.data-box.autre {    
+    background: linear-gradient(to bottom, #8f8f8f, #2a2a2a 90px);
+}
+
+.data-box.autre h1 {
+    color: #e4e4e4;
+}
+
+.data-box.artisana {    
+    background: linear-gradient(to bottom, #4c2f16, #2a2a2a 90px);
+}
+
+.data-box.artisana h1 {
+    color: #be7500;
+}
+
+.data-box.distance {    
+    background: linear-gradient(to bottom, #4c4616, #2a2a2a 90px);
+}
+
+.data-box.distance h1 {
+    color: #be9b00;
+}
+
 .damage, .weapon-enchantment, .proficiency, .description, .warning, .type {
     margin-bottom: 10px;
 }
