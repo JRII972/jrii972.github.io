@@ -63,6 +63,7 @@ body {
     width: 300px;
     margin: 50px auto;
     box-shadow: 0 0 10px #000;
+    height: fit-content;
 }
 
 
