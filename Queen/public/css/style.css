@@ -57,7 +57,7 @@ body {
     color: #ffffff;
 }
 .data-box {
-    background: linear-gradient(to bottom, #164C21, #2a2a2a 90px);
+    background: linear-gradient(to bottom, #164C21, #2a2a2a 80%);
     border: 2px solid #444;
     border-radius: 10px;
     width: 300px;
@@ -85,7 +85,7 @@ body {
 }
 
 .data-box.assassin {    
-    background: linear-gradient(to bottom, #163b4c, #2a2a2a 90px);
+    background: linear-gradient(to bottom, #163b4c, #2a2a2a 80%);
 }
 
 .data-box.assassin h1 {
@@ -93,7 +93,7 @@ body {
 }
 
 .data-box.force {    
-    background: linear-gradient(to bottom, #4c4616, #2a2a2a 90px);
+    background: linear-gradient(to bottom, #4c4616, #2a2a2a 80%);
 }
 
 .data-box.force h1 {
@@ -101,7 +101,7 @@ body {
 }
 
 .data-box.social {    
-    background: linear-gradient(to bottom, #32164c, #2a2a2a 90px);
+    background: linear-gradient(to bottom, #32164c, #2a2a2a 80%);
 }
 
 .data-box.social h1 {
@@ -109,7 +109,7 @@ body {
 }
 
 .data-box.autre {    
-    background: linear-gradient(to bottom, #8f8f8f, #2a2a2a 90px);
+    background: linear-gradient(to bottom, #8f8f8f, #2a2a2a 80%);
 }
 
 .data-box.autre h1 {
@@ -117,7 +117,7 @@ body {
 }
 
 .data-box.artisana {    
-    background: linear-gradient(to bottom, #4c2f16, #2a2a2a 90px);
+    background: linear-gradient(to bottom, #4c2f16, #2a2a2a 80%);
 }
 
 .data-box.artisana h1 {
@@ -125,7 +125,7 @@ body {
 }
 
 .data-box.distance {    
-    background: linear-gradient(to bottom, #4c4616, #2a2a2a 90px);
+    background: linear-gradient(to bottom, #4c4616, #2a2a2a 80%);
 }
 
 .data-box.distance h1 {
