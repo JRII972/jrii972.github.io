@@ -31,6 +31,7 @@ jsPlumb.ready(function () {
     });
   
     addEventListener("resize", (event) => { instance.repaint(document.getElementById("jsplumb")); });
+    addEventListener("scroll", (event) => { instance.repaint(document.getElementById("jsplumb")); });
     // $('.data-box').on( "click", function() {
     //     setTimeout( function() { instance.repaint(document.getElementById("jsplumb"));}, 10);
     // });

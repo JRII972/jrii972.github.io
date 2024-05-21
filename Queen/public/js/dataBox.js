@@ -80,7 +80,7 @@ $(document).ready(function(data){
         )
     };
 
-    genBox(data);
+    // genBox(data);
     
 });
 
@@ -88,6 +88,8 @@ $(document).ready(function(data){
 $(document).ready(function(){
     $('.data-box').click(function () {
         if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            $('#modalView .modal-content').empty();
+            $(this).clone().appendTo('#modalView .modal-content');
             $("#modalView").show();
         } else {
             if ( $(this).find('.more-info').is(":hidden")) {
@@ -111,4 +113,9 @@ $(document).ready(function(){
             $("#modalView").hide();
         }
     });
+
+    addEventListener("gestureend", (event) => {
+        console.log(event)
+    });
+
 });
