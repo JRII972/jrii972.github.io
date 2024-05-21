@@ -124,12 +124,20 @@ body {
     color: #e4e4e4;
 }
 
-.data-box.artisana .data-header {    
+.data-box.artisanat .data-header {    
     background: linear-gradient(to bottom, #4c2f16, #2a2a2a 95%);
 }
 
-.data-box.artisana h1 {
+.data-box.artisanat h1 {
     color: #be7500;
+}
+
+.data-box.magie .data-header {    
+    background: linear-gradient(to bottom, #164c44, #2a2a2a 95%);
+}
+
+.data-box.magie h1 {
+    color: #00beb4;
 }
 
 .data-box.distance .data-header {    
@@ -206,11 +214,12 @@ body {
     display: flex;
     flex-direction: row;
     padding-right: 0!important;    
-    max-height: 100px;
+    max-height: 130px;
 }
 
 .data-info {
-    width: 40%;
+    min-width: 40%;
+    max-width: 50%;
 }
 .data-img {
     /* max-height: 100px; */
@@ -274,21 +283,23 @@ nav {
         margin: 0;
         padding: 0;
         overflow: hidden;
-        display: inline-flex;
+        display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
 
         li {
-            background-color: #33a648;
-            padding: 1em;
-            padding-left: 1.5em;
-            padding-right: 1.5em;
+            /* background-color: #33a648; */
+            padding: .5em;
+            padding-left: 1em;
+            padding-right: 1em;
             /* margin-right: 10px; */
             a {
                 font-family: 'Mr Eaves';
-                color: #2a2a2a;
-                font-weight: 700;
-                font-size: large;
-                text-decoration: none;
+                color: #be9b00;
+                text-decoration: underline;
+                /* font-weight: 700; */
+                /* font-size: medium; */
             }
         }
     }
@@ -358,7 +369,7 @@ nav {
     .more-info {
         display: block;
     }
-    
+
     .data-box > div {
         padding-left: 2vh;
         padding-right: 2vh;
@@ -377,20 +388,24 @@ nav {
     }
 
     .data-img > img {
-        width: 15vh;
+        width: 100%;
         object-fit: cover;
     }
 
     .data-header {
-        max-height: 15vh;
+        max-height: 20vh;
+        display: flex;
     }
 
     .data-info {
         font-size: medium;
+
+        .sub-info {
+            font-size:small;
+        }
     }
 
     .data-img {
-        width: 60%;
         display: inline-flex;
         justify-content: end;
     }

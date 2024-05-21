@@ -1,76 +1,62 @@
 
 $(document).ready(function(data){
-    data = {
-        "id" : "AGLETLV1",
-        "type" : "assassin",
-        "titre" : "AGLET",
-        "level" : "1",
-        "sub_info" : "A.G.L.E.T",
-        "categorie" : "Dash & Hit",
-        "bonus" : "Assaut guerrier latéral en traître",
-        "description" : "Si le joueur tente de reverser un ennemi en étant discret il gagne un bonus (égal au bonus de maitrise de son niveau) pour effectuer l'action. Si réussit, il inflige des dégâts (de son arme + ??)",
-        "warning" : false,
-        "style" : ["archerie"],
-        "prix" : 3,
-        "img" : "twins.png",
-    
-        "proficiency" : [
-            {
-                "icon" : "bonus-deg.png",
-                "alt" : "Bonus de dégat"
-            }
-        ]
-    }
 
     function genBox(data) {
-        var start = '<div class="data-box ' + data.type + '" id="' +  data.id + '">'
+        var start = '<div class="data-box ' + data.Type.toLowerCase() + '" id="' +  data.id + '">'
         var header = `
         <div class="data-header">
             <div class="data-info">
-                <h1>` + data.titre + `</h1>
+                <h1>` + data.Titre + `</h1>
                 <div class="damage">
                     <div>
-                        <!-- <img src="./.png" alt="Damage Icon" width="20"> -->
-                        ` + data.sub_info + `
+                        <!-- <img src="./public/img/icon/archerie.png" alt="Damage Icon" width="20"> -->
+                        ` + data.Sub_info + `
                     </div>
-                    <span class="sub-info">` + data.type + `</span>
+                    <span class="sub-info">` + data.Type + `</span>
                 </div>
             </div>
             <div class="data-img">
-                <img src="./public/img/` + data.img + `" alt="Data Icon">
+                <img src="./public/img/` + (data.img ? data.img : "bonus-deg.png") + `" alt="Data Icon">
             </div>
         </div>
         `
         var categorie = `
         <div class="weapon-enchantment more-info">
-            <span>` + data.categorie + `</span>
+            <span>` + data.Catégorie + `</span>
         </div>
         `
-        
+        data.proficiency = [
+            {
+                "icon" : "bonus-deg.png",
+                "alt" : "Bonus de dégat"
+            }
+        ]
+
         var proficiency = `<div class="proficiency more-info">
-            <span>` + data.bonus + `</span>
+            <span>` + data.Bonus + `</span>
             ` + data.proficiency.map( function(e){
-                    return '<img src="./public/img/icon/' + e.icon + '" alt="' + e.alt + '" width="35" class="proficiency-icon">';        
-                }).join() + `
+                return '<img src="./public/img/icon/' + e.icon + '" alt="' + e.alt + '" width="35" class="proficiency-icon">';        
+            }).join() + `
         </div>
         `
 
         var description = `<div class="description more-info">
-            <span>bonus de dégât si attaque la même personne que son jumeau spirituelle</span>
+            <span>` + data.Description + `</span>
         </div>`
         
-        var warning = data.warning ? `<div class="warning more-info">
-            <span>⚠️ ` + data.warning + `</span> 
+        var warning = data.Warning ? `<div class="warning more-info">
+            <span>⚠️ ` + data.Warning + `</span> 
         </div>` : ""
         
-        
+        data.style = [data.Style_1.toLowerCase()]
+        data.style = ["archerie"]
         var style = data.style ? '<div class="type">' + data.style.map( function(e){
             return '<span><img src="./public/img/icon/' + e + '.png" alt="Mace Icon" width="35"></span>' ;        
         }).join() + '</div>' : ""
 
         var cost = `<div class="cost">
             <span>` + '?' + `⚖️</span>
-            <span>` + data.prix + `⚡</span>
+            <span>` + data.Prix + `⚡</span>
         </div>` 
 
         var end = '</div>'
@@ -78,9 +64,28 @@ $(document).ready(function(data){
         $('body').prepend(
             start + header + categorie + proficiency + description + warning + style + cost + end
         )
+
+        $('#'+ data.id).click(function () {
+            if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+                $('#modalView .modal-content').empty();
+                $(this).clone().appendTo('#modalView .modal-content');
+                $("#modalView").show();
+            } else {
+                if ( $(this).find('.more-info').is(":hidden")) {
+                    $('.more-info').hide()
+                    $(this).find('.more-info').toggle();
+                } else {
+                    $('.more-info').hide()
+                }
+            }
+            
+            document.instance.repaint(document.getElementById("jsplumb"));
+        } );
     };
 
-    // genBox(data);
+    $.getJSON( "./public/js/data.json", function( data ) {
+        data.forEach(el => genBox(el));
+      });
     
 });
 
