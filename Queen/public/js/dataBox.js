@@ -2,7 +2,7 @@
 $(document).ready(function(data){
     data = {
         "id" : "AGLETLV1",
-        "type" : "assasin",
+        "type" : "assassin",
         "titre" : "AGLET",
         "level" : "1",
         "sub_info" : "A.G.L.E.T",
@@ -65,7 +65,7 @@ $(document).ready(function(data){
         
         
         var style = data.style ? '<div class="type">' + data.style.map( function(e){
-            return '<img src="./public/img/icon/' + e + '.png" alt="Mace Icon" width="35">' + e;        
+            return '<span><img src="./public/img/icon/' + e + '.png" alt="Mace Icon" width="35"></span>' ;        
         }).join() + '</div>' : ""
 
         var cost = `<div class="cost">

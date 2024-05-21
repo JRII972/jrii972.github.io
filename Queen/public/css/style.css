@@ -57,7 +57,7 @@ body {
     color: #ffffff;
 }
 .data-box {
-    background: linear-gradient(to bottom, #164C21, #2a2a2a 80%);
+    background-color: #2a2a2a;
     border: 2px solid #444;
     border-radius: 10px;
     width: 300px;
@@ -77,55 +77,62 @@ body {
 }
 
 .data-box h1 {
-    color: #00BE3A;
     font-size: 18px;
     font-family: 'Bookinsanity';
     font-weight: 100;
     margin-bottom: 10px;
 }
 
-.data-box.assassin {    
-    background: linear-gradient(to bottom, #163b4c, #2a2a2a 80%);
+.data-box.survie .data-header {    
+    background: linear-gradient(to bottom, #164C21, #2a2a2a 80%);
+}
+
+.data-box.survie h1 {
+    color: #00BE3A;
+}
+
+.data-box.assassin .data-header {    
+    background: linear-gradient(to bottom, #163b4c, #2a2a2a 95%);
 }
 
 .data-box.assassin h1 {
     color: #0095be;
 }
 
-.data-box.force {    
-    background: linear-gradient(to bottom, #4c4616, #2a2a2a 80%);
+.data-box.force .data-header {    
+    background: linear-gradient(to bottom, #4c4616, #2a2a2a 95%);
 }
 
 .data-box.force h1 {
     color: #be9b00;
 }
 
-.data-box.social {    
-    background: linear-gradient(to bottom, #32164c, #2a2a2a 80%);
+.data-box.social .data-header {    
+    background: linear-gradient(to bottom, #32164c, #2a2a2a 95%);
 }
 
 .data-box.social h1 {
     color: #9500be;
 }
 
-.data-box.autre {    
-    background: linear-gradient(to bottom, #8f8f8f, #2a2a2a 80%);
+.data-box.autre .data-header {    
+    background: linear-gradient(to bottom, #8f8f8f, #2a2a2a 95%);
 }
 
 .data-box.autre h1 {
     color: #e4e4e4;
 }
 
-.data-box.artisana {    
-    background: linear-gradient(to bottom, #4c2f16, #2a2a2a 80%);
+.data-box.artisana .data-header {    
+    background: linear-gradient(to bottom, #4c2f16, #2a2a2a 95%);
 }
 
 .data-box.artisana h1 {
     color: #be7500;
 }
 
-.data-box.distance {    
-    background: linear-gradient(to bottom, #4c4616, #2a2a2a 80%);
+.data-box.distance .data-header {    
+    background: linear-gradient(to bottom, #4c4616, #2a2a2a 95%);
 }
 
 .data-box.distance h1 {
@@ -265,4 +272,15 @@ body {
 }
 #jsplumb.column {
     flex-direction: column;
+}
+
+.data-box .type {
+    margin-bottom: 0px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    background: linear-gradient(0.07turn, #09141C, #2a2a2a 30%);
+
+    span {
+        margin: 0;
+    }
 }
