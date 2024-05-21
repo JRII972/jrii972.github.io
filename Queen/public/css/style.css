@@ -268,9 +268,15 @@ body {
 }
 
 #jsplumb  {
-    overflow: scroll;
-    height: 100vh; 
+    /* height: 100vh;  */
 }
+
+@media only screen and (max-width: 600px) {
+    #jsplumb  {
+        overflow: scroll;
+    }
+ }
+
 #jsplumb.column {
     flex-direction: column;
     width: max-content;
