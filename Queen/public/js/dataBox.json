@@ -1,0 +1,19 @@
+{
+    "type" : "assasin",
+    "titre" : "AGLET",
+    "sub_info" : "A.G.L.E.T",
+    "categorie" : "Dash & Hit",
+    "bonus" : "Assaut guerrier latéral en traître",
+    "description" : "Si le joueur tente de reverser un ennemi en étant discret il gagne un bonus (égal au bonus de maitrise de son niveau) pour effectuer l'action. Si réussit, il inflige des dégâts (de son arme + ??)",
+    "warning" : false,
+    "style" : [],
+    "prix" : 3,
+    "img" : "twins.png",
+
+    "proficiency" : [
+        {
+            "icon" : "bonus-deg.png",
+            "alt" : "Bonus de dégat"
+        }
+    ]
+}

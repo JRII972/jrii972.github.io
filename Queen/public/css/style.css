@@ -177,6 +177,7 @@ body {
 
     .sub-info {
         font-style: italic;
+        text-transform: capitalize;
     }
 }
 

@@ -1,16 +1,4 @@
 
-$(document).ready(function(){
-    $('.data-box').click(function () {
-        if ( $(this).find('.more-info').is(":hidden")) {
-            $('.more-info').hide()
-            $(this).find('.more-info').toggle();
-        } else {
-            $('.more-info').hide()
-        }
-        
-        document.instance.repaint(document.getElementById("jsplumb"));
-    } );
-});
 
 jQuery.fn.extend({
     setAttribute: function(type, value) {
