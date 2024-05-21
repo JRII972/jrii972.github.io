@@ -87,13 +87,28 @@ $(document).ready(function(data){
 
 $(document).ready(function(){
     $('.data-box').click(function () {
-        if ( $(this).find('.more-info').is(":hidden")) {
-            $('.more-info').hide()
-            $(this).find('.more-info').toggle();
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            $("#modalView").show();
         } else {
-            $('.more-info').hide()
+            if ( $(this).find('.more-info').is(":hidden")) {
+                $('.more-info').hide()
+                $(this).find('.more-info').toggle();
+            } else {
+                $('.more-info').hide()
+            }
         }
         
         document.instance.repaint(document.getElementById("jsplumb"));
     } );
+
+    $(document).mouseup(function(e) 
+    {
+        var container = $("#modalView .modal-content");
+
+        // if the target of the click isn't the container nor a descendant of the container
+        if (!container.is(e.target) && container.has(e.target).length === 0) 
+        {
+            $("#modalView").hide();
+        }
+    });
 });
