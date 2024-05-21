@@ -268,11 +268,12 @@ body {
 }
 
 #jsplumb  {
-    /* overflow: hidden;
-    height: 100vh; */
+    overflow: scroll;
+    height: 100vh; 
 }
 #jsplumb.column {
     flex-direction: column;
+    width: max-content;
 }
 
 .data-box .type {
