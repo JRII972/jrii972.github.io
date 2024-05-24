@@ -49,7 +49,7 @@ export function genBox(data, cible = 'body') {
     data.style = [data.Style_1.toLowerCase()]
     data.style = ["archerie"]
     var style = data.style ? '<div class="type">' + data.style.map( function(e){
-        return '<span><img src="./public/img/icon/' + e + '.png" alt="Mace Icon" width="35"></span>' ;        
+        return '<span><img src="./public/img/icon/' + e + '.png" alt="' + e + '" width="35"></span>' ;        
     }).join() + '</div>' : ""
 
     var cost = `<div class="cost"> ` + style + `
