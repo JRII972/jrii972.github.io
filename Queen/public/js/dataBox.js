@@ -52,15 +52,15 @@ export function genBox(data, cible = 'body') {
         return '<span><img src="./public/img/icon/' + e + '.png" alt="Mace Icon" width="35"></span>' ;        
     }).join() + '</div>' : ""
 
-    var cost = `<div class="cost">
-        <span>` + '?' + `⚖️</span>
-        <span>` + data.Prix + `⚡</span>
+    var cost = `<div class="cost"> ` + style + `
+        <div><span>` + '?' + `⚖️</span>
+        <span>` + data.Prix + `⚡</span></div>
     </div>` 
 
     var end = '</div>'
     console.log(cible)
     $(cible).append(
-        start + header + categorie + proficiency + description + warning + style + cost + end
+        start + header + categorie + proficiency + description + warning + cost + end
     )
 
     $('#'+ data.id).click(function () {

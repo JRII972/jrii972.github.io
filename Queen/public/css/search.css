@@ -89,6 +89,10 @@ body {
     .selectize-control { 
         width: 100%;
     }
+
+    body {
+        touch-action: pan-y;
+    }
 }
 
 .data-box {
@@ -100,6 +104,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: end;
+    height: max-content;
+    margin-top: 1em;
 }
 
 #results {
@@ -108,4 +114,8 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+
+.type {
+    /* display: none; */
 }

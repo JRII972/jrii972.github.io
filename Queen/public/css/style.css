@@ -205,6 +205,9 @@ body {
     padding-top: 8px;
     padding-bottom: 8px!important;
     font-size: .9em;
+    display: flex;
+    justify-content: space-between;
+    
     span {
         margin-left: 5px;
     }
@@ -214,7 +217,6 @@ body {
     display: flex;
     flex-direction: row;
     padding-right: 0!important;    
-    max-height: 130px;
 }
 
 .data-info {
@@ -317,16 +319,6 @@ nav {
     /* touch-action: pinch-zoom; */
 }
 
-@media only screen and (max-width: 600px) {
-    #jsplumb  {
-        zoom: .5;
-        /* overflow: scroll; */
-    }
-
-    body {
-        touch-action: none;
-    }
- }
 
 #jsplumb.column {
     flex-direction: column;
@@ -335,8 +327,6 @@ nav {
 
 .data-box .type {
     margin-bottom: 0px;
-    padding-bottom: 5px;
-    padding-top: 5px;
     background: linear-gradient(0.07turn, #09141C, #2a2a2a 30%);
 
     span {
@@ -393,7 +383,7 @@ nav {
     }
 
     .data-header {
-        max-height: 20vh;
+        /* max-height: 20vh; */
         display: flex;
     }
 
