@@ -1,5 +1,14 @@
+var genModal = function (data) {
+    if( !$('#modalView').length ) {
+        $('body').append('<div id="modalView" class="modal"><div class="modal-content"></div></div>')
+    }
 
-export function genBox(data, cible = 'body') {
+    $('#modalView .modal-content').empty();
+    $('#modalView .modal-content').append(genBox(data, null));
+    $("#modalView").show();
+    
+}
+export function genBox(data, cible = 'body', active = true, modalOnly = false) {
     
     if (data.Titre.includes('(Lv1)')) { 
         data.level = 1
@@ -74,31 +83,37 @@ export function genBox(data, cible = 'body') {
     </div>` 
 
     var end = '</div>'
-    console.log(cible)
+    
+    if (cible == null) {
+        return start + header + categorie + proficiency + description + warning + cost + end
+    }
+
+
     $(cible).append(
         start + header + categorie + proficiency + description + warning + cost + end
     )
 
-    $('#'+ data.id).click(function () {
-        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-            $('#modalView .modal-content').empty();
-            $(this).clone().appendTo('#modalView .modal-content');
-            $("#modalView").show();
-        } else {
-            if ( $(this).find('.more-info').is(":hidden")) {
-                $('.more-info').hide()
-                $(this).find('.more-info').toggle();
-            } else {
-                $('.more-info').hide()
-            }
-        }
+    if (active) {
+        $('#'+ data.id).click(function () {
         
-        try {
-            document.instance.repaint(document.getElementById("jsplumb"));
-        } catch (error) {
+            if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || modalOnly == true) {
+                genModal(data)
+            } else {
+                if ( $(this).find('.more-info').is(":hidden")) {
+                    $('.more-info').hide()
+                    $(this).find('.more-info').toggle();
+                } else {
+                    $('.more-info').hide()
+                }
+            }
             
-        }
-    } );
+            try {
+                document.instance.repaint(document.getElementById("jsplumb"));
+            } catch (error) {
+                
+            }
+        } );
+    }
 };
 
 // $(document).ready(function(data){

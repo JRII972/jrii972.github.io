@@ -51,7 +51,7 @@ $(document).ready(function(data){
                 if ( cat_filter.length > 0 ) {
                     if ( (cat_filter.includes(obj.Catégorie) == false) && (cat_filter.includes(obj.Style_1) == false) && (cat_filter.includes(obj.Style_2) == false) ){ return false }
                 }
-                genBox(obj, '#results')
+                genBox(obj, '#results', true, true)
                 return true
             })
             if (filtered_data.length == 0) {
