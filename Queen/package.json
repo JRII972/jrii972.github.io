@@ -1,4 +1,8 @@
 {
+  "name": "Queen jdr",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "dependencies": {
     "@jsplumb/browser-ui": "^6.2.10"
   }
