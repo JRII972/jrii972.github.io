@@ -100,13 +100,6 @@ body {
     margin-bottom: 20px;
 }
 
-.data-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    height: max-content;
-    margin-top: 1em;
-}
 
 #results {
     margin-top: 10px;

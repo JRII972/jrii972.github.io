@@ -1,6 +1,5 @@
 import { genBox } from "./dataBox.js";
 
-
 $(document).ready(function(data){
 
     var add_to_category = function (value) {
@@ -55,7 +54,6 @@ $(document).ready(function(data){
                 genBox(obj, '#results')
                 return true
             })
-            console.log(filtered_data)
             if (filtered_data.length == 0) {
                 $('#results_empty').show()
             }
@@ -92,8 +90,9 @@ $(document).ready(function(data){
 
         $("#type input").change(function(){search()});
         $("#search_box").change(function(){search()});
+        $("#search_box").keydown(function(){search()});
 
+        search();
       });
 
-    
 });

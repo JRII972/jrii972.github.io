@@ -73,15 +73,15 @@ body {
     padding-right: 20px;
 }
 
-.data-box .data-header {
-    padding-bottom: 5px;
-}
-
 .data-box h1 {
-    font-size: 18px;
+    font-size: 1.15em;
     font-family: 'Bookinsanity';
     font-weight: 100;
     margin-bottom: 10px;
+}
+
+.damage {
+    font-size: 1em;
 }
 
 .data-box.survie .data-header {    
@@ -114,6 +114,14 @@ body {
 
 .data-box.social h1 {
     color: #9500be;
+}
+
+.data-box.support .data-header {    
+    background: linear-gradient(to bottom, #4c3316, #2a2a2a 95%);
+}
+
+.data-box.support h1 {
+    color: #be5200;
 }
 
 .data-box.autre .data-header {    
@@ -162,6 +170,20 @@ body {
 .damage span, .weapon-enchantment span, .proficiency span, .description span, .warning span {
     font-size: 14px;
 }
+
+input {
+    color: #1a1a1a!important;
+}
+
+input,
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+    color: #1a1a1a!important;
+    background-color: lightgray;
+}
+
 .warning {
     color: #ffa500;
 }
@@ -215,24 +237,46 @@ body {
 
 .data-header {
     display: flex;
+    /* position: relative; */
     flex-direction: row;
-    padding-right: 0!important;    
+    padding-right: 0!important;
+    overflow: hidden;
 }
 
-.data-info {
-    min-width: 40%;
-    max-width: 50%;
-}
-.data-img {
-    /* max-height: 100px; */
-    width: 60%;
-    display: inline-flex;
-    justify-content: end;
-}
-
-.data-img > img {
-    width: 150px;
+.data-header > img {
+    /* width: 150px; */
+    /* position: relative; */
+    right: -25%;
+    top: 0;
+    height: 100%;
+    width: 90%;
     object-fit: cover;
+}
+
+.data-info {    
+    margin-top: 1em;
+    height: 120px;
+    width: 70%;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: .5em;
+}
+
+.data-img {
+    width: 40%;
+    position: relative;
+
+    img {
+        position: absolute;
+        right: -50%;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        width: 180px;
+        object-fit: cover;
+    }
 }
 
 .description {

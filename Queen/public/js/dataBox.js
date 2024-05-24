@@ -1,5 +1,19 @@
 
 export function genBox(data, cible = 'body') {
+    
+    if (data.Titre.includes('(Lv1)')) { 
+        data.level = 1
+        data.Titre = data.Titre.replace('(Lv1)', '')
+     }
+    if (data.Titre.includes('(Lv2)')) { 
+        data.level = 2
+        data.Titre = data.Titre.replace('(Lv2)', '')
+     }
+    if (data.Titre.includes('(Lv3)')) { 
+        data.level = 3
+        data.Titre = data.Titre.replace('(Lv3)', '')
+     }
+
     var start = '<div class="data-box ' + data.Type.toLowerCase() + '" id="' +  data.id + '">'
     var header = `
     <div class="data-header">
@@ -10,11 +24,11 @@ export function genBox(data, cible = 'body') {
                     <!-- <img src="./public/img/icon/archerie.png" alt="Damage Icon" width="20"> -->
                     ` + data.Sub_info + `
                 </div>
-                <span class="sub-info">` + data.Type + `</span>
             </div>
+            <span class="sub-info">` + data.Type + `</span>
         </div>
         <div class="data-img">
-            <img src="./public/img/` + (data.img ? data.img : "bonus-deg.png") + `" alt="Data Icon">
+            <img src="./public/img/` + (data.img ? data.img : "bonus-deg.png") + `" alt="Data Icon">    
         </div>
     </div>
     `
@@ -52,7 +66,9 @@ export function genBox(data, cible = 'body') {
         return '<span><img src="./public/img/icon/' + e + '.png" alt="' + e + '" width="35"></span>' ;        
     }).join() + '</div>' : ""
 
-    var cost = `<div class="cost"> ` + style + `
+    var level = data.level ? '<div class="level"> Lv' + data.level + '</div>' : ""
+
+    var cost = `<div class="cost"> ` + style + level + `
         <div><span>` + '?' + `⚖️</span>
         <span>` + data.Prix + `⚡</span></div>
     </div>` 
