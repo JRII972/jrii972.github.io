@@ -22,7 +22,7 @@ body {
     align-items: center;
 }
 .search-container h1 {
-    color: #8df542;
+    color: var(--green-text-color);
     font-size: 24px;
     margin-bottom: 20px;
 }
