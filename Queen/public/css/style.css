@@ -473,6 +473,11 @@ nav {
     .card {
         background-color: transparent;
     }
+
+    .data-img  img {
+        right: -55%;
+        width: 200px;
+    }
   }
   
   /* Modal Content/Box */
