@@ -472,6 +472,13 @@ nav {
 
     .card {
         background-color: transparent;
+        .btn-link {
+            color: var(--green-text-color-low);
+            text-decoration: none;
+        }
+        .btn-link[aria-expanded="true"]{
+            color: var(--green-text-color);
+        }
     }
 
     .data-img  img {
