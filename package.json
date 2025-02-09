@@ -1,5 +1,8 @@
 {
   "dependencies": {
-    "locale-includes": "^1.0.6"
+    "bootstrap": "^5.3.3",
+    "locale-includes": "^1.0.6",
+    "sass": "^1.83.4",
+    "typescript": "^5.7.3"
   }
 }
