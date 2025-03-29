@@ -5,6 +5,7 @@
   "type": "module",
   "dependencies": {
     "@jsplumb/browser-ui": "^6.2.10",
+    "jquery-csv": "^1.0.21",
     "locale-includes": "^1.0.6"
   }
 }

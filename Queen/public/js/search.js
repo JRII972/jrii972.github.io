@@ -1,6 +1,6 @@
 import { genBox } from "./dataBox.js";
 
-$(document).ready(function(data){
+$(document).ready(function(){
 
     var add_to_category = function (value) {
         localStorage.setItem("categories_selected", JSON.stringify(value))
@@ -10,6 +10,7 @@ $(document).ready(function(data){
     };
 
     $.getJSON( "./public/js/data.json", function( data ) {
+        data.sort((a, b) => a.Titre.localeCompare(b.Titre));
         var category = []
         var type = []
         var style = []
@@ -89,7 +90,8 @@ $(document).ready(function(data){
         });
 
         $("#type input").change(function(){search()});
-        $("#search_box").change(function(){search()});
+        // $("#search_box").change(function(){search()});
+        $("#search-btn").click(function(){search()});
         $("#search_box").keydown(function(){search()});
 
         search();
