@@ -14,6 +14,7 @@ $enable-shadows: true;
 @import "../../node_modules/bootstrap/scss/mixins";
 @import "../../node_modules/bootstrap/scss/root";
 @import "../../node_modules/bootstrap/scss/utilities";
+@import "../../node_modules/bootstrap/scss/transitions";
 
 $fa-font-path: '../asset/webfonts';
 
@@ -24,6 +25,8 @@ $fa-font-path: '../asset/webfonts';
 
 $body-border-color : $gray-300;
 
+
+
 body {
     margin: 0!important;
 }
@@ -31,10 +34,41 @@ body {
     display: flex;
 }
 
-.menu-container {
-    display: flex;
-    height: 100vh;
-    width: 25rem;
+#sidebar {
+    min-height: 100vh;
+
+    &.collapse {
+        // display: block!important;
+    }
+
+    .profile {
+        width: 100%;
+        padding: 1em;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+
+        img {
+            height: 2em;
+            width: 2em;
+        }
+        
+    }
+    
+    &.collapsing {
+        overflow: hidden;
+    }
+}
+
+
+@media (max-width: 768px) {
+    #sidebar {
+        
+    //   margin-left: -250px;
+    }
+
+    #menu-toggle {
+        display: block!important;
+    }
 }
 
 .info-container {
@@ -57,7 +91,7 @@ body {
     border: solid;
     border-color: $body-border-color;
     background-color: $body-secondary-bg;
-    height: 1100vh;
+    // height: 1100vh;
     width: 100%;
 }
 
@@ -69,6 +103,9 @@ body {
 .search {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1em;
 }
 
 .search-btn {
@@ -80,4 +117,12 @@ body {
         }
     }
     
+}
+
+.categories {
+    
+}
+
+.categorie{
+    width: 200px;
 }
