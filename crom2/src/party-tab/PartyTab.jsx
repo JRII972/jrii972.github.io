@@ -28,6 +28,7 @@ import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import TableMap from './table-map';
 import PartiesCard from './parties-card';
+import { List, Paper } from '@mui/material';
 
 
 
@@ -74,10 +75,23 @@ export default function SignIn(props) {
                         mt: { xs: 8, md: 0 },
                         }}
                     >
-                        <Header/>   
+                        <Header/>  
+
                         <Typography variant="h4" component="h1" sx={{ mb: 2 }}>
-                            Material UI Vite.js examples
+                            Calendrier roliste à option multiple
                         </Typography>
+                        
+                        {/* <Paper elevation={3}>
+                            <Box margin={1}>
+                                <Typography variant='subtitle2'>
+                                Horaires des séances de jeux des BDR
+                                </Typography>
+                                <List>
+                                    <li><b>Vendredi</b> : de 19H15 à 1H00 au foyer saint Vincent - Orléans.</li>
+                                    <li><b>Samedi</b> : de 14H00 à 20H00 à la Maison des associations d'Orléans.</li>
+                                </List>
+                            </Box>
+                        </Paper> */}
 
                         <ToggleButtonGroup
                             orientation="horizontal"

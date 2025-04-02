@@ -22,9 +22,22 @@ const groupByDate = (array) => {
   }, {});
 };
 
+function formatDateToFrench(date: Date): string {
+  const options: Intl.DateTimeFormatOptions = {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+  };
+  const formatted = new Intl.DateTimeFormat('fr-FR', options).format(date);
+  return formatted
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+}
+
 interface GameSession {
   id: number;              // "101" is a string, not a number
-  date: string;            // "04/04/2025" is a string (you could use Date if parsed)
+  date: Date;            // "04/04/2025" is a string (you could use Date if parsed)
   maitre_de_jeu: string;   // "Julien"
   jeu: string;             // "Warhammer"
   type: string;            // "Cmp"
@@ -59,9 +72,13 @@ export default function PartiesCard(parties:GameSession[]) {
     <Box sx={{ width: '100%'}}>
     {Object.keys(sessions).map((date) => (
     <Box >
-    <Typography variant="h4" component="h1" sx={{ mb: 2 }}>
-        Partie du {date}
+    <Typography variant="h4" component="h1" sx={{ mb: 2, marginBottom:0 }}>
+        Partie du {formatDateToFrench(Date.parse(date))}
     </Typography>
+    <Typography variant="subtitle1" sx={{ mb: 2, marginTop:0, paddingLeft:'1em' }}>
+        au FSV de 14h à 22h
+    </Typography>
+
     <Grid container spacing={2} sx={{ width: '100%', paddingBottom: '1em'}}>
         
         
@@ -140,7 +157,7 @@ export default function PartiesCard(parties:GameSession[]) {
             
         
     </Grid>
-    <Divider sx={{marginTop: '2em'}} orientation="horizontal" variant="middle" flexItem  />
+    <Divider sx={{margin: '2em'}} orientation="horizontal" variant="middle" flexItem  />
     </Box>
     ))}
     </Box>
