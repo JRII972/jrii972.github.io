@@ -2,13 +2,13 @@
   "name": "material-ui-vite",
   "version": "5.0.0",
   "private": true,
-  "homepage": "https://jrii972.github.io/crom2",
+  "homepage": "https://jrii972.github.io/crom",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
