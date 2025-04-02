@@ -2,10 +2,13 @@
   "name": "material-ui-vite",
   "version": "5.0.0",
   "private": true,
+  "homepage": "https://jrii972.github.io/crom2",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -18,6 +21,7 @@
     "@mui/x-date-pickers": "^7.28.2",
     "@mui/x-tree-view": "^7.28.1",
     "dayjs": "^1.11.13",
+    "gh-pages": "^6.3.0",
     "react": "latest",
     "react-dom": "latest",
     "react-router-dom": "^7.4.1"
