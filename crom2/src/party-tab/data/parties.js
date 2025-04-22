@@ -1,4 +1,4 @@
-const parties = [
+export const parties = [
   {
     "id": 101,
     "date": "2025-04-04",

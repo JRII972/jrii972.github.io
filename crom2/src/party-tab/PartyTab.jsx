@@ -1,37 +1,24 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Checkbox from '@mui/material/Checkbox';
 import CssBaseline from '@mui/material/CssBaseline';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Divider from '@mui/material/Divider';
-import FormLabel from '@mui/material/FormLabel';
-import FormControl from '@mui/material/FormControl';
-import Link from '@mui/material/Link';
-import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
-import MuiCard from '@mui/material/Card';
-import { styled } from '@mui/material/styles';
 import AppTheme from '../shared-theme/AppTheme';
 
 import SideMenu from './components/SideMenu';
 import AppNavbar from './components/AppNavbar';
 import Header from '../dashboard/components/Header';
 
-import parties from './data/parties'
-
 import ViewListIcon from '@mui/icons-material/ViewList';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
 import ViewQuiltIcon from '@mui/icons-material/ViewQuilt';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import TableMap from './table-map';
-import PartiesCard from './parties-card';
-import { List, Paper } from '@mui/material';
 
+import PartiesCard from './PartiesCards'
 
-
+import {parties} from './data/parties'
+import PartiesTables from './PartiesTables';
 
 
 export default function SignIn(props) {
@@ -99,7 +86,7 @@ export default function SignIn(props) {
                             exclusive
                             onChange={handleChange}
                             >
-                            <ToggleButton value="list" aria-label="list">
+                            <ToggleButton value="table" aria-label="table">
                                 <ViewListIcon />
                             </ToggleButton>
                             <ToggleButton value="card" aria-label="card">
@@ -108,13 +95,14 @@ export default function SignIn(props) {
                             <ToggleButton value="quilt" aria-label="quilt">
                                 <ViewQuiltIcon />
                             </ToggleButton>
-                            <ToggleButton value="table" aria-label="table">
+                            {/* <ToggleButton value="table" aria-label="table">
                             <span class="material-symbols-outlined">table</span>
-                            </ToggleButton>
+                            </ToggleButton> */}
                         </ToggleButtonGroup>
 
-                        { view=='table' && <TableMap {...parties}/> }
+                        { view=='table' && <PartiesTables {...parties}/> }
                         { view=='card' && <PartiesCard {...parties}/> }
+                        {/* { view=='quilt' && <TableAccordillon {...parties}/> } */}
                         
                     </Stack>
                     </Box>

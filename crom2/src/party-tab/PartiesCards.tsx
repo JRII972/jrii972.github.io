@@ -84,7 +84,7 @@ export default function PartiesCard(parties:GameSession[]) {
         
         {sessions[date].map((partie:GameSession) => ( 
           <Grid>
-              <Card sx={{ maxWidth: 300, height:400 }}>
+              <Card sx={{ maxWidth: 300, height:400 }} key={partie.id}>
               <CardActionArea>
                 <CardMedia
                     component="img"

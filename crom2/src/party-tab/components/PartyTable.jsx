@@ -1,30 +1,6 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Checkbox from '@mui/material/Checkbox';
-import CssBaseline from '@mui/material/CssBaseline';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Divider from '@mui/material/Divider';
-import FormLabel from '@mui/material/FormLabel';
-import FormControl from '@mui/material/FormControl';
-import Link from '@mui/material/Link';
-import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
-import Stack from '@mui/material/Stack';
-import MuiCard from '@mui/material/Card';
 import { styled } from '@mui/material/styles';
-import AppTheme from '../shared-theme/AppTheme';
-
-import SideMenu from './components/SideMenu';
-import AppNavbar from './components/AppNavbar';
-import Header from '../dashboard/components/Header';
 import LockOutlineIcon from '@mui/icons-material/LockOutline';
 
-import ViewListIcon from '@mui/icons-material/ViewList';
-import ViewModuleIcon from '@mui/icons-material/ViewModule';
-import ViewQuiltIcon from '@mui/icons-material/ViewQuilt';
-import ToggleButton from '@mui/material/ToggleButton';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
@@ -66,19 +42,10 @@ const groupByDate = (array) => {
   }, {});
 };
 
-export default function TableMap(parties) {
-    const sessions = groupByDate(Object.values(parties));
-
+export default function PartyTable({party}) {
     return(
-      <div>
-      {Object.keys(sessions).map((date) => (
-        <Box sx={{ width: '100%', paddingBottom: '1em'}}>
-        <Typography variant="h4" component="h1" sx={{ mb: 2 }}>
-            Partie du {date}
-        </Typography>
-        <Box >
-        <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+      <TableContainer component={Paper}>
+        <Table sx={{ width: "100%" }} aria-label="customized table" stickyHeader>
             <TableHead>
             <TableRow>
                 <StyledTableCell>Maître de jeu</StyledTableCell>
@@ -91,7 +58,7 @@ export default function TableMap(parties) {
             </TableRow>
             </TableHead>
             <TableBody>
-            {sessions[date].map((row) => (
+            {party.map((row) => (
                 <StyledTableRow key={row.id}>
                 <StyledTableCell component="th" scope="row">
                     {row.maitre_de_jeu}
@@ -107,11 +74,6 @@ export default function TableMap(parties) {
             ))}
             </TableBody>
         </Table>
-        </TableContainer>
-        </Box>
-        <Divider sx={{marginTop: '2em'}} orientation="horizontal" variant="middle" flexItem  />
-        </Box>
-        ))}
-      </div>
+      </TableContainer>
       )
   }
