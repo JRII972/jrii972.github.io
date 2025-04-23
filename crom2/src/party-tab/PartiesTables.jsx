@@ -8,6 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import { isMobile } from '../config';
 import PartyTable from './components/PartyTable';
 import PartyAccordillonTable from './components/PartyAccordillonTable'
+import { useState } from 'react';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -43,6 +44,8 @@ const groupByDate = (array) => {
 
 export default function PartiesTables(parties) {
     const sessions = groupByDate(Object.values(parties));
+    const [expanded, setExpanded] = useState(false);
+
     return(
       <div>
       {Object.keys(sessions).map((date) => (
@@ -50,7 +53,11 @@ export default function PartiesTables(parties) {
         <Typography variant="h4" component="h1" sx={{ mb: 2 }}>
             Partie du {date}
         </Typography>
-        {isMobile() ? <PartyAccordillonTable party={sessions[date]} /> : <PartyTable party={sessions[date]}/> }
+        {isMobile() ? <PartyAccordillonTable 
+                        party={sessions[date]}
+                        expanded={expanded} 
+                        setExpanded={setExpanded}
+                         /> : <PartyTable party={sessions[date]}/> }
         <Divider sx={{marginTop: '2em'}} orientation="horizontal" variant="middle" flexItem  />
         </Box>
         ))}

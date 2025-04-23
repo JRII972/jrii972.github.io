@@ -52,8 +52,8 @@ const groupByDate = (array) => {
 
 
 
-export default function PartyAccordillonTable({party}) {
-    const [expanded, setExpanded] = React.useState(false);
+export default function PartyAccordillonTable({party, expanded, setExpanded}) {
+    
 
     const handleChange =
       (panel) => (event, isExpanded) => {
@@ -101,7 +101,7 @@ export default function PartyAccordillonTable({party}) {
                     </AccordionSummary>
                     <AccordionDetails sx={{ maxWidth: "80vw"}}>
                       <Box sx={{ margin: '1em', fontStyle: 'italic'}}>
-                        {row.commentaire}
+                        {row.coment}
                       </Box>
                       <PlayerTable row={row} />
                     </AccordionDetails>

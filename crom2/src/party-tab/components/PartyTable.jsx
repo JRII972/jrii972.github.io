@@ -66,7 +66,7 @@ export default function PartyTable({party}) {
                 <StyledTableCell align="center">{row.jeu}</StyledTableCell>
                 <StyledTableCell align="center">{row.type}</StyledTableCell>
                 <StyledTableCell align="center">{row.lieu}</StyledTableCell>
-                <StyledTableCell align="left">{row.commentaire}</StyledTableCell>
+                <StyledTableCell align="left">{row.coment}</StyledTableCell>
                 <StyledTableCell align="center">{row.locked ? <LockOutlineIcon /> : row.max_player}</StyledTableCell>
                 {/* TODO: change player mapping */}
                 <StyledTableCell align="center">{row.players.map((joueur) => (joueur + ', '))}</StyledTableCell> 
