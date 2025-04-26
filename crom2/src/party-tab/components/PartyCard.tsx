@@ -22,6 +22,7 @@ import {
 import BrokenImageIcon from '@mui/icons-material/BrokenImage';
 import { GameSession } from '../PartiesCards';
 import { playerNumber } from '../utils';
+import { Link } from 'react-router-dom';
 
 
 interface PartyCardProps {
@@ -34,6 +35,7 @@ const PartyCard: FC<PartyCardProps> = ({ partie }) => {
   const [error, setError] = useState<boolean>(false);
   const [open, setOpen] = useState<boolean>(false);
 
+  //TODO: Scroll quand survolle
   // 1) ref pour le contenu du Collapse
   // const collapseRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
 
@@ -57,7 +59,6 @@ const PartyCard: FC<PartyCardProps> = ({ partie }) => {
   ): void => {
     setError(true);
     setLoaded(false);
-    // éviter boucle si placeholder introuvable
     (e.currentTarget as HTMLImageElement).onerror = null;
     (e.currentTarget as HTMLImageElement).src = 'https://placehold.co/216x140';
   };
@@ -80,7 +81,10 @@ const PartyCard: FC<PartyCardProps> = ({ partie }) => {
       onMouseLeave={handleMouseLeave}
     >
       <Box sx={{ width: 250 }}>
-        <CardActionArea>
+        <CardActionArea
+        component={Link}
+        to={"./partie/" + partie.id}
+        >
           {!loaded && !error && (
             <Skeleton variant="rectangular" width="100%" height={140} />
           )}

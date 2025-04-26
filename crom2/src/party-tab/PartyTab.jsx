@@ -9,7 +9,7 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { parties } from './data/parties'
 import PartiesTables from './PartiesTables';
 import MainPage from '../components/MainPage';
-import PartiesCard from '../components/AppNavbar'
+import PartiesCard from './PartiesCards'
 import { Stack } from '@mui/material';
 
 
@@ -32,7 +32,7 @@ export default function SignIn(props) {
                     alignItems: 'center',
                     mx: 3,
                     pb: 5,
-                    mt: { xs: 8, md: 0 },
+                    mt: { xs: 8, md: 0, width: '90%' },
                     }}
                 >
             {/* <Paper elevation={3}>

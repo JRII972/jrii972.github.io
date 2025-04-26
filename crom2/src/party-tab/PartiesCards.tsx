@@ -72,25 +72,91 @@ export default function PartiesCard(parties:GameSession[]) {
 
   return (
     <Box sx={{ width: '100%'}}>
-    {Object.keys(sessions).map((date) => (
-    <Box key={date}>
-      <Typography variant="h4" component="h1" sx={{ mb: 2, marginBottom:0 }}>
-          Partie du {formatDateToFrench(Date.parse(date))}
-      </Typography>
-      <Typography variant="subtitle1" sx={{ mb: 2, marginTop:0, paddingLeft:'1em' }}>
-          au FSV de 14h à 22h
-      </Typography>
 
-      <Box sx={{ overflow:'auto'}}>
-        <Box sx={{ display:'inline-flex',  flexWrap:'nowrap', gap:'1em'}} className={'className'}>
-          {sessions[date].map((partie:GameSession) => ( 
-              <PartyCard partie={partie} key={partie.id}/>
-              ))}
+      <Box>
+        <Typography variant="h4" component="h1" sx={{ mb: 2, marginBottom:0 }}>
+          Qui pourrais vous intérrésser
+        </Typography>
+
+        <Box sx={{ overflow:'auto', width: '100%',}}>
+          
+          <Box sx={{ display:'inline-flex',  flexWrap:'nowrap', gap:'1em'}} className={'className'}>
+            <Box>
+              <Typography variant="subtitle1" sx={{ mb: 2, marginTop:0, paddingLeft:'1em' }}>
+                Un peu de Fantasy
+              </Typography>
+                <Box sx={{ display:'inline-flex', gap:'1em' }}>
+                  <PartyCard partie={sessions['2025-05-02'][0]} />
+                  <PartyCard partie={sessions['2025-04-26'][0]} />
+                  <PartyCard partie={sessions['2025-05-02'][1]} />
+                </Box>
+            </Box>
+            <Box>
+              <Typography variant="subtitle1" sx={{ mb: 2, marginTop:0, paddingLeft:'1em' }}>
+                Entre Ami(e)s
+              </Typography>
+                <Box sx={{ display:'inline-flex', gap:'1em' }}>
+                  <PartyCard partie={sessions['2025-05-09'][0]} />
+                  <PartyCard partie={sessions['2025-05-10'][0]} />
+                </Box>
+            </Box>
+          </Box>
         </Box>
+        <Divider sx={{margin: '2em'}} orientation="horizontal" variant="middle" flexItem  />
       </Box>
-      <Divider sx={{margin: '2em'}} orientation="horizontal" variant="middle" flexItem  />
-    </Box>
-    ))}
+
+      <Box>
+        <Typography variant="h4" component="h1" sx={{ mb: 2, marginBottom:0 }}>
+          La semaine prochaine
+        </Typography>
+
+        <Box sx={{ overflow:'auto', width: '100%',}}>
+          
+          <Box sx={{ display:'inline-flex',  flexWrap:'nowrap', gap:'1em'}} className={'className'}>
+            <Box>
+              <Typography variant="subtitle1" sx={{ mb: 2, marginTop:0, paddingLeft:'1em' }}>
+                Vendredi au FSV de 14h à 22h
+              </Typography>
+                <Box sx={{ display:'inline-flex', gap:'1em' }}>
+                  <PartyCard partie={sessions['2025-05-02'][0]} />
+                  <PartyCard partie={sessions['2025-04-26'][0]} />
+                  <PartyCard partie={sessions['2025-05-02'][1]} />
+                </Box>
+            </Box>
+            <Box>
+              <Typography variant="subtitle1" sx={{ mb: 2, marginTop:0, paddingLeft:'1em' }}>
+                Samedi au FSV de 14h à 22h
+              </Typography>
+                <Box sx={{ display:'inline-flex', gap:'1em' }}>
+                  <PartyCard partie={sessions['2025-05-09'][0]} />
+                  <PartyCard partie={sessions['2025-05-10'][0]} />
+                  <PartyCard partie={sessions['2025-05-16'][0]} />
+                  <PartyCard partie={sessions['2025-05-02'][1]} />
+                </Box>
+            </Box>
+          </Box>
+        </Box>
+        <Divider sx={{margin: '2em'}} orientation="horizontal" variant="middle" flexItem  />
+      </Box>
+      {Object.keys(sessions).map((date) => (
+      <Box key={date}>
+        <Typography variant="h4" component="h1" sx={{ mb: 2, marginBottom:0 }}>
+            Partie du {formatDateToFrench(Date.parse(date))}
+        </Typography>
+        <Typography variant="subtitle1" sx={{ mb: 2, marginTop:0, paddingLeft:'1em' }}>
+            au FSV de 14h à 22h
+        </Typography>
+
+        <Box sx={{ overflow:'auto'}}>
+          <Box sx={{ display:'inline-flex',  flexWrap:'nowrap', gap:'1em'}} className={'className'}>
+            {sessions[date].map((partie:GameSession) => ( 
+                <PartyCard partie={partie} key={partie.id}/>
+                ))}
+          </Box>
+        </Box>
+        <Divider sx={{margin: '2em'}} orientation="horizontal" variant="middle" flexItem  />
+      </Box>
+      ))}
     </Box>
   );
 }
