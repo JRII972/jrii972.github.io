@@ -11,6 +11,7 @@ import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
 import MenuButton from './MenuButton';
 import MenuContent from './MenuContent';
 import CardAlert from './CardAlert';
+import ColorModeIconDropdown from '../shared-theme/ColorModeIconDropdown';
 
 function SideMenuMobile({ open, toggleDrawer }) {
   return (
@@ -47,6 +48,8 @@ function SideMenuMobile({ open, toggleDrawer }) {
               Riley Carter
             </Typography>
           </Stack>
+
+          <ColorModeIconDropdown />
           <MenuButton showBadge>
             <NotificationsRoundedIcon />
           </MenuButton>

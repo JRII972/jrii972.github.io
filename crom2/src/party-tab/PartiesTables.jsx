@@ -49,7 +49,8 @@ export default function PartiesTables(parties) {
     return(
       <div>
       {Object.keys(sessions).map((date) => (
-        <Box sx={{ width: '100%', paddingBottom: '1em'}}>
+        // TODO Mettre un meilleur ID 
+        <Box sx={{ width: '100%', paddingBottom: '1em'}} key={'session-'+date}>
         <Typography variant="h4" component="h1" sx={{ mb: 2 }}>
             Partie du {date}
         </Typography>

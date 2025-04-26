@@ -11,23 +11,42 @@ import Copyright from './Copyright';import {
 import SignIn from './sign-in/SignIn'
 import Dashboard from './dashboard/Dashboard'
 import PartyTab from './party-tab/PartyTab'
+import MainPage from './components/MainPage';
+import PartiePage from './party-tab/PartiePage';
+import { getPartieNameFromId } from './party-tab/utils';
 
 const router = createBrowserRouter([
   {
     path: "/*", //TODO: verifiquer si ca ne bloque pas l'accès à d'autre page
-    element: <PartyTab/>,
+    element: <MainPage/>,
+    handle: { breadcrumb: 'CROM' },
+    children: [
+      {
+        index: true,
+        element: <PartyTab />,
+        handle: { breadcrumb: 'Parties', title: 'Calendrier Rôliste à Option Multiples' },
+      },
+      {
+        path: "partie/:id",   // Route dynamique
+        element: <PartiePage />, 
+        handle: {
+          breadcrumb: (match) => {
+            const partieName = getPartieNameFromId(match.params.id); 
+            return partieName || "Chargement...";
+          }
+        }
+      },
+      {
+        path: "dashboard",
+        element: <Dashboard />,
+        handle: { breadcrumb: 'Dashboard' },
+      },
+    ]
   },
   {
     path: "/login",
     element: <SignIn />,
-  },
-  {
-    path: "/parties",
-    element: <PartyTab />,
-  },
-  {
-    path: "/dashboard",
-    element: <Dashboard />,
+    handle: { breadcrumb: 'Connexion' },
   },
 ]);
 

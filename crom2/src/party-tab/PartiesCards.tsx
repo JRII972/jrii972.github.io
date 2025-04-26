@@ -43,13 +43,14 @@ export interface GameSession {
   jeu: string;             // "Warhammer"
   type: string;            // "Cmp"
   lieu: string;            // "FSV"
-  commentaire: string;     // Long text description
+  coment: string;     // Long text description
   number_of_players_registered: number;
   max_player: number;             // "5" is a string (could be number if parsed)
   players: string[];       // Array of player names
   locked: boolean;         // true or false
   image: string;
   image_alt: string;
+  short_coment: string;
 }
 
 function playerNumber(partie:GameSession) {

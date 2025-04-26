@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Test des polices Ravenholm</title>
+  <style>
+    /* 1) Déclarations @font-face avec surcharge OTG → TTF */
+    @font-face {
+      font-family: 'Ravenholm';
+      font-weight: 300;
+      font-style: normal;
+      src:
+        url('fonts/Ravenholm-Thin.otf') format('opentype'),
+        url('fonts/Ravenholm-Thin.ttf') format('truetype');
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Ravenholm';
+      font-weight: 700;
+      font-style: normal;
+      src:
+        url('fonts/Ravenholm-Bold.otf') format('opentype'),
+        url('fonts/Ravenholm-Bold.ttf') format('truetype');
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Ravenholm Inline';
+      font-weight: 400;
+      font-style: normal;
+      src:
+        url('fonts/Ravenholm-Inline.otf') format('opentype'),
+        url('fonts/Ravenholm-Inline.ttf') format('truetype');
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Ravenholm Color';
+      font-weight: 400;
+      font-style: normal;
+      src:
+        url('fonts/Ravenholm-Color.otf') format('opentype'),
+        url('fonts/Ravenholm-Color.ttf') format('truetype');
+      font-display: swap;
+    }
+
+    /* 2) Classes utilitaires pour tester chaque variante */
+    body {
+      padding: 2rem;
+      background: #f5f5f5;
+      color: #333;
+    }
+    .thin {
+      font-family: 'Ravenholm', sans-serif;
+      font-weight: 300;
+    }
+    .bold {
+      font-family: 'Ravenholm', sans-serif;
+      font-weight: 700;
+    }
+    .inline {
+      font-family: 'Ravenholm Inline', sans-serif;
+    }
+    .color {
+      font-family: 'Ravenholm Color', sans-serif;
+    }
+    hr {
+      margin: 2rem 0;
+      border: none;
+      height: 1px;
+      background: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="thin">Ravenholm Thin (300)</h1>
+  <p class="thin">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.
+  </p>
+
+  <hr>
+
+  <h1 class="bold">Ravenholm Bold (700)</h1>
+  <p class="bold">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.
+  </p>
+
+  <hr>
+
+  <h2 class="inline">Ravenholm Inline</h2>
+  <p class="inline">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.
+  </p>
+
+  <hr>
+
+  <h2 class="color">Ravenholm Color</h2>
+  <p class="color">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.
+  </p>
+</body>
+</html>
