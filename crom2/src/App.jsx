@@ -14,6 +14,8 @@ import PartyTab from './party-tab/PartyTab'
 import MainPage from './components/MainPage';
 import PartiePage from './party-tab/PartiePage';
 import { getPartieNameFromId } from './party-tab/utils';
+import NotFound404 from './404';
+import NotFound404_v2 from './404_v2';
 
 const router = createBrowserRouter([
   {
@@ -46,6 +48,16 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <SignIn />,
+    handle: { breadcrumb: 'Connexion' },
+  },
+  {
+    path: "/404",
+    element: <NotFound404 />,
+    handle: { breadcrumb: 'Connexion' },
+  },
+  {
+    path: "/404_v2",
+    element: <NotFound404_v2 />,
     handle: { breadcrumb: 'Connexion' },
   },
 ]);
