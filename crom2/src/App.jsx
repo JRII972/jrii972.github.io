@@ -16,6 +16,7 @@ import PartiePage from './party-tab/PartiePage';
 import { getPartieNameFromId } from './party-tab/utils';
 import NotFound404 from './404';
 import NotFound404_v2 from './404_v2';
+import Blog from './blog/Blog';
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,11 @@ const router = createBrowserRouter([
       {
         path: "dashboard",
         element: <Dashboard />,
+        handle: { breadcrumb: 'Dashboard' },
+      },
+      {
+        path: "blog",
+        element: <Blog />,
         handle: { breadcrumb: 'Dashboard' },
       },
     ]

@@ -53,12 +53,12 @@ export default function SideMenu() {
       <Box
         sx={{
           display: 'flex',
-          // mt: 'calc(var(--template-frame-height, 0px) + 4px)',
-          // p: 1.5,
+          mt: 'calc(var(--template-frame-height, 0px) + 4px)',
+          p: 1.5,
         }}
       >
-        <SideMenuUser />
-        {/* <SelectContent /> */}
+        {/* <SideMenuUser /> */}
+        <SelectContent />
         {/* <MenuItem value="">
           <ListItemAvatar>
             <Avatar alt="Sitemark web">

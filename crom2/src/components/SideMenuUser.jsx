@@ -19,8 +19,8 @@ export default function SideMenuUser(){
             p: 2,
             gap: 1,
             alignItems: 'center',
-            // borderTop: '1px solid',
-            // borderColor: 'divider',
+            borderTop: '1px solid',
+            borderColor: 'divider',
             }}
         >
             <Avatar
