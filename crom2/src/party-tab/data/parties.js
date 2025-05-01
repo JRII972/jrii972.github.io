@@ -191,22 +191,22 @@ export const parties = [
     "image_alt": "Heroes on an epic quest",
     "coment": "Chroniques Oubliées est un jeu de rôle médiéval-fantastique qui brille par sa simplicité et son dynamisme. Cet événement spécial promet une aventure unique, avec des défis taillés pour des héros audacieux. Le système, basé sur des profils personnalisables, permet de se concentrer sur l’histoire et l’action sans règles complexes. Les joueurs vivront une épopée mémorable, ponctuée de combats épiques et de moments de gloire. Idéal pour une expérience intense et accessible à tous les niveaux."
   },
-  {
-    "id": 113,
-    "date": "2025-05-03",
-    "maitre_de_jeu": "Sophie",
-    "jeu": "Vampire: La Mascarade",
-    "type": "1Sht",
-    "lieu": "MDA",
-    "short_coment": "Les clans s’affrontent dans une nuit sanglante. Choisissez votre camp !",
-    "max_player": 5,
-    "players": ["Karine", "Laurent", "Ophélie", "Pascal"],
-    "number_of_players_registered": 4,
-    "locked": false,
-    "image": "https://worldofdarkness.com/images/clan_war.jpg",
-    "image_alt": "Vampire clans in a bloody conflict",
-    "coment": "Vampire: La Mascarade transporte les joueurs dans un monde où les vampires règnent dans l’ombre, déchirés par des luttes de pouvoir. Cette session met en scène un affrontement entre clans, où alliances et trahisons façonnent l’histoire. Le système narratif favorise les interactions sociales et les dilemmes éthiques, avec des mécaniques fluides pour les pouvoirs vampiriques. L’ambiance est lourde, presque cinématographique, parfaite pour une nuit de tension. Un jeu captivant pour les amateurs de drames gothiques et d’intrigues."
-  },
+    {
+      "id": 113,
+      "date": "2025-05-03",
+      "maitre_de_jeu": "Sophie",
+      "jeu": "Vampire: La Mascarade",
+      "type": "1Sht",
+      "lieu": "MDA",
+      "short_coment": "Les clans s’affrontent dans une nuit sanglante. Choisissez votre camp !",
+      "max_player": 5,
+      "players": ["Karine", "Laurent", "Ophélie", "Pascal"],
+      "number_of_players_registered": 4,
+      "locked": false,
+      "image": "https://worldofdarkness.com/images/clan_war.jpg",
+      "image_alt": "Vampire clans in a bloody conflict",
+      "coment": "Vampire: La Mascarade transporte les joueurs dans un monde où les vampires règnent dans l’ombre, déchirés par des luttes de pouvoir. Cette session met en scène un affrontement entre clans, où alliances et trahisons façonnent l’histoire. Le système narratif favorise les interactions sociales et les dilemmes éthiques, avec des mécaniques fluides pour les pouvoirs vampiriques. L’ambiance est lourde, presque cinématographique, parfaite pour une nuit de tension. Un jeu captivant pour les amateurs de drames gothiques et d’intrigues."
+    },
   {
     "id": 114,
     "date": "2025-05-09",

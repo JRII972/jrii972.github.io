@@ -2,7 +2,6 @@
   "name": "material-ui-vite",
   "version": "5.0.0",
   "private": true,
-  "homepage": "https://jrii972.github.io/crom",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -22,6 +21,7 @@
     "@mui/x-tree-view": "^7.28.1",
     "@react-three/drei": "^9.122.0",
     "@react-three/fiber": "^8.18.0",
+    "axios": "^1.9.0",
     "dayjs": "^1.11.13",
     "gh-pages": "^6.3.0",
     "node-vibrant": "^4.0.3",
