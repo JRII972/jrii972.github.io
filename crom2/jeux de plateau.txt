@@ -1,1 +1,0 @@
-<select name="choixdujdp"><option value="221">Fallout</option><option value="54" selected="">Jeu de plateau</option><option value="217">King of New York</option><option value="219">King of Tokyo</option><option value="193">Zombicide</option></select>
