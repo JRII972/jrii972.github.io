@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Connexion - LBDR</title>
+  <link rel="stylesheet" href="/assets/index.css">
   <style>
     @font-face {
       font-family: 'Ravenholm-Bold';
@@ -14,8 +15,7 @@
       font-family: 'Ravenholm-Bold', sans-serif;
     }
   </style>
-  <script src="/assets/js/main.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/module.css">
+  <script src="assets/js/main.js"></script>
 </head>
 <body class="bg-base-200">
   <div class="min-h-screen flex items-center justify-center px-4">
@@ -26,7 +26,7 @@
             <!-- Partie gauche - Image et texte d'introduction -->
             <div class="lg:min-w-[300px] lg:max-w-xl flex flex-col justify-center items-center p-6 bg-base-200 rounded-box">
                 <div class="hidden lg:block">
-                     <div id="login-illustration" class="w-md h-[250px] rounded-lg mb-6 back bg-center bg-cover transition-[background-image] duration-1400 ease-in-out" style="background-image: url('https://picsum.photos/400/300');"></div>
+                    <img id="login-illustration" src="https://picsum.photos/400/300" alt="Illustration connexion" class="max-w-full h-auto rounded-lg mb-6" />
                 </div>
                 <div class="text-center">
                     <h2 class="font-ravenholm-bold text-2xl mb-4">Bienvenue sur LBDR</h2>
@@ -97,9 +97,9 @@
   </div>
 
   <!-- Scripts JavaScript -->
-  <script src="/assets/js/utils.js"></script>
+  <script src="assets/js/utils.js"></script>
   
-  <script src="/assets/js/login.js"></script>
+  <script src="assets/js/login.js"></script>
   <script>
     // Redirection automatique si déjà connecté (géré côté JS)
     // Rien à faire ici, tout est dans login.js
@@ -126,7 +126,7 @@ window.addEventListener('DOMContentLoaded', () => {
   if (img) {
     function setRandomImage() {
       const random = Math.floor(Math.random() * loginImages.length);
-      img.style.backgroundImage = `url('${loginImages[random]}')`;
+      img.src = loginImages[random];
     }
     setRandomImage();
     setInterval(setRandomImage, 5000);
