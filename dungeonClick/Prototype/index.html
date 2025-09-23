@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Reverse Clicker RPG - Prototype V2</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="game-container">
+        <!-- Header with click counters -->
+        <header class="game-header">
+            <div class="click-counter adventure-counter">
+                <div class="counter-label">Clics d'Aventure</div>
+                <div class="counter-value" id="adventure-clicks">20</div>
+            </div>
+            <div class="click-counter craft-counter">
+                <div class="counter-label">Clics d'Artisanat</div>
+                <div class="counter-value" id="craft-clicks">0</div>
+            </div>
+        </header>
+
+        <!-- Hero stats panel -->
+        <section class="hero-panel">
+            <h2 id="hero-name">Aventurier</h2>
+            <div class="expedition-counter">
+                <span>Expédition #</span><span id="expedition-count">1</span>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-label">Niveau:</span>
+                    <span id="hero-level">1</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">PV:</span>
+                    <span id="hero-hp">50</span>/<span id="hero-max-hp">50</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">ATQ:</span>
+                    <span id="hero-attack">10</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">DÉF:</span>
+                    <span id="hero-defense">5</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">VIT:</span>
+                    <span id="hero-speed">8</span>
+                </div>
+            </div>
+            <div class="xp-bar">
+                <div class="xp-fill" id="xp-fill"></div>
+                <span class="xp-text" id="xp-text">0 / 100</span>
+            </div>
+        </section>
+
+        <!-- Main game area -->
+        <main class="game-main" id="game-main">
+            <!-- Exploration Choices -->
+            <div id="exploration-area" class="exploration-area">
+                <div class="room-choice" id="room-choice-1"></div>
+                <div class="room-choice" id="room-choice-2"></div>
+            </div>
+
+            <!-- Combat Area (hidden by default) -->
+            <div id="combat-area" class="combat-area hidden">
+                <div id="combat-info"></div>
+                <button id="attack-button" class="btn btn-primary">Attaquer (1 Clic)</button>
+                <button id="power-attack-button" class="btn btn-danger">Attaque Puissante (3 Clics)</button>
+            </div>
+
+            <!-- Crafting Area -->
+            <div id="crafting-area" class="crafting-area hidden">
+                <h3>Artisanat</h3>
+                <div id="materials-list"></div>
+                <div id="crafting-recipes"></div>
+            </div>
+
+            <!-- Message / Feedback -->
+            <div id="message-area" class="message-area"></div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <button id="btn-enter-dungeon" class="btn btn-secondary">Entrer au Donjon</button>
+                <button id="btn-back-to-base" class="btn btn-secondary hidden">Retour à la Base</button>
+                <button id="btn-open-crafting" class="btn btn-secondary hidden">Aller à l'Artisanat</button>
+                <button id="btn-back-to-exploration" class="btn btn-secondary hidden">Retour à l'Exploration</button>
+                <button id="btn-reset" class="btn btn-warning">Réinitialiser le Jeu</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
