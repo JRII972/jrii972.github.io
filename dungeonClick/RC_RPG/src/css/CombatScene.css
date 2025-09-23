@@ -1,0 +1,72 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.topSection {
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cardsRow {
+  width: 100%;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: stretch;
+  /* évite les débordements, s’adapte entre 2 colonnes et 1 colonne */
+}
+
+.cardCol {
+  flex: 1 1 320px;
+  min-width: 260px;
+  max-width: 100%;
+  display: flex;
+}
+
+/* espace flexible */
+.spacer {
+  flex: 1;
+}
+
+/* Bas de page : logs + actions */
+.bottomSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 10px 0 0;
+}
+
+.logsBox {
+  align-self: center;
+  width: 100%;
+  max-width: 900px;
+  max-height: 180px;
+
+  @media (max-width: 600px) {
+    max-height: 10vh;
+  }
+
+  overflow-y: auto;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  padding: 10px;
+  background: rgba(255,255,255,0.03);
+}
+
+.logLine {
+  font-size: 14px;
+  line-height: 1.4;
+  opacity: 0.95;
+}
+
+.logEmpty {
+  font-size: 14px;
+  opacity: 0.7;
+  font-style: italic;
+}

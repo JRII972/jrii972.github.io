@@ -1,0 +1,126 @@
+.entityCard {
+  flex: 1 1 auto;
+  min-width: 0;
+  width: 100%;
+  max-width: 300px;
+  overflow: hidden;
+  padding: 12px;
+  border-radius: 16px;
+  border: 2px solid transparent;
+  backdrop-filter: blur(3px);
+  background: linear-gradient(160deg, rgba(30,41,59,0.35), rgba(15,23,42,0.25));
+}
+
+.entityCard--hero {
+  border-color: #d4af37; /* doré */
+  box-shadow: 0 0 0 1px rgba(212,175,55,0.25), 0 10px 30px rgba(0,0,0,0.35);
+  background: linear-gradient(160deg, rgba(34,197,94,0.15), rgba(34,197,94,0.05));
+}
+
+.entityCard--enemy {
+  border-color: #ef4444; /* rouge */
+  box-shadow: 0 0 0 1px rgba(239,68,68,0.25), 0 10px 30px rgba(0,0,0,0.35);
+  background: linear-gradient(160deg, rgba(239,68,68,0.15), rgba(239,68,68,0.05));
+}
+
+/* Portrait + overlay */
+.entityCard__portrait {
+  position: relative;        /* nécessaire pour positionner le badge */
+  width: 100%;
+  @media (max-width: 600px) {
+    max-height: 20vh;
+  }
+  
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.entityCard__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.entityCard__img--placeholder {
+  color: rgba(255,255,255,0.5);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* Badge d'armure (overlay en haut à droite) */
+.entityCard__armorBadge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 1;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,255,255,0.18);
+  backdrop-filter: blur(4px);
+}
+
+.entityCard__armorIcon {
+  width: 14px;
+  height: 14px;
+  color: #eab308; /* or #fbbf24 (amber) */
+}
+
+.entityCard__name {
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.entityCard__stats {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+}
+
+.entityCard__meterBox {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 6px;
+  align-items: center;
+  width: 100%;
+}
+
+.entityCard__meterLabel,
+.entityCard__meterValue {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.entityCard__track {
+  height: 8px;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: #3a3a3a;
+}
+
+.entityCard__track--mp {
+  background: #2c2c2c;
+}
+
+.entityCard__fill {
+  height: 100%;
+  background: #16a34a;  /* HP */
+}
+
+.entityCard__fill--mp {
+  background: #0ea5e9;  /* MP */
+}

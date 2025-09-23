@@ -1,0 +1,10 @@
+.hud {
+  width: 100%;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 12px;
+  font-size: 14px;
+  opacity: 0.95;
+}
