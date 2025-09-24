@@ -27,9 +27,10 @@
 .entityCard__portrait {
   position: relative;        /* nécessaire pour positionner le badge */
   width: 100%;
-  @media (max-width: 600px) {
-    max-height: 20vh;
-  }
+  max-height: 12vh;
+  /* @media (max-width: 600px) {
+    max-height: 13vh;
+  } */
   
   aspect-ratio: 1 / 1;
   border-radius: 12px;

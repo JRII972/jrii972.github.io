@@ -17,8 +17,9 @@ export default class Action {
     effects = [],
     defendFlat = null,
     healAmount = 0,
-    target = "self", // "self" | "ally" | "enemy"
-    targetsAllAllies = false
+    target = "self",
+    targetsAllAllies = false,
+    aiWeight = 1,
   }) {
     this.id = id;
     this.name = name;
@@ -37,8 +38,9 @@ export default class Action {
     this.targetsAllAllies = targetsAllAllies;
 
     this._remainingCD = 0;
-  }
 
+    this.aiWeight = Math.max(0, Math.min(1, aiWeight));
+  }
   canUse(user, { battle }) {
     if (!user) return false;
     if (this._remainingCD > 0) return false;
@@ -116,9 +118,7 @@ export default class Action {
     }
 
     if (this.kind === "heal") {
-      let ok = true;
-      if ((this.accuracy ?? 1) < 1) ok = this._computeAccuracy(user, target, rng);
-      if (!ok) {
+      if (!this._computeAccuracy(user, target, rng)) {
         if (!flags.noCooldown) this.startCooldown();
         return { type: "miss", log: `${user.name} échoue à lancer ${this.name}.` };
       }

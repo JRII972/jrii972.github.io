@@ -1,12 +1,12 @@
 import React, { useMemo } from "react";
 import CombatScene from "./ui/scenes/CombatScene.jsx";
-import { createHero, createEnemies, createAllies } from "./data/presets.js";
+import { createWarrior, createArcher, createMage , createClassicEnemies} from "./data/presets.js";
 import './App.css';
 
 export default function App() {
-  const hero = useMemo(() => createHero(), []);
-  const enemies = useMemo(() => createEnemies(), []); // tableau d'ennemis
-  const allies = useMemo(() => createAllies(), []);
+  const hero = useMemo(() => createWarrior(), []);
+  const enemies = useMemo(() => createClassicEnemies(), []); // tableau d'ennemis
+  const allies = useMemo(() => [createArcher(), createMage()], []);
 
   return (
     <div className="app">

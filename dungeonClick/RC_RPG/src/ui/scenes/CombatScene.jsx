@@ -14,16 +14,16 @@ import EventBus from "../../core/state/EventBus.js";
 import GameState from "../../core/state/GameState.js";
 import AIController from "../../adapters/AIController.js";
 
-export default function CombatScene({ hero, enemies = [], allies = [] }) {
+export default function CombatScene({ hero, enemies = [], allies = [], seed = Date.now() }) {
   const actors = useMemo(() => [hero, ...allies, ...enemies], [hero, allies, enemies]);
 
   const { battle, turnMgr, bus, ai } = useMemo(() => {
-    const rng = new RNG();
+    const rng = new RNG(seed);
     const bus = new EventBus();
     const cooldowns = new CooldownManager(actors);
     const battle = new Battle({ hero, enemies, allies, rng, cooldowns, eventBus: bus });
     const turnMgr = new TurnManager({ actors });
-    const ai = new AIController();
+    const ai = new AIController(rng);
     return { battle, turnMgr, bus, ai };
   }, [actors, hero, enemies, allies]);
 
@@ -60,46 +60,47 @@ export default function CombatScene({ hero, enemies = [], allies = [] }) {
     turnLock.current = true;
 
     const end = () => { endTurn(); turnLock.current = false; };
-
     const skipIfStunned = () => {
       if (battle.hasStun(current)) {
         bus.emit("log", `${current.name} est étourdi et passe son tour !`);
-        end();
-        return true;
+        end(); return true;
       }
       return false;
     };
 
-    // Héros principal sans actions globales restantes → on saute
     if (current.id === hero.id && clicksLeftGlobal <= 0) {
       bus.emit("log", `Vous n'avez plus d'actions disponibles pour ce combat.`);
-      end();
-      return;
+      end(); return;
     }
 
-    // ➜ ennemi courant (si le current est dans enemies)
-    const foe = enemies.find(e => e.id === current.id);
-
-    if (foe) {
+    const isEnemy = enemies.some(e => e.id === current.id);
+    if (isEnemy) {
       if (skipIfStunned()) return;
+      const foe = enemies.find(e => e.id === current.id);
       const t = setTimeout(() => {
-        // L'ennemi cible toujours le héros principal
-        const pick = ai.chooseAction(foe, hero) || { action: (foe.actions || [])[0] };
-        if (pick?.action) battle.resolve(pick.action, foe, hero);
+        const pick = ai.chooseAction(foe, battle);            // ← IA choisit seulement
+        if (pick?.action) battle.resolve(pick.action, foe, pick.target ?? null); // ← Battle exécute
         end();
       }, 500);
       return () => { clearTimeout(t); turnLock.current = false; };
-    } else if (current.id !== hero.id) {
-      // ➕ Compagnon : tour automatique côté moteur
-      if (skipIfStunned()) return;
-      const t = setTimeout(() => { battle.autoTurnCompanion(current); end(); }, 450);
-      return () => { clearTimeout(t); turnLock.current = false; };
-    } else {
-      // Héros : on attend l'input → pas d'auto
-      if (skipIfStunned()) return;
-      turnLock.current = false;
     }
-  }, [current, ai, enemies, hero, battle, bus, clicksLeftGlobal]);
+
+    const isCompanion = allies.some(a => a.id === current.id);
+    if (isCompanion) {
+      if (skipIfStunned()) return;
+      const ally = allies.find(a => a.id === current.id);
+      const t = setTimeout(() => {
+        const pick = ai.chooseAction(ally, battle);           // ← IA choisit seulement
+        if (pick?.action) battle.resolve(pick.action, ally, pick.target ?? null); // ← Battle exécute
+        end();
+      }, 450);
+      return () => { clearTimeout(t); turnLock.current = false; };
+    }
+
+    // Héros : attend input
+    if (skipIfStunned()) return;
+    turnLock.current = false;
+  }, [current, ai, battle, bus, enemies, allies, hero, clicksLeftGlobal]);
 
   function endTurn() {
     const { next, roundEnded } = turnMgr.advance();
@@ -211,8 +212,8 @@ export default function CombatScene({ hero, enemies = [], allies = [] }) {
               battleOver
                 ? "Combat terminé"
                 : isMainHeroTurn
-                ? `À vous de jouer (${current?.name})`
-                : (isPlayersTurn ? `Tour de ${current?.name}` : "Tour de l'ennemi")
+                  ? `À vous de jouer (${current?.name})`
+                  : (isPlayersTurn ? `Tour de ${current?.name}` : "Tour de l'ennemi")
             }
             actions={currentActions}
             onAction={(a) => onPlayerAction(a.id)}

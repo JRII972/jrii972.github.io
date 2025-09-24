@@ -3,7 +3,7 @@ export { createEffect } from "../effects/Effect.js";
 
 
 export const ActionRegistry = {
-  attack(name, description, baseDamage, accuracy, cooldown = 0, costMP = 0, effects = []) {
+  attack(name, description, baseDamage, accuracy, cooldown = 0, costMP = 0, effects = [], aiWeight) {
     return new Action({
       id: name.toLowerCase().replace(/\s+/g, "_"),
       name,
@@ -14,11 +14,12 @@ export const ActionRegistry = {
       cooldown,
       costMP,
       effects,
-      target : "enemy"
+      target : "enemy",
+      aiWeight : aiWeight
     });
   },
 
-  defend(name, description, defendFlat = null, cooldown = 1, effects = []) {
+  defend(name, description, defendFlat = null, cooldown = 1, effects = [], aiWeight) {
     return new Action({
       id: name.toLowerCase().replace(/\s+/g, "_"),
       name,
@@ -26,11 +27,12 @@ export const ActionRegistry = {
       kind: "defend",
       defendFlat,
       cooldown,
-      effects,
+      effects,      
+      aiWeight : aiWeight
     });
   },
 
-  heal(name, description, healAmount, accuracy = 1, cooldown = 0, costMP = 0, target = "self", effects = []) {
+  heal(name, description, healAmount, accuracy = 1, cooldown = 0, costMP = 0, target = "self", effects = [], aiWeight) {
     return new Action({
       id: name.toLowerCase().replace(/\s+/g, "_"),
       name,
@@ -42,6 +44,8 @@ export const ActionRegistry = {
       costMP,
       target,
       effects,
+      aiWeight : aiWeight
     });
   },
 };
+
