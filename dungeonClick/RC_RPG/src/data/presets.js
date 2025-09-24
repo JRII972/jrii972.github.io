@@ -10,7 +10,7 @@ export function createHero() {
     atk: 18,
     def: 10,
     speed: 10,
-    portrait: "/images/hero.png",
+    portrait: "/img/character/chevalier.png",
     actions: [
       ActionRegistry.attack("Coup d'épée", "Attaque physique standard.", 12, 0.90),
       ActionRegistry.attack(
@@ -38,7 +38,7 @@ export function createEnemies() {
     atk: 16,
     def: 10,
     speed: 8,
-    portrait: "/images/goblin.png",
+    portrait: "/img/character//goblin.png",
     actions: [
       ActionRegistry.attack("Griffe", "Attaque de base.", 10, 0.85),
       ActionRegistry.defend("Parade", "Se met en défense."),
@@ -54,7 +54,7 @@ export function createEnemies() {
     atk: 22,
     def: 12,
     speed: 7,
-    portrait: "/images/orc.png",
+    portrait: "/img/character/orc.png",
     actions: [
       ActionRegistry.attack("Coup de masse", "Frappe lourde.", 15, 0.75),
       ActionRegistry.attack(
@@ -77,7 +77,7 @@ export function createAllies() {
     atk: 8,
     def: 6,
     speed: 9,
-    portrait: "/images/ally_priest.png",
+    portrait: "//img/character/pretresse.png",
     actions: [
       ActionRegistry.heal("Soin mineur", "Soin léger à un allié.", 16, 1, 0, 6, "ally"),
       ActionRegistry.heal("Soin passif", "Régénération légère automatique.", 4, 1, 0, 0, "ally"),
@@ -92,7 +92,7 @@ export function createAllies() {
     atk: 14,
     def: 8,
     speed: 11,
-    portrait: "/images/ally_archer.png",
+    portrait: "/img/character/archère.png",
     actions: [
       ActionRegistry.attack("Flèche", "Attaque à distance.", 10, 0.9),
     ],

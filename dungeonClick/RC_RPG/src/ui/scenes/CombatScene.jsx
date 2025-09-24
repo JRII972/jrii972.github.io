@@ -102,9 +102,8 @@ export default function CombatScene({ hero, enemies = [], allies = [] }) {
   }, [current, ai, enemies, hero, battle, bus, clicksLeftGlobal]);
 
   function endTurn() {
-    const wasIndex0 = turnMgr.currentIndex === 0;
-    const next = turnMgr.nextActor();
-    if (turnMgr.currentIndex === 0 && !wasIndex0) battle.endOfRound();
+    const { next, roundEnded } = turnMgr.advance();
+    if (roundEnded) battle.endOfRound();
     setCurrent(next);
     forceTick((n) => n + 1);
   }
@@ -121,7 +120,7 @@ export default function CombatScene({ hero, enemies = [], allies = [] }) {
     const action = hero.actions.find((a) => a.id === actionId);
     if (!action) return;
 
-    // Ciblage par défaut géré par le moteur (on passe null)
+    // Ciblage 
     battle.resolve(action, hero, null);
     if (battle.isOver()) return;
 
@@ -141,12 +140,11 @@ export default function CombatScene({ hero, enemies = [], allies = [] }) {
     endTurn();
   }
 
-  // MP visibles
+
   const heroShowMP = hero.actions.some((a) => (a.costMP ?? 0) > 0);
   const enemyShowMP = settings.showEnemyMP;
   const allyHasMP = (ally) => ally.actions.some(a => (a.costMP ?? 0) > 0);
 
-  // 👉 UI : on n'affiche que les actions du héros (pas celles des supports)
   const currentActions = hero.actions.map(a => ({
     id: a.id,
     name: a.name,
@@ -154,7 +152,6 @@ export default function CombatScene({ hero, enemies = [], allies = [] }) {
     canUse: a.canUse(hero, { battle })
   }));
 
-  // Fin de combat : héros mort OU plus aucun ennemi vivant
   const anyEnemyAlive = enemies.some(e => e.alive);
   const battleOver = !hero.alive || !anyEnemyAlive;
 
