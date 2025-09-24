@@ -1,4 +1,5 @@
 import settings from "../../config/settings.js";
+import logs from "../state/LogManager.js";
 
 /**
  * Action générique data-driven.
@@ -41,7 +42,7 @@ export default class Action {
 
     this.aiWeight = Math.max(0, Math.min(1, aiWeight));
   }
-  canUse(user, { battle }) {
+  canUse(user) {
     if (!user) return false;
     if (this._remainingCD > 0) return false;
     if ((user.mp ?? 0) < this.costMP) return false;
@@ -67,71 +68,28 @@ export default class Action {
       acc = settings.enemyToHeroHitChanceOverride;
     }
 
+    // Effets actifs sur l'utilisateur pouvant modifier la précision
+    if (user?.activeEffects) {
+      for (const eff of user.activeEffects) {
+        if (eff.remaining > 0 && typeof eff.modifyAccuracy === "function") {
+          acc = eff.modifyAccuracy(acc, this, user);
+        }
+      }
+    }
+
     acc = Math.max(0, Math.min(1, acc));
     return rng.chance(acc);
   }
 
-  /**
-   * apply(user, target, { rng, battle, flags })
-   * flags: { noCost?: boolean, noCooldown?: boolean }
-   * Retour: { type: "damage"|"heal"|"status"|"miss"|"fail"|"noop", value?, log }
-   */
-  apply(user, initialTarget, context = {}) {
-    const { rng, battle, flags = {} } = context;
-    if (!this.canUse(user, { battle })) return { type: "fail", log: `${this.name} impossible.` };
-
-    // MP
-    if (!flags.noCost && this.costMP > 0 && !user.spendMP(this.costMP)) {
-      return { type: "fail", log: "MP insuffisants." };
+  applyEffects(user, target, battle){
+    if (!this.effects || this.effects.length === 0) return;
+    for (const eff of this.effects){
+      const effTarget = eff.applyTo === 'self' ? user : target;
+      if (!effTarget) continue;
+      if (!effTarget.activeEffects) effTarget.activeEffects = [];
+      effTarget.activeEffects.push(eff);
+      const log = eff.onApply?.(battle, effTarget);
+      if (log) logs.log(log);
     }
-
-    // Cible self/ally/enemy (défaut local ; le moteur peut aussi recadrer)
-    let target = initialTarget;
-    if (this.target === "self") target = user;
-
-    if (this.kind === "attack") {
-      const hit = this._computeAccuracy(user, target, rng);
-      if (!hit) {
-        if (!flags.noCooldown) this.startCooldown();
-        return { type: "miss", log: `${user.name} rate avec ${this.name}.` };
-      }
-      const dmg = Math.max(0, this.baseDamage);
-
-      for (const eff of this.effects) {
-        const effTarget = eff.applyTo === "self" ? user : target;
-        battle.applyEffect(eff, effTarget);
-      }
-
-      if (!flags.noCooldown) this.startCooldown();
-      return { type: "damage", value: dmg, log: `${user.name} utilise ${this.name} et inflige ${dmg} dégâts à ${target?.name ?? "la cible"}.` };
-    }
-
-    if (this.kind === "defend") {
-      const flat = (this.defendFlat == null) ? user.def : Number(this.defendFlat || 0);
-      user.statuses.set("defend_flat", flat);
-      for (const eff of this.effects) {
-        const effTarget = eff.applyTo === "self" ? user : target;
-        battle.applyEffect(eff, effTarget);
-      }
-      if (!flags.noCooldown) this.startCooldown();
-      return { type: "status", log: `${user.name} se met en défense (réduction ${flat}).` };
-    }
-
-    if (this.kind === "heal") {
-      if (!this._computeAccuracy(user, target, rng)) {
-        if (!flags.noCooldown) this.startCooldown();
-        return { type: "miss", log: `${user.name} échoue à lancer ${this.name}.` };
-      }
-      const raw = Math.max(0, this.healAmount + rng.range(0, 2));
-      for (const eff of this.effects) {
-        const effTarget = eff.applyTo === "self" ? user : target;
-        battle.applyEffect(eff, effTarget);
-      }
-      if (!flags.noCooldown) this.startCooldown();
-      return { type: "heal", value: raw, log: `${user.name} utilise ${this.name} sur ${target?.name ?? "l'allié"} et rend ${raw} PV.` };
-    }
-
-    if (!flags.noCooldown) this.startCooldown();
-    return { type: "noop", log: `${user.name} tente ${this.name}.` };
   }
 }

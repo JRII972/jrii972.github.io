@@ -1,32 +1,20 @@
-export default class FocusEffect {
+import BaseEffect from "./BaseEffect.js";
+
+export default class FocusEffect extends BaseEffect {
   constructor({
     name = "Focus",
     description = "Augmente la précision.",
     applyTo = "self",
     duration = 1,
-    amount = 0.1, // +10% par défaut
+    amount = 0.1,
+    aiWeight = 1,
   } = {}) {
-    this.name = name;
-    this.description = description;
+    super({ name, description, applyTo, duration, aiWeight });
     this.type = "FOCUS";
-    this.applyTo = applyTo;
-    this.remaining = duration;
     this.amount = amount;
   }
-
-  onApply(battle, target) {
-    return `${target.name} se concentre (+${Math.round(this.amount * 100)}% précision, ${this.remaining} tour(s)).`;
-  }
-
-  tick() {
-    this.remaining -= 1;
-    return this.remaining > 0;
-  }
-
-  blocksAction() { return false; }
-
-  /** Bonus de précision appliqué aux attaques */
-  modifyAccuracy(baseAcc /*, action, user */) {
-    return Math.min(1, baseAcc + this.amount);
-  }
+  onApply(_battle, target) { return `${target.name} se concentre (+${Math.round(this.amount * 100)}% précision, ${this.remaining} tour(s)).`; }
+  modifyAccuracy(baseAcc) { return Math.min(1, baseAcc + this.amount); }
+  is(t) { return t === "FOCUS"; }
 }
+

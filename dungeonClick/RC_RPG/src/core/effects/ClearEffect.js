@@ -5,12 +5,15 @@ export default class ClearEffect {
     description = "Retire les effets de dégâts en cours.",
     applyTo = "ally",           // "self" | "ally" | "target"
     typesToClear = ["DEG"],     // types d'effets à retirer
+    aiWeight = 1,
   } = {}) {
     this.name = name;
     this.description = description;
     this.type = "CLEAR";
     this.applyTo = applyTo;
-    this.typesToClear = Array.isArray(typesToClear) ? typesToClear : ["DEG"];
+    this.typesToClear = (Array.isArray(typesToClear) ? typesToClear : ["DOT"]) 
+      .map(t => t === "DEG" ? "DOT" : t); // compat ancien code
+    this.aiWeight = aiWeight;
     this.remaining = 0; // effet instantané, ne persiste pas
   }
 

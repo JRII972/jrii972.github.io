@@ -28,6 +28,9 @@ export default class Character {
     this.tags = new Set();
     this.portrait = portrait;
 
+  // Liste des effets actifs (instances d'effets) appliqués au personnage
+  this.activeEffects = [];
+
     // ➕ IA: stockée telle quelle, avec valeurs par défaut sûres
     const features = Array.isArray(ai?.features) ? ai.features.slice() : [];
     this.ai = { name: ai?.name ?? "default", features };

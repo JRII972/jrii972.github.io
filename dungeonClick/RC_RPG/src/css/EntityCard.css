@@ -72,6 +72,27 @@
   backdrop-filter: blur(4px);
 }
 
+/* Badge Focus (gauche) */
+.entityCard__focusBadge {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 1;
+  background: rgba(30,64,175,0.45); /* bleu profond */
+  border: 1px solid rgba(191,219,254,0.4);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  color: #bfdbfe;
+}
+
+.entityCard__focusIcon { width: 14px; height: 14px; }
+
 .entityCard__armorIcon {
   width: 14px;
   height: 14px;
@@ -153,3 +174,54 @@
   border-radius: 10px;
   margin-bottom: 6px;
 }
+
+/* Effets actifs */
+.entityCard__effects {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.entityCard__effectBadge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 4px 6px 4px 6px;
+  border-radius: 8px;
+  font-size: 11px;
+  line-height: 1;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  min-width: 34px;
+}
+
+.entityCard__effectBadge .entityCard__effectVisual {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+}
+
+.entityCard__effectIcon { width: 100%; height: 100%; object-fit: contain; }
+
+.entityCard__effectTurns {
+  font-size: 10px;
+  opacity: 0.8;
+}
+
+/* Variations couleur par type */
+.entityCard__effectBadge.type-stun { background: rgba(239,68,68,0.15); border-color: rgba(239,68,68,0.4); }
+.entityCard__effectBadge.type-dot { background: rgba(249,115,22,0.15); border-color: rgba(249,115,22,0.4); }
+.entityCard__effectBadge.type-focus { background: rgba(59,130,246,0.18); border-color: rgba(59,130,246,0.45); }
+.entityCard__effectBadge.type-malus_def { background: rgba(168,85,247,0.18); border-color: rgba(168,85,247,0.45); }
+.entityCard__effectBadge.type-malus_heal { background: rgba(190,24,93,0.18); border-color: rgba(190,24,93,0.45); }
+.entityCard__effectBadge.type-clear { background: rgba(34,197,94,0.18); border-color: rgba(34,197,94,0.45); }
+
+.entityCard__effectBadge:hover { border-color: #fff; }

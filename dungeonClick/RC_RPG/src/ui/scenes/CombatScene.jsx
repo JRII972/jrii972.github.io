@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState, useCallback } from "react";
 
 import ActionBar from "../components/ActionBar.jsx";
 import { EntityCard } from "../components/EntityCard.jsx";
@@ -11,10 +11,13 @@ import CooldownManager from "../../core/combat/CooldownManager.js";
 import TurnManager from "../../core/combat/TurnManager.js";
 import Battle from "../../core/combat/Battle.js";
 import EventBus from "../../core/state/EventBus.js";
+import logsManager from "../../core/state/LogManager.js";
+import { useLogs } from "../context/LogContext.jsx";
 import GameState from "../../core/state/GameState.js";
 import AIController from "../../adapters/AIController.js";
 
 export default function CombatScene({ hero, enemies = [], allies = [], seed = Date.now() }) {
+  const contextLogs = useLogs();
   const actors = useMemo(() => [hero, ...allies, ...enemies], [hero, allies, enemies]);
 
   const { battle, turnMgr, bus, ai } = useMemo(() => {
@@ -25,13 +28,11 @@ export default function CombatScene({ hero, enemies = [], allies = [], seed = Da
     const turnMgr = new TurnManager({ actors });
     const ai = new AIController(rng);
     return { battle, turnMgr, bus, ai };
-  }, [actors, hero, enemies, allies]);
+  }, [actors, hero, enemies, allies, seed]);
 
-  const [logs, setLogs] = useState([]);
   useEffect(() => {
-    const off1 = bus.on("log", (line) => setLogs((prev) => [...prev, line]));
     const off2 = bus.on("state:update", () => forceTick((n) => n + 1));
-    return () => { off1(); off2(); };
+    return () => { off2(); };
   }, [bus]);
 
   const [, forceTick] = useState(0);
@@ -62,20 +63,20 @@ export default function CombatScene({ hero, enemies = [], allies = [], seed = Da
     const end = () => { endTurn(); turnLock.current = false; };
     const skipIfStunned = () => {
       if (battle.hasStun(current)) {
-        bus.emit("log", `${current.name} est étourdi et passe son tour !`);
+        logsManager.log(`${current.name} est étourdi et passe son tour !`);
         end(); return true;
       }
       return false;
     };
 
     if (current.id === hero.id && clicksLeftGlobal <= 0) {
-      bus.emit("log", `Vous n'avez plus d'actions disponibles pour ce combat.`);
+      logsManager.log(`Vous n'avez plus d'actions disponibles pour ce combat.`);
       end(); return;
     }
 
     const isEnemy = enemies.some(e => e.id === current.id);
     if (isEnemy) {
-      if (skipIfStunned()) return;
+  if (skipIfStunned()) return;
       const foe = enemies.find(e => e.id === current.id);
       const t = setTimeout(() => {
         const pick = ai.chooseAction(foe, battle);            // ← IA choisit seulement
@@ -87,7 +88,7 @@ export default function CombatScene({ hero, enemies = [], allies = [], seed = Da
 
     const isCompanion = allies.some(a => a.id === current.id);
     if (isCompanion) {
-      if (skipIfStunned()) return;
+  if (skipIfStunned()) return;
       const ally = allies.find(a => a.id === current.id);
       const t = setTimeout(() => {
         const pick = ai.chooseAction(ally, battle);           // ← IA choisit seulement
@@ -100,23 +101,23 @@ export default function CombatScene({ hero, enemies = [], allies = [], seed = Da
     // Héros : attend input
     if (skipIfStunned()) return;
     turnLock.current = false;
-  }, [current, ai, battle, bus, enemies, allies, hero, clicksLeftGlobal]);
+  }, [current, ai, battle, bus, enemies, allies, hero, clicksLeftGlobal, endTurn]);
 
-  function endTurn() {
+  const endTurn = useCallback(() => {
     const { next, roundEnded } = turnMgr.advance();
     if (roundEnded) battle.endOfRound();
     setCurrent(next);
     forceTick((n) => n + 1);
-  }
+  }, [turnMgr, battle]);
 
   function onPlayerAction(actionId) {
     if (battle.isOver()) return;
     if (current?.id !== hero.id) return;
 
     // Limites héros
-    if (clicksLeftGlobal <= 0) { bus.emit("log", `Plus d'actions disponibles dans ce combat.`); endTurn(); return; }
-    if (typeof clicksLeftTurn === "number" && clicksLeftTurn <= 0) { bus.emit("log", `Limite atteinte pour ce tour.`); endTurn(); return; }
-    if (battle.hasStun(hero)) { bus.emit("log", `${hero.name} est étourdi et ne peut pas agir !`); endTurn(); return; }
+  if (clicksLeftGlobal <= 0) { logsManager.log(`Plus d'actions disponibles dans ce combat.`); endTurn(); return; }
+  if (typeof clicksLeftTurn === "number" && clicksLeftTurn <= 0) { logsManager.log(`Limite atteinte pour ce tour.`); endTurn(); return; }
+  if (battle.hasStun(hero)) { logsManager.log(`${hero.name} est étourdi et ne peut pas agir !`); endTurn(); return; }
 
     const action = hero.actions.find((a) => a.id === actionId);
     if (!action) return;
@@ -200,10 +201,10 @@ export default function CombatScene({ hero, enemies = [], allies = [], seed = Da
       <div className="bottomSection">
         <div className="container">
           <div className="logsBox">
-            {logs.length === 0 ? (
+            {contextLogs.length === 0 ? (
               <div className="logEmpty">Le combat commence…</div>
             ) : (
-              logs.slice(-8).map((l, i) => <div key={i} className="logLine">• {l}</div>)
+              contextLogs.slice(-8).map((l, i) => <div key={i} className="logLine">• {l}</div>)
             )}
           </div>
 

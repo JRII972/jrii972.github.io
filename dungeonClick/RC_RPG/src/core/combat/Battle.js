@@ -1,4 +1,6 @@
-export default class Battle {
+import logs from '../state/LogManager.js';
+
+class Battle {
   constructor({ hero, enemies = [], allies = [], rng, cooldowns, eventBus }) {
     this.hero = hero;
     this.enemies = enemies;
@@ -8,12 +10,31 @@ export default class Battle {
     this.eventBus = eventBus;
   }
 
+  // Traitement début de tour : appliquer effets instantanés éventuels + purge des expirés
+  processStartOfTurn(entity) {
+    if (!entity?.activeEffects || entity.activeEffects.length === 0) return;
+    const periodicLogs = [];
+
+    for (const eff of entity.activeEffects) {
+      if (eff.remaining > 0 && typeof eff.onTurnStart === "function") {
+        const l = eff.onTurnStart(this, entity);
+        if (l) periodicLogs.push(l);
+      }
+    }
+    const expired = entity.activeEffects.filter(e => e.remaining <= 0);
+    if (expired.length > 0 && entity === this.hero) {
+      const names = expired.map(e => e.name).join(", ");
+      logs.log(`Effets terminés sur ${entity.name}: ${names}.`);
+    }
+    entity.activeEffects = entity.activeEffects.filter(e => (e.remaining > 0));
+    periodicLogs.forEach(l => l && logs.log(l));
+  }
+
   // ------- Utils effets -------
   applyEffect(effect, target) {
     if (!target.activeEffects) target.activeEffects = [];
     target.activeEffects.push(effect);
-    const log = effect.onApply?.(this, target);
-    if (log) this.eventBus?.emit("log", log);
+    effect.onApply?.(this, target);
   }
 
   computeIncomingDamage(target, baseValue) {
@@ -77,74 +98,45 @@ export default class Battle {
   allEnemies() { return (this.enemies ?? []).filter((e) => e?.alive); }
 
   resolve(action, user, target = null) {
+    // Début de tour : rafraîchir les effets du lanceur (sécurité si non géré ailleurs)
+    this.processStartOfTurn(user);
     if (this.hasStun(user)) {
-      this.eventBus?.emit("log", `${user.name} est étourdi et ne peut pas agir !`);
+      logs.log(`${user.name} est étourdi et ne peut pas agir !`);
       this.eventBus?.emit("state:update");
       return { type: "stunned" };
     }
 
     if (!action.canUse(user, { battle: this })) {
-      this.eventBus?.emit("log", `${user.name} ne peut pas utiliser ${action.name}`);
+      logs.log(`${user.name} ne peut pas utiliser ${action.name}`);
       return { type: "invalid" };
     }
 
     const isAllAllies = action.targetsAllAllies && action.target === "ally";
-    const targets = isAllAllies ? this.allAllies() : [target ?? this.defaultTargetFor(action, user)];
-
-    // 📝 Log d’intention (qui est ciblé)
-    if (isAllAllies) {
-      this.eventBus?.emit("log", `${user.name} utilise ${action.name} sur **tous les alliés**.`);
-    } else if (targets[0]) {
-      this.eventBus?.emit("log", `${user.name} cible ${targets[0].name} avec ${action.name}.`);
-    }
+    const primaryTarget = (action.target === "self") ? user : (target ?? this.defaultTargetFor(action, user));
+    const targets = isAllAllies ? this.allAllies() : [primaryTarget];
 
     let first = true;
     for (const tgt of targets) {
-      const res = action.apply(user, tgt, {
-        rng: this.rng,
-        battle: this,
-        flags: first ? {} : { noCost: true, noCooldown: true },
-      });
-      this._applyOutcome(user, tgt, action, res);
+      action.apply(user, tgt, { battle: this, rng: this.rng, flags: first ? {} : { noCooldown: true, noCost: true } });
       first = false;
     }
-
     this.eventBus?.emit("state:update");
     return { type: "ok" };
   }
 
-  _applyOutcome(user, target, action, res) {
-    if (res.type === "damage") {
-      let acc = action.accuracy ?? 1;
-      if (user?.activeEffects) {
-        for (const eff of user.activeEffects) {
-          if (typeof eff.modifyAccuracy === "function") {
-            acc = eff.modifyAccuracy(acc, action, user);
-          }
-        }
-      }
+  // _applyOutcome supprimé (logique déplacée dans resolve)
 
-      if (!this.rng.chance(acc)) {
-        this.eventBus?.emit("log", `${user.name} rate ${action.name} sur ${target.name} !`);
-        return;
-      }
-
-      const finalDmg = this.computeIncomingDamage(target, res.value);
-      target.takeDamage(finalDmg);
-      this.eventBus?.emit("log", res.log ?? `${user.name} inflige ${finalDmg} à ${target.name}.`);
-      return;
-    }
-  }
+  // buildActionLogLine supprimé, logs gérés directement par les actions
 
   autoTurnCompanion(ally) {
     if (!ally?.alive) return;
     if (this.hasStun(ally)) {
-      this.eventBus?.emit("log", `${ally.name} est étourdi et passe son tour !`);
+      logs.log(`${ally.name} est étourdi et passe son tour !`);
       return;
     }
     const act = (ally.actions || []).find(a => a.canUse(ally, { battle: this }));
     if (!act) {
-      this.eventBus?.emit("log", `${ally.name} n'a aucune action disponible.`);
+      logs.log(`${ally.name} n'a aucune action disponible.`);
       return;
     }
     this.resolve(act, ally, null);
@@ -164,3 +156,5 @@ export default class Battle {
     return !this.hero.alive || !anyEnemyAlive;
   }
 }
+
+export default Battle;
