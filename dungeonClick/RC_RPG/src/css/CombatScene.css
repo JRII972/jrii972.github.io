@@ -70,3 +70,34 @@
   opacity: 0.7;
   font-style: italic;
 }
+
+.characters {
+  padding: 2vw;
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+
+.columns {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.alliesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px;
+}
+
+.rightCol {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}

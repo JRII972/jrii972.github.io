@@ -1,9 +1,31 @@
 import React from "react";
 
-export default function ActionBar({ actions = [], onAction, disabled = false, title = "Actions" }) {
+export default function ActionBar({
+  actions = [],
+  onAction,
+  disabled = false,
+  title = "Actions",
+  showPass = false,
+  onPass,
+  passDisabled = false,
+}) {
   return (
     <div className="actionbar">
-      <div className="actionbar__title">{title}</div>
+      <div className="actionbar__head">
+        <div className="actionbar__title">{title}</div>
+        <div className="actionbar__spacer" />
+        {showPass && (
+          <button
+            className="actionbar__pass"
+            onClick={() => !passDisabled && onPass?.()}
+            disabled={passDisabled}
+            title="Terminer votre tour maintenant"
+          >
+            Passer le tour
+          </button>
+        )}
+      </div>
+
       <div className="actionbar__row">
         {actions.map((a) => {
           const isOnCd = (a.remainingCooldown ?? 0) > 0;

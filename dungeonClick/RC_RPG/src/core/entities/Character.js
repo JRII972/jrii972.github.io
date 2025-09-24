@@ -5,15 +5,12 @@ export default class Character {
     this.maxHP = maxHP; this.hp = maxHP;
     this.maxMP = maxMP; this.mp = maxMP;
     this.atk = atk; this.def = def; this.speed = speed;
-    this.actions = actions; // instances d'Action
+    this.actions = actions; 
     this.alive = true;
 
-    // états/effets
     this.statuses = new Map();
     this.tags = new Set();
-
-    // image (définie dans les presets)
-    this.portrait = portrait; // string (url relative / absolute)
+    this.portrait = portrait; 
   }
 
   takeDamage(amount) {

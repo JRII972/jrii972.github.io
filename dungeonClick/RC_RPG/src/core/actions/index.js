@@ -1,10 +1,7 @@
 import Action from "./Action.js";
 export { createEffect } from "../effects/Effect.js";
 
-/**
- * Fabriques data-driven pour créer des actions depuis les presets.
- * (Aucune logique d'effet ici : juste des instances d'effets passées à Action)
- */
+
 export const ActionRegistry = {
   attack(name, description, baseDamage, accuracy, cooldown = 0, costMP = 0, effects = []) {
     return new Action({

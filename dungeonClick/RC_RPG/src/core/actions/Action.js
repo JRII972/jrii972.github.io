@@ -15,11 +15,10 @@ export default class Action {
     cooldown = 0,
     costMP = 0,
     effects = [],
-    // DEFEND
-    defendFlat = null, // si null => DEF du lanceur ; sinon valeur numérique
-    // HEAL
+    defendFlat = null,
     healAmount = 0,
     target = "self", // "self" | "ally" | "enemy"
+    targetsAllAllies = false
   }) {
     this.id = id;
     this.name = name;
@@ -35,13 +34,15 @@ export default class Action {
     this.defendFlat = defendFlat;
     this.healAmount = healAmount;
     this.target = target;
+    this.targetsAllAllies = targetsAllAllies;
 
     this._remainingCD = 0;
   }
 
-  canUse(user) {
+  canUse(user, { battle }) {
+    if (!user) return false;
     if (this._remainingCD > 0) return false;
-    if (user.mp < this.costMP) return false;
+    if ((user.mp ?? 0) < this.costMP) return false;
     return true;
   }
 
@@ -52,14 +53,14 @@ export default class Action {
   _computeAccuracy(user, target, rng) {
     let acc = this.accuracy;
 
-    // Bonus de Focus (consommé à l'usage)
+    // Bonus de Focus ponctuel
     const accBonus = user.statuses?.get?.("acc_bonus") || 0;
     if (accBonus) {
       acc += accBonus;
       user.statuses.delete("acc_bonus");
     }
 
-    // Override pour ennemi -> héros
+    // Forçage IA ennemi -> héros
     if (user.id === "enemy" && target?.id === "hero" && settings.enemyToHeroHitChanceOverride != null) {
       acc = settings.enemyToHeroHitChanceOverride;
     }
@@ -68,36 +69,39 @@ export default class Action {
     return rng.chance(acc);
   }
 
-  apply(user, initialTarget, context) {
-    const { rng, battle } = context;
-    if (!this.canUse(user)) return { type: "fail", log: `${this.name} impossible.` };
+  /**
+   * apply(user, target, { rng, battle, flags })
+   * flags: { noCost?: boolean, noCooldown?: boolean }
+   * Retour: { type: "damage"|"heal"|"status"|"miss"|"fail"|"noop", value?, log }
+   */
+  apply(user, initialTarget, context = {}) {
+    const { rng, battle, flags = {} } = context;
+    if (!this.canUse(user, { battle })) return { type: "fail", log: `${this.name} impossible.` };
 
-    // Paiement MP
-    if (this.costMP > 0 && !user.spendMP(this.costMP)) {
+    // MP
+    if (!flags.noCost && this.costMP > 0 && !user.spendMP(this.costMP)) {
       return { type: "fail", log: "MP insuffisants." };
     }
 
-    // Cible utilisée par défaut : self/ally/enemy → ici simplifié self/target
+    // Cible self/ally/enemy (défaut local ; le moteur peut aussi recadrer)
     let target = initialTarget;
     if (this.target === "self") target = user;
 
     if (this.kind === "attack") {
       const hit = this._computeAccuracy(user, target, rng);
       if (!hit) {
-        this.startCooldown();
+        if (!flags.noCooldown) this.startCooldown();
         return { type: "miss", log: `${user.name} rate avec ${this.name}.` };
       }
       const dmg = Math.max(0, this.baseDamage);
 
-      // Application des effets, avec choix de cible selon eff.applyTo
       for (const eff of this.effects) {
         const effTarget = eff.applyTo === "self" ? user : target;
         battle.applyEffect(eff, effTarget);
       }
 
-      this.startCooldown();
-      // NB: application réelle des dégâts (DEF, malus, etc.) faite dans Battle.resolve
-      return { type: "damage", value: dmg, log: `${user.name} utilise ${this.name} et inflige ${dmg} dégâts.` };
+      if (!flags.noCooldown) this.startCooldown();
+      return { type: "damage", value: dmg, log: `${user.name} utilise ${this.name} et inflige ${dmg} dégâts à ${target?.name ?? "la cible"}.` };
     }
 
     if (this.kind === "defend") {
@@ -107,16 +111,15 @@ export default class Action {
         const effTarget = eff.applyTo === "self" ? user : target;
         battle.applyEffect(eff, effTarget);
       }
-      this.startCooldown();
+      if (!flags.noCooldown) this.startCooldown();
       return { type: "status", log: `${user.name} se met en défense (réduction ${flat}).` };
     }
 
     if (this.kind === "heal") {
-      // heal peut avoir accuracy < 1 si voulu
       let ok = true;
-      if (this.accuracy < 1) ok = this._computeAccuracy(user, target, rng);
+      if ((this.accuracy ?? 1) < 1) ok = this._computeAccuracy(user, target, rng);
       if (!ok) {
-        this.startCooldown();
+        if (!flags.noCooldown) this.startCooldown();
         return { type: "miss", log: `${user.name} échoue à lancer ${this.name}.` };
       }
       const raw = Math.max(0, this.healAmount + rng.range(0, 2));
@@ -124,11 +127,11 @@ export default class Action {
         const effTarget = eff.applyTo === "self" ? user : target;
         battle.applyEffect(eff, effTarget);
       }
-      this.startCooldown();
-      // NB: application réelle du heal (modifs MALUS_HEAL) faite dans Battle.resolve
-      return { type: "heal", value: raw, log: `${user.name} utilise ${this.name} et soigne ${target.name} de ${raw} PV.` };
+      if (!flags.noCooldown) this.startCooldown();
+      return { type: "heal", value: raw, log: `${user.name} utilise ${this.name} sur ${target?.name ?? "l'allié"} et rend ${raw} PV.` };
     }
 
+    if (!flags.noCooldown) this.startCooldown();
     return { type: "noop", log: `${user.name} tente ${this.name}.` };
   }
 }

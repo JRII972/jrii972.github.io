@@ -124,3 +124,31 @@
 .entityCard__fill--mp {
   background: #0ea5e9;  /* MP */
 }
+
+.entityCard--small {
+  padding: 8px;
+  border-radius: 12px;
+}
+
+.entityCard--small .entityCard__name {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.entityCard--small .entityCard__armorBadge {
+  transform: scale(0.9);
+}
+
+.entityCard--small .entityCard__meterBox {
+  gap: 4px;
+}
+
+.entityCard--small .entityCard__meterLabel,
+.entityCard--small .entityCard__meterValue {
+  font-size: 11px;
+}
+
+.entityCard--small .entityCard__portrait {
+  border-radius: 10px;
+  margin-bottom: 6px;
+}

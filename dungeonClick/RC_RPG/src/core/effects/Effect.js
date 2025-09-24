@@ -49,7 +49,7 @@ export class BaseEffect {
   }
 
   is(type) {
-    return false; // surclassé
+    return false; 
   }
 }
 
@@ -145,7 +145,6 @@ export class CompositeEffect extends BaseEffect {
 }
 
 /**
- * Fabrique d’effets : signature claire (pas d’ambiguïté).
  * @param {string} name
  * @param {string} description
  * @param {string|string[]} types - un type ou une liste
@@ -163,7 +162,7 @@ export function createEffect(name, description, types, applyTo = "target", durat
       case "MALUS_DEF":  return new MalusDefEffect(baseOpts);
       case "MALUS_HEAL": return new MalusHealEffect(baseOpts);
       default:
-        return new BaseEffect(baseOpts); // fallback neutre
+        return new BaseEffect(baseOpts); 
     }
   };
 

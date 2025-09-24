@@ -1,10 +1,56 @@
 .hud {
   width: 100%;
   display: flex;
-  gap: 16px;
-  justify-content: center;
   align-items: center;
+  gap: 12px;
   padding: 8px 12px;
   font-size: 14px;
   opacity: 0.95;
+}
+
+.hud__left {
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.hud__center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.hud__right {
+  min-width: 120px;
+}
+
+/* Badges */
+.clickBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(4px);
+}
+
+.clickBadge--sub {
+  opacity: 0.8;
+  font-size: 12px;
+  padding: 3px 8px;
+}
+
+.clickBadge__icon {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+}
+
+@media (max-width: 520px) {
+  .hud__left, .hud__right {
+    min-width: auto;
+  }
 }

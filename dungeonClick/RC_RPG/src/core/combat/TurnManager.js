@@ -1,7 +1,7 @@
 export default class TurnManager {
   constructor({ actors }) {
     this.turn = 1;
-    this.actors = actors; // tri possible par speed si nécessaire
+    this.actors = actors;
     this.currentIndex = 0;
   }
   currentActor() { return this.actors[this.currentIndex]; }

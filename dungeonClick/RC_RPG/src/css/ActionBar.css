@@ -8,10 +8,35 @@
   border-top: 1px solid rgba(255,255,255,0.12);
 }
 
+.actionbar__head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .actionbar__title {
   font-size: 14px;
   opacity: 0.9;
   letter-spacing: 0.4px;
+}
+
+.actionbar__spacer {
+  flex: 1;
+}
+
+.actionbar__pass {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.actionbar__pass:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .actionbar__row {
