@@ -10,4 +10,6 @@ export default {
 
   clicksTotal: 10,
   clicksPerTurn: 1,
+  // Délai (ms) entre chaque action automatique (compagnons puis ennemis)
+  aiAutoDelay: 600,
 };

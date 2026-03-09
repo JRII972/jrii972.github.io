@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState, useCallback } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 
 import ActionBar from "../components/ActionBar.jsx";
 import { EntityCard } from "../components/EntityCard.jsx";
@@ -8,138 +8,44 @@ import settings from "../../config/settings.js";
 
 import RNG from "../../core/combat/RNG.js";
 import CooldownManager from "../../core/combat/CooldownManager.js";
-import TurnManager from "../../core/combat/TurnManager.js";
 import Battle from "../../core/combat/Battle.js";
-import EventBus from "../../core/state/EventBus.js";
-import logsManager from "../../core/state/LogManager.js";
 import { useLogs } from "../context/LogContext.jsx";
 import GameState from "../../core/state/GameState.js";
-import AIController from "../../adapters/AIController.js";
 
 export default function CombatScene({ hero, enemies = [], allies = [], seed = Date.now() }) {
-  const contextLogs = useLogs();
+  const { logs: contextLogs } = useLogs();
   const actors = useMemo(() => [hero, ...allies, ...enemies], [hero, allies, enemies]);
 
-  const { battle, turnMgr, bus, ai } = useMemo(() => {
+  const [round, setRound] = useState(1);
+  const [clicksLeftGlobal, setClicksLeftGlobal] = useState(Math.max(0, Number(settings.clicksTotal ?? 0)));
+  const [clicksLeftTurn, setClicksLeftTurn] = useState(Math.max(1, Number(settings.clicksPerTurn ?? 1)));
+
+  const battleRef = useRef(null);
+
+  useEffect(() => {
     const rng = new RNG(seed);
-    const bus = new EventBus();
     const cooldowns = new CooldownManager(actors);
-    const battle = new Battle({ hero, enemies, allies, rng, cooldowns, eventBus: bus });
-    const turnMgr = new TurnManager({ actors });
-    const ai = new AIController(rng);
-    return { battle, turnMgr, bus, ai };
+    const battle = new Battle({
+      hero, enemies, allies, rng, cooldowns,
+      onStateChange: (s) => {
+        setRound(s.round);
+        setClicksLeftGlobal(s.clicksLeftGlobal);
+        setClicksLeftTurn(s.clicksLeftTurn);
+      }
+    });
+    battleRef.current = battle;
+    battle.start();
+    return () => battle.dispose?.();
   }, [actors, hero, enemies, allies, seed]);
 
-  useEffect(() => {
-    const off2 = bus.on("state:update", () => forceTick((n) => n + 1));
-    return () => { off2(); };
-  }, [bus]);
-
-  const [, forceTick] = useState(0);
-
-  const [current, setCurrent] = useState(null);
-  useEffect(() => { setCurrent(() => turnMgr.currentActor()); }, [turnMgr]);
-
-  // Limites d'actions (globales → héros principal uniquement ; par tour pour héros)
-  const [clicksLeftGlobal, setClicksLeftGlobal] = useState(Math.max(0, Number(settings.clicksTotal ?? 0)));
-  const [clicksLeftTurn, setClicksLeftTurn] = useState(null);
-
-  useEffect(() => {
-    if (!current) return;
-    if (current.id === hero.id) {
-      setClicksLeftTurn(Math.max(1, Number(settings.clicksPerTurn ?? 1)));
-    } else {
-      setClicksLeftTurn(null);
-    }
-  }, [current, hero.id]);
-
-  const turnLock = useRef(false);
-
-  useEffect(() => {
-    if (!current || battle.isOver()) return;
-    if (turnLock.current) return;
-    turnLock.current = true;
-
-    const end = () => { endTurn(); turnLock.current = false; };
-    const skipIfStunned = () => {
-      if (battle.hasStun(current)) {
-        logsManager.log(`${current.name} est étourdi et passe son tour !`);
-        end(); return true;
-      }
-      return false;
-    };
-
-    if (current.id === hero.id && clicksLeftGlobal <= 0) {
-      logsManager.log(`Vous n'avez plus d'actions disponibles pour ce combat.`);
-      end(); return;
-    }
-
-    const isEnemy = enemies.some(e => e.id === current.id);
-    if (isEnemy) {
-  if (skipIfStunned()) return;
-      const foe = enemies.find(e => e.id === current.id);
-      const t = setTimeout(() => {
-        const pick = ai.chooseAction(foe, battle);            // ← IA choisit seulement
-        if (pick?.action) battle.resolve(pick.action, foe, pick.target ?? null); // ← Battle exécute
-        end();
-      }, 500);
-      return () => { clearTimeout(t); turnLock.current = false; };
-    }
-
-    const isCompanion = allies.some(a => a.id === current.id);
-    if (isCompanion) {
-  if (skipIfStunned()) return;
-      const ally = allies.find(a => a.id === current.id);
-      const t = setTimeout(() => {
-        const pick = ai.chooseAction(ally, battle);           // ← IA choisit seulement
-        if (pick?.action) battle.resolve(pick.action, ally, pick.target ?? null); // ← Battle exécute
-        end();
-      }, 450);
-      return () => { clearTimeout(t); turnLock.current = false; };
-    }
-
-    // Héros : attend input
-    if (skipIfStunned()) return;
-    turnLock.current = false;
-  }, [current, ai, battle, bus, enemies, allies, hero, clicksLeftGlobal, endTurn]);
-
-  const endTurn = useCallback(() => {
-    const { next, roundEnded } = turnMgr.advance();
-    if (roundEnded) battle.endOfRound();
-    setCurrent(next);
-    forceTick((n) => n + 1);
-  }, [turnMgr, battle]);
-
   function onPlayerAction(actionId) {
-    if (battle.isOver()) return;
-    if (current?.id !== hero.id) return;
-
-    // Limites héros
-  if (clicksLeftGlobal <= 0) { logsManager.log(`Plus d'actions disponibles dans ce combat.`); endTurn(); return; }
-  if (typeof clicksLeftTurn === "number" && clicksLeftTurn <= 0) { logsManager.log(`Limite atteinte pour ce tour.`); endTurn(); return; }
-  if (battle.hasStun(hero)) { logsManager.log(`${hero.name} est étourdi et ne peut pas agir !`); endTurn(); return; }
-
-    const action = hero.actions.find((a) => a.id === actionId);
-    if (!action) return;
-
-    // Ciblage 
-    battle.resolve(action, hero, null);
-    if (battle.isOver()) return;
-
-    // Décréments
-    setClicksLeftGlobal((g) => Math.max(0, g - 1));
-    if (typeof clicksLeftTurn === "number") setClicksLeftTurn((t) => Math.max(0, t - 1));
-
-    const nextGlobal = clicksLeftGlobal - 1;
-    const nextTurn = (typeof clicksLeftTurn === "number") ? (clicksLeftTurn - 1) : 1;
-    if (nextGlobal > 0 && nextTurn > 0) return;
-
-    endTurn();
+    const battle = battleRef.current;
+    if (!battle) return;
+    battle.playerUse(actionId);
   }
 
   function onPassTurn() {
-    if (current?.id !== hero.id) { endTurn(); return; }
-    endTurn();
+    battleRef.current?.passHeroTurn();
   }
 
 
@@ -151,24 +57,21 @@ export default function CombatScene({ hero, enemies = [], allies = [], seed = Da
     id: a.id,
     name: a.name,
     remainingCooldown: a.remainingCooldown,
-    canUse: a.canUse(hero, { battle })
+    canUse: a.canUse(hero, { battle: battleRef.current }) && clicksLeftTurn > 0 && clicksLeftGlobal > 0 && !(battleRef.current?.hasStun(hero))
   }));
 
   const anyEnemyAlive = enemies.some(e => e.alive);
   const battleOver = !hero.alive || !anyEnemyAlive;
-
-  const isPlayersTurn = current && (current.id === hero.id || allies.some(a => a.id === current.id));
-  const isMainHeroTurn = current?.id === hero.id;
 
   return (
     <div className="page">
       <div className="topSection">
         <div className="container">
           <HUD
-            turn={turnMgr.turn}
-            currentActor={current}
-            clicksLeftGlobal={isMainHeroTurn ? clicksLeftGlobal : undefined}
-            clicksLeftTurn={isMainHeroTurn ? (clicksLeftTurn ?? undefined) : undefined}
+            turn={round}
+            currentActor={hero}
+            clicksLeftGlobal={clicksLeftGlobal}
+            clicksLeftTurn={clicksLeftTurn}
           />
 
           <div className="columns">
@@ -209,24 +112,13 @@ export default function CombatScene({ hero, enemies = [], allies = [], seed = Da
           </div>
 
           <ActionBar
-            title={
-              battleOver
-                ? "Combat terminé"
-                : isMainHeroTurn
-                  ? `À vous de jouer (${current?.name})`
-                  : (isPlayersTurn ? `Tour de ${current?.name}` : "Tour de l'ennemi")
-            }
+            title={battleOver ? "Combat terminé" : `Tour du héros (${hero.name})`}
             actions={currentActions}
             onAction={(a) => onPlayerAction(a.id)}
-            disabled={
-              battleOver ||
-              !isMainHeroTurn ||
-              clicksLeftGlobal <= 0 ||
-              (typeof clicksLeftTurn === "number" && clicksLeftTurn <= 0)
-            }
-            showPass={isMainHeroTurn && !battleOver}
+            disabled={battleOver || clicksLeftGlobal <= 0 || clicksLeftTurn <= 0}
+            showPass={!battleOver}
             onPass={onPassTurn}
-            passDisabled={!isMainHeroTurn || battleOver}
+            passDisabled={battleOver}
           />
         </div>
       </div>
